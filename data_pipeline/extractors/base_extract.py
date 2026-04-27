@@ -14,10 +14,10 @@ from typing import Dict, List
 from dotenv import load_dotenv
 import random
 
-# Agregar directorio padre
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# Agregar directorio padre (raíz del proyecto)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
-from utils.utils_db import ConexionBaseDatos  # Usamos DB en lugar de Sheets
+from data_pipeline.utils.utils_db import ConexionBaseDatos  # Usamos DB en lugar de Sheets
 from utils.cookie_manager import CookieManager
 from utils.optimization import ResultCache, set_parallel_mode
 from extractors.carrefour_extractor import CarrefourExtractor
@@ -47,28 +47,13 @@ class ExtractCanastaBasica:
             'Parada Canga': ParadacangaExtractor
         }
 
-        # Inicializar DB para leer links (Usa DB_VERSION para elegir host)
-        version_db = os.getenv('DB_VERSION', '1')
-        if version_db == '1':
-            host = os.getenv('HOST_DBB1')
-            user = os.getenv('USER_DBB1')
-            password = os.getenv('PASSWORD_DBB1')
-            port = os.getenv('PORT_DBB1')
-            # Para MySQL la base suele ser super_mercados (con s)
-            database = os.getenv('NAME_DB_CANASTA_V1', 'canasta_basica_supermercados')
-        else:
-            host = os.getenv('HOST_DBB2')
-            user = os.getenv('USER_DBB2')
-            password = os.getenv('PASSWORD_DBB2')
-            port = os.getenv('PORT_DBB2')
-            database = os.getenv('NAME_DB_CANASTA', 'canasta_basica_super')
-
+        from config.settings import settings
         self.db = ConexionBaseDatos(
-            host=host,
-            user=user,
-            password=password,
-            database=database,
-            port=port
+            host=settings.db.host,
+            user=settings.db.user,
+            password=settings.db.password,
+            database=settings.db.name,
+            port=settings.db.port
         )
 
         # Cookies y Cache
@@ -90,14 +75,12 @@ class ExtractCanastaBasica:
         # Query optimizada con JOIN para traer el nombre del super
         query = """
             SELECT 
-                lp.id_link_producto, 
-                lp.link, 
-                lp.peso, 
-                lp.unidad_medida, 
+                lp.id as id_link_producto, 
+                lp.url_producto as link, 
                 s.nombre as nombre_super
             FROM link_productos lp
-            JOIN supermercados s ON lp.id_supermercado = s.id_super
-            WHERE lp.activo = 1
+            JOIN supermercados s ON lp.id_supermercado = s.id
+            WHERE lp.activo = TRUE
         """
         
         params = None
@@ -142,9 +125,7 @@ class ExtractCanastaBasica:
                     task = {
                         'id_link_producto': item['id_link_producto'], # VITAL para la carga
                         'supermarket': super_name,
-                        'url': item['link'],
-                        'peso_db': item['peso'], # Peso definido en la DB
-                        'unidad_db': item['unidad_medida'] # Unidad definida en la DB
+                        'url': item['link']
                     }
                     task_queue.put(task)
                 else:
@@ -259,10 +240,4 @@ class ExtractCanastaBasica:
         if 'unidad' not in df.columns and 'unidad_medida' in df.columns:
             df = df.rename(columns={'unidad_medida': 'unidad'})
         
-        # Prioridad de datos: Si el scraper no trae peso, usar el de la DB
-        if 'peso' not in df.columns or not df['peso'].iloc[0]:
-            df['peso'] = task['peso_db']
-        if 'unidad' not in df.columns or not df['unidad'].iloc[0]:
-            df['unidad'] = task['unidad_db']
-
         return df

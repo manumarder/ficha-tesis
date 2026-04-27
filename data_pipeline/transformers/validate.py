@@ -6,7 +6,7 @@ import pandas as pd
 
 logger = logging.getLogger(__name__)
 
-CANTIDAD_MINIMA = 2000
+CANTIDAD_MINIMA = 1 # Reducido temporalmente para pruebas piloto (originalmente 2000)
 
 
 class ValidateCanastaBasica:

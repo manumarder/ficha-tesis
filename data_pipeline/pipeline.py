@@ -3,15 +3,20 @@ MAIN - Orquestador ETL para CanastaBasica
 Responsabilidad: Coordinar Extract (DB) → Transform → Validate → Load (DB)
 """
 import os
+import sys
 import logging
 from datetime import datetime
+
+# Añadir el directorio raíz al path para importar config
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from dotenv import load_dotenv
 import random
-from etl.extract import ExtractCanastaBasica
-from etl.transform import TransformCanastaBasica
-from etl.load import LoadCanastaBasica
-from etl.validate import ValidateCanastaBasica
-from etl.report import ReportCanastaBasica
+from extractors.base_extract import ExtractCanastaBasica
+from transformers.transform import TransformCanastaBasica
+from loaders.load import LoadCanastaBasica
+from transformers.validate import ValidateCanastaBasica
+from utils.report import ReportCanastaBasica
 from utils.logger import setup_logger
 from utils.optimization import cleanup_environment
 
@@ -29,7 +34,7 @@ def main():
     logger.info("=== INICIO ETL CANASTA BÁSICA - %s ===", inicio.strftime("%Y-%m-%d %H:%M:%S"))
     logger.info("=" * 80)
 
-    SYNC_MODE = False
+
 
     extractor = None
     loader    = None
@@ -44,6 +49,10 @@ def main():
         if not links_list:
             logger.error("[ERROR] No se encontraron links activos en la base de datos.")
             return
+
+        # LIMITAR A 10 LINKS PARA PRUEBA PILOTO
+        links_list = links_list[:10]
+        logger.info(f"Limitando a {len(links_list)} links para prueba rápida.")
 
         df_raw = extractor.extract(links_list)
         if df_raw.empty:
@@ -102,15 +111,7 @@ def main():
         loader = LoadCanastaBasica()
         exito = loader.load(df)
 
-        # --- NUEVA SECCIÓN DE SINCRONIZACIÓN ---
-        if SYNC_MODE:
-            logger.info(">>> MODO SINCRONIZACIÓN ACTIVADO <<<")
-            extractor = LoadCanastaBasica()
-            # Suponiendo que metiste la función en el extractor
-            registros = extractor.sync_mysql_to_postgres()
-            logger.info(f"Proceso de sincronización finalizado. Registros: {registros}")
-            return # Terminamos aquí para no correr el scraper normal
-        # ---------------------------------------
+
 
         if exito:
             logger.info("=== Proceso ETL completado EXITOSAMENTE ===")
@@ -124,10 +125,8 @@ def main():
         if extractor and hasattr(extractor, 'db') and extractor.db:
             extractor.db.close_connections()
         if loader:
-            if hasattr(loader, 'db_v1') and loader.db_v1:
-                loader.db_v1.close_connections()
-            if hasattr(loader, 'db_v2') and loader.db_v2:
-                loader.db_v2.close_connections()
+            if hasattr(loader, 'db') and loader.db:
+                loader.db.close_connections()
         duracion = (datetime.now() - inicio).total_seconds()
         logger.info("=== FIN EJECUCIÓN - Duración total: %.2f segundos ===", duracion)
         logger.info("=" * 80)
