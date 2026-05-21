@@ -2,12 +2,11 @@
 Carga en BD a partir de un BACKUP_RAW_*.csv ya generado (sin volver a scrapear).
 
 Uso:
-  cd automaticos/scrap_CanastaBasica
-  python cargar_desde_backup.py
-  python cargar_desde_backup.py --csv files/BACKUP_RAW_20260420_1951.csv
-  python cargar_desde_backup.py --skip-validate   # solo si VALIDATE bloquea por umbral
+  python data_pipeline/cargar_desde_backup.py
+  python data_pipeline/cargar_desde_backup.py --csv data_pipeline/files/BACKUP_RAW_20260420_1951.csv
+  python data_pipeline/cargar_desde_backup.py --skip-validate
 
-Requiere .env con credenciales igual que main.py.
+Requiere .env con credenciales igual que pipeline.py.
 """
 from __future__ import annotations
 
@@ -19,9 +18,9 @@ from dotenv import load_dotenv
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-from etl.transform import TransformCanastaBasica
-from etl.load import LoadCanastaBasica
-from etl.validate import ValidateCanastaBasica
+from transformers.transform import TransformCanastaBasica
+from loaders.load import LoadCanastaBasica
+from transformers.validate import ValidateCanastaBasica
 from utils.logger import setup_logger
 
 
@@ -95,10 +94,8 @@ def main() -> None:
     try:
         exito = loader.load(df)
     finally:
-        if hasattr(loader, "db_v1") and loader.db_v1:
-            loader.db_v1.close_connections()
-        if hasattr(loader, "db_v2") and loader.db_v2:
-            loader.db_v2.close_connections()
+        if hasattr(loader, "db") and loader.db:
+            loader.db.close_connections()
 
     if exito:
         logger.info("=== Carga desde backup completada OK ===")

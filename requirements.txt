@@ -1,0 +1,8 @@
+python-dotenv
+pandas
+sqlalchemy
+pymysql
+psycopg2-binary
+selenium
+selenium-stealth
+openpyxl

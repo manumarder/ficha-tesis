@@ -50,9 +50,9 @@ def main():
             logger.error("[ERROR] No se encontraron links activos en la base de datos.")
             return
 
-        # LIMITAR A 10 LINKS PARA PRUEBA PILOTO
-        links_list = links_list[:10]
-        logger.info(f"Limitando a {len(links_list)} links para prueba rápida.")
+        # ELEGIR LINKS AL AZAR PARA PRUEBA MIXTA (Comentado para extraer TODOS)
+        links_list = random.sample(links_list, min(50, len(links_list)))
+        logger.info(f"Se extraerán {len(links_list)} links en total.")
 
         df_raw = extractor.extract(links_list)
         if df_raw.empty:

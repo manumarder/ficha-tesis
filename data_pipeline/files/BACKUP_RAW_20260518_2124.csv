@@ -1,0 +1,79 @@
+error_type,url,titulo,id_link_producto,nombre,precio_normal,precio_descuento,precio_por_unidad,unidad,descuentos,fecha,supermercado,producto_nombre,fecha_extraccion
+exception,https://depotexpress.com.ar/productos/bebidas-s-alcohol/aguas/agus-aquarius-pom-rdo-2-25x/,"Message: timeout: Timed out receiving message from renderer: 6.313
+  (Session info: chrome=148.0.7778.168)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff751491e35+2e8d45]
+	chromedriver!GetHandleVerifier [0x7ff7511be6c0+155d0]
+	chromedriver!(No symbol) [0x7ff750f0d57d]
+	chromedriver!(No symbol) [0x7ff750efa1c9]
+	chromedriver!(No symbol) [0x7ff750ef9eb1]
+	chromedriver!(No symbol) [0x7ff750ef7afb]
+	chromedriver!(No symbol) [0x7ff750ef841f]
+	chromedriver!(No symbol) [0x7ff750f0791a]
+	chromedriver!(No symbol) [0x7ff750f1e7c7]
+	chromedriver!(No symbol) [0x7ff750f2666a]
+	chromedriver!(No symbol) [0x7ff750ef8be1]
+	chromedriver!(No symbol) [0x7ff750f1e4f1]
+	chromedriver!(No symbol) [0x7ff750fb4fdc]
+	chromedriver!(No symbol) [0x7ff750f59d58]
+	chromedriver!(No symbol) [0x7ff750f5ac43]
+	chromedriver!GetHandleVerifier [0x7ff7514bdab9+3149c9]
+	chromedriver!GetHandleVerifier [0x7ff7514b802b+30ef3b]
+	chromedriver!GetHandleVerifier [0x7ff7514dc872+333782]
+	chromedriver!GetHandleVerifier [0x7ff7511db785+32695]
+	chromedriver!GetHandleVerifier [0x7ff7511e42bc+3b1cc]
+	chromedriver!GetHandleVerifier [0x7ff7511c7f24+1ee34]
+	chromedriver!GetHandleVerifier [0x7ff7511c80b4+1efc4]
+	chromedriver!GetHandleVerifier [0x7ff7511abf27+2e37]
+	KERNEL32!BaseThreadInitThunk [0x7ffbc221e8d7+17]
+	ntdll!RtlUserThreadStart [0x7ffbc442c3fc+2c]
+",1329,,,,,,,,,,
+,https://www.carrefour.com.ar/choclo-con-chala-x-unidad-760120/p,,1068,Choclo con chala x unidad,949,949,949,1 U.,Ninguno,2026-05-18,Carrefour,,
+,https://www.delimart.com.ar/galletitas_dulces_rellenas_sabor_frambuesa_sonrisas_x_108_gr,,1579,Galletitas Dulces Rellenas Sabor Frambuesa Sonrisas x 108 Gr,1644.44,1644.44,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.carrefour.com.ar/galletita-rellena-de-limon-carrefour-classic-30-g-738861/p,,563,Galletita rellena de limón Carrefour Classic 30 g.,0,0,22966.67,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.carrefour.com.ar/mayonesa-canuelas-250-cc-730346/p,,778,Mayonesa Cañuelas 250 cc.,1279,1279,5116,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.delimart.com.ar/galletitas_de_agua_traviata_108_gr,,1623,Galletitas De Agua Traviata 108 Gr,786.59,786.59,0,,Ninguno,2026-05-18,Delimart,,
+,https://depotexpress.com.ar/productos/otros/producto-115/,,1392,VINF UXMAL MALBEC 750X,4176.14,4176.14,0,,Ninguno,2026-05-18,Depot,,
+,https://www.delimart.com.ar/te_clasico_taragui_internacional_25_saquitos,,2029,Te Clasico Taragui Internacional 25 Saquitos,2126.68,2126.68,0,,Ninguno,2026-05-18,Delimart,,
+,https://depotexpress.com.ar/productos/limpieza/suav-downy-lirios-primav-500x/,,1526,SUAV DOWNY LIRIOS PRIMAV 500X,7468.53,7468.53,0,,Ninguno,2026-05-18,Depot,,
+,https://www.carrefour.com.ar/margarina-en-pan-margadan-500-g-726172/p,,680,Margarina en pan Margadan 500 g.,4799,4799,9598,1 K.,Ninguno,2026-05-18,Carrefour,,
+no_name,https://www.carrefour.com.ar/yerba-la-tranquera-liviana-1-kg-713946/p,Carrefour - Las mejores ofertas en supermercados,1018,,,,,,,,,,
+,https://www.delimart.com.ar/mermelada_frutilla_arcor_454_gr,,1824,Mermelada Frutilla Arcor 454 Gr,4821.84,4821.84,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.delimart.com.ar/cafe_instantaneo__tostado_suave__la_planta_de_cafe_170_gr_sin_azucar,,1971,Cafe Instantaneo Tostado Suave La Planta de cafe 170 Gr Sin Azucar,13828.31,13828.31,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.carrefour.com.ar/galletitas-con-chips-cofler-120-g/p,,499,Galletitas con chips Cofler 120 g.,1879,1879,15658.33,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vinf-flia-gascon-malbec-750x/,,1382,FLIA.GASCON MALBEC 750X,5265.00,5265.00,0,,Ninguno,2026-05-18,Depot,,
+,https://www.carrefour.com.ar/jabon-liquido-para-ropa-woolite-bebe-en-maquina-repuesto-900-ml-619920/p,,1167,Jabón líquido para ropa Woolite bebé en máquina repuesto 900 ml.,7169,7169,7965.56,1 L.,Ninguno,2026-05-18,Carrefour,,
+,https://diaonline.supermercadosdia.com.ar/gaseosa-fanta-naranja-225-lt-84975/p,,138,"Gaseosa Fanta Naranja 2,25 Lt.",5450.0,5450.0,,,2do al 50%,,Dia,"Gaseosa Fanta Naranja 2,25 Lt.",2026-05-18 21:22:22
+,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vino-lola-montes-malb-x-750/,,1412,VINF LOLA MONTES MALBEC 750X,5040.00,5040.00,0,,Ninguno,2026-05-18,Depot,,
+,https://www.delimart.com.ar/spaghetti_terrabusi_500gr2,,1656,Spaghetti Terrabusi 500gr,1351.54,1351.54,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.delimart.com.ar/galletitas_trio_frolitas_300_gr,,1590,Galletitas Trio Frolitas 300 Gr,1801.77,1801.77,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.delimart.com.ar/mate_cocido_nobleza_gaucha_50_saquitos,,2024,Mate Cocido Nobleza Gaucha 50 saquitos,2407.14,2407.14,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.carrefour.com.ar/galletitas-carrefour-classic-mini-frolitas-160-g/p,,533,Galletitas Carrefour classic mini frolitas 160 g.,1190,1082.90,6768.13,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.delimart.com.ar/fideos_tallarines_terrabusi_500gr2,,1655,Fideos Tallarines Terrabusi 500gr,1192.52,1192.52,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.carrefour.com.ar/galletitas-dulces-carrefour-classic-de-vainilla-120-grs-759353/p,,582,Galletitas dulces Carrefour Classic de vainilla 120 grs,929,845.39,7044.92,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.carrefour.com.ar/papas-fritas-quento-clasicas-92-g-731457/p,,915,Papas fritas Quento clasicas 92 g.,2299,2299,24989.13,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.delimart.com.ar/papel_higienico_doble_hoja_felpita_4_un_x_20_mt2,,2122,Papel Higienico Doble Hoja Felpita 4 Un X 20 Mt,2553.16,2553.16,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.carrefour.com.ar/palitos-salados-pehuamar-165-g-721968/p,,919,Palitos salados Pehuamar 165 g.,3499,3499,21206.06,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://depotexpress.com.ar/productos/comestibles/pure-de-la-huerta-210x/,,1295,PURE DE LA HUERTA 210X,504.89,504.89,0,,Ninguno,2026-05-18,Depot,,
+,https://www.delimart.com.ar/shampoo_sedal_restauracion_instantanea_190_ml,,2090,Shampoo Sedal Restauración Instantánea 190 Ml,3874.11,3874.11,0,,Ninguno,2026-05-18,Delimart,,
+,https://diaonline.supermercadosdia.com.ar/gaseosa-sprite-lima-limon-225-lt-14847/p,,134,"Gaseosa Sprite Lima-Limón 2,25 Lt.",5450.0,5450.0,,,2do al 50%,,Dia,"Gaseosa Sprite Lima-Limón 2,25 Lt.",2026-05-18 21:23:14
+,https://www.carrefour.com.ar/queso-rallado-reggianito-la-serenisima-sobre-35-g/p,,715,Queso rallado reggianito La Serenísima sobre 35 g.,1765,1765,50428.57,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.delimart.com.ar/baggio_pronto_naranja_x1lts,,1867,Baggio Pronto Naranja x1lts.,2087.04,1773.98,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.delimart.com.ar/gaseosa_crush_naranja_3_lt,,1834,Gaseosa Crush Naranja 3 Lt,2200.00,2200.00,0,,Ninguno,2026-05-18,Delimart,,
+,https://depotexpress.com.ar/productos/comestibles/mayo-natura-d-p-1000x/,,1281,MAYONESA NATURA D/P 1000X,4146.94,4146.94,0,,Ninguno,2026-05-18,Depot,,
+,https://www.carrefour.com.ar/vino-tinto-malbec-cosecha-elegido-norton-750-cc-586173/p,,955,Vino tinto Malbec Cosecha Elegido Nortón 750 ml,0,0,6860,1 L.,Ninguno,2026-05-18,Carrefour,,
+,https://www.carrefour.com.ar/caldo-de-verduras-carrefour-classic-caja-12-u/p,,793,Caldo de verduras Carrefour classic caja 12 u.,1250,1137.50,9978.07,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vinf-nampe-malbec-750x/,,1407,VINF NAMPE MALBEC 750X,3314.32,3314.32,0,,Ninguno,2026-05-18,Depot,,
+,https://diaonline.supermercadosdia.com.ar/atun-al-natural-la-campagnola-170-gr-14797/p,,333,Atún al Natural La Campagnola 170 Gr.,5810.0,5810.0,,,,,Dia,Atún al Natural La Campagnola 170 Gr.,2026-05-18 21:23:58
+,https://www.delimart.com.ar/huevos_de_gallinas_felices_estancia_san_jose_estuche_x6_und,,1749,Huevos de Gallinas Felices Estancia San José Estuche X6 Und,2200.00,2200.00,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.carrefour.com.ar/polvorones-bulnez-con-chips-de-dulce-de-leche-150-g-744331/p,,551,Polvorones Bulnez con chips de dulce de leche 150 g.,941,941,6273.33,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.carrefour.com.ar/galleta-de-chocolate-9-de-oro-con-relleno-de-chocolate-160-g-635374/p,,566,Galleta de chocolate 9 de Oro con relleno de chocolate 160 g.,2369,2369,14806.25,1 K.,Ninguno,2026-05-18,Carrefour,,
+,https://www.carrefour.com.ar/jugo-de-pomelo-exprimido-puro-sol-tetra-1-lt/p,,890,Jugo de pomelo exprimido Puro Sol tetra 1 lt.,0,0,3889,1 L.,Ninguno,2026-05-18,Carrefour,,
+,https://www.delimart.com.ar/yogur_bebible_entero_frutilla_ilolay_900_g,,1726,Yogur Bebible Entero Frutilla Ilolay 900 g,2267.76,2267.76,0,,Ninguno,2026-05-18,Delimart,,
+,https://www.carrefour.com.ar/gaseosa-cola-coca-cola-sabor-original-225-lts-30138/p,,847,"Gaseosa cola Coca Cola sabor original 2,25 lts",4600,4600,2044.44,1 L.,Ninguno,2026-05-18,Carrefour,,
+,https://diaonline.supermercadosdia.com.ar/gaseosa-pepsi-black-botella-15-lt-247793/p,,136,"Gaseosa Pepsi Black Botella 1,5 Lt.",3950.0,3950.0,,,,,Dia,"Gaseosa Pepsi Black Botella 1,5 Lt.",2026-05-18 21:24:18
+,https://diaonline.supermercadosdia.com.ar/asado-x-kg-279637/p,,309,Asado x Kg.,19500.0,19500.0,,,,,Dia,Asado x Kg.,2026-05-18 21:24:18
+,https://diaonline.supermercadosdia.com.ar/galletitas-surtidas-bagley-400-gr-271962/p,,8,Galletitas Surtidas Bagley 400 Gr.,3521.0,3521.0,,,,,Dia,Galletitas Surtidas Bagley 400 Gr.,2026-05-18 21:24:21
+,https://diaonline.supermercadosdia.com.ar/sal-fina-dia-500-gr-55538/p,,92,Sal Fina DIA 500 Gr.,1090.0,1090.0,,,,,Dia,Sal Fina DIA 500 Gr.,2026-05-18 21:24:26
+,https://diaonline.supermercadosdia.com.ar/alimento-humedo-para-gatos-sabor-atun-felix-85-gr-309217/p,,448,Alimento Humedo Para Gatos Sabor Atun Felix 85 Gr.,1450.0,1450.0,,,4x3,,Dia,Alimento Humedo Para Gatos Sabor Atun Felix 85 Gr.,2026-05-18 21:24:30
+,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vinf-conejo-verde-malbec-750x/,,1402,VINF CONEJO VERDE MALBEC 750X,4992.92,4992.92,0,,Ninguno,2026-05-18,Depot,,

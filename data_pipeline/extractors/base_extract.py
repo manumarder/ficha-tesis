@@ -22,11 +22,8 @@ from utils.cookie_manager import CookieManager
 from utils.optimization import ResultCache, set_parallel_mode
 from extractors.carrefour_extractor import CarrefourExtractor
 from extractors.delimart_extractor import DelimartExtractor
-from extractors.masonline_extractor import MasonlineExtractor
 from extractors.depot_extractor import DepotExtractor
-from extractors.lareina_extractor import LareinaExtractor
 from extractors.dia_extractor import DiaExtractor
-from extractors.paradacanga_extractor import ParadacangaExtractor
 
 logger = logging.getLogger(__name__)
 
@@ -40,11 +37,10 @@ class ExtractCanastaBasica:
         self.extractor_classes = {
             'Carrefour': CarrefourExtractor,
             'Delimart': DelimartExtractor,
-            'MasOnline': MasonlineExtractor,
             'Depot': DepotExtractor, 
-            'La Reina': LareinaExtractor,
-            'DIA%': DiaExtractor, 
-            'Parada Canga': ParadacangaExtractor
+            'Día': DiaExtractor,
+            'dia': DiaExtractor,
+            'DIA%': DiaExtractor
         }
 
         from config.settings import settings
