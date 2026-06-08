@@ -68,7 +68,7 @@ Cada extractor encapsula la lógica de Selenium para su supermercado.
 ### 4.1 Requisitos previos
 - Python 3.10+.
 - Chrome instalado y `chromedriver` disponible en PATH o en la misma carpeta del proyecto.
-- Una base PostgreSQL accesible.
+- Una base PostgreSQL accesible, local o remota.
 - Archivo `.env` con credenciales DB.
 
 ### 4.2 Variables necesarias en `.env`
@@ -78,6 +78,17 @@ DB_PORT=5432
 DB_USER=tu_usuario
 DB_PASSWORD=tu_contraseña
 DB_NAME=tu_base
+DB_SSLMODE=prefer
+```
+
+Si estás usando Supabase, conviene añadir:
+```env
+DB_SSLMODE=require
+```
+
+También puedes usar la URL completa de conexión:
+```env
+DATABASE_URL=postgresql://usuario:contraseña@host:5432/base_de_datos
 ```
 
 ### 4.3 Instalar dependencias

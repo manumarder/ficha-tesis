@@ -50,9 +50,18 @@ def main():
             logger.error("[ERROR] No se encontraron links activos en la base de datos.")
             return
 
-        # ELEGIR LINKS AL AZAR PARA PRUEBA MIXTA (Comentado para extraer TODOS)
-        links_list = random.sample(links_list, min(50, len(links_list)))
-        logger.info(f"Se extraerán {len(links_list)} links en total.")
+        # Modo configurable: por defecto usa 50 links para pruebas, pero puedes forzar todos con EXTRACTION_SAMPLE_SIZE=0
+        sample_size = os.getenv("EXTRACTION_SAMPLE_SIZE", "50")
+        try:
+            sample_size = int(sample_size)
+        except ValueError:
+            sample_size = 50
+
+        if sample_size > 0 and sample_size < len(links_list):
+            links_list = random.sample(links_list, sample_size)
+            logger.info(f"Se extraerán {len(links_list)} links aleatorios (muestra de prueba).")
+        else:
+            logger.info(f"Se extraerán todos los {len(links_list)} links activos.")
 
         df_raw = extractor.extract(links_list)
         if df_raw.empty:
@@ -61,36 +70,42 @@ def main():
         logger.info("[OK] Extracción finalizada: %d filas.", len(df_raw))
 
         # --- GENERAR REPORTE DE LINKS FALLIDOS ---
+        files_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'files')
+        links_fallidos_dir = os.path.join(files_dir, 'links_fallidos')
+        backup_raw_dir = os.path.join(files_dir, 'backup_raw')
+
+        os.makedirs(files_dir, exist_ok=True)
+        os.makedirs(links_fallidos_dir, exist_ok=True)
+        os.makedirs(backup_raw_dir, exist_ok=True)
+
         try:
-            report_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'files')
-            reporter = ReportCanastaBasica(report_dir)
+            reporter = ReportCanastaBasica(links_fallidos_dir)
             report_file = reporter.generate_broken_links_report(df_raw)
             if report_file:
                 logger.warning(f"!!! ATENCIÓN: Se detectaron links con problemas. Reporte generado en: {report_file}")
-            reporter.clean_old_reports()
+            reporter.clean_old_reports(keep_last=21)
         except Exception as e:
             logger.error(f"Error generando reporte de links fallidos: {e}")
 
-        # Backup
+        # Backup en subcarpeta específica
         backup_file = os.path.join(
-            os.path.dirname(os.path.abspath(__file__)), 'files',
+            backup_raw_dir,
             f'BACKUP_RAW_{datetime.now().strftime("%Y%m%d_%H%M")}.csv'
         )
-        os.makedirs(os.path.dirname(backup_file), exist_ok=True)
         try:
             df_raw.to_csv(backup_file, index=False)
             logger.info("BACKUP guardado: %s", backup_file)
         except Exception as e:
             logger.warning("No se pudo crear backup: %s", e)
 
-        # Limpieza de backups: conservar solo los últimos 3
+        # Limpieza de backups: conservar solo los últimos 21 archivos
         try:
             archivos_backup = sorted(
-                [f for f in os.listdir(os.path.dirname(backup_file)) if f.startswith('BACKUP_RAW_')],
+                [f for f in os.listdir(backup_raw_dir) if f.startswith('BACKUP_RAW_')],
                 reverse=True
             )
-            for viejo in archivos_backup[3:]:
-                os.remove(os.path.join(os.path.dirname(backup_file), viejo))
+            for viejo in archivos_backup[21:]:
+                os.remove(os.path.join(backup_raw_dir, viejo))
                 logger.info("Backup antiguo eliminado: %s", viejo)
         except Exception as e:
             logger.warning("No se pudo limpiar backups: %s", e)

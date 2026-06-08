@@ -10,15 +10,14 @@ CREATE TABLE IF NOT EXISTS supermercados (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- 2. Tabla de Categorías
+-- 2. Tabla de Categorías (Sin descripción)
 CREATE TABLE IF NOT EXISTS categorias (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
-    descripcion TEXT,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- 3. Tabla de Productos Maestros (Centralización)
+-- 3. Tabla de Productos Maestros (Se mantienen marca y sku para el matching inteligente)
 CREATE TABLE IF NOT EXISTS productos_maestros (
     id SERIAL PRIMARY KEY,
     nombre_generico VARCHAR(255) NOT NULL,
@@ -29,7 +28,7 @@ CREATE TABLE IF NOT EXISTS productos_maestros (
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
 );
 
--- 4. Tabla de Links de Productos (Mapeo por Supermercado)
+-- 4. Tabla de Links de Productos (Mapeo por Supermercado - Columnas críticas para el agente de IA)
 CREATE TABLE IF NOT EXISTS link_productos (
     id SERIAL PRIMARY KEY,
     id_maestro INTEGER REFERENCES productos_maestros(id) ON DELETE CASCADE,
@@ -66,7 +65,7 @@ CREATE TABLE IF NOT EXISTS precios_productos (
 );
 
 -- 7. VISTA DE AUDITORÍA (El "Semáforo" de la Tesis)
--- Esta vista hace la magia: compara el precio de hoy con el promedio de los últimos 21 días
+-- Compara el precio actual contra la ventana histórica de los últimos 21 días
 CREATE OR REPLACE VIEW vista_auditoria_consumo AS
 WITH historico AS (
     SELECT 
@@ -88,13 +87,20 @@ WITH historico AS (
     JOIN supermercados s ON l.id_supermercado = s.id
 )
 SELECT 
-    *,
+    id,
+    nombre_generico,
+    supermercado,
+    precio_final,
+    precio_normal,
+    precio_descuento,
+    created_at,
+    COALESCE(promedio_historico, precio_final) AS promedio_historico, -- Evita nulos en las primeras cargas
     CASE 
-        -- ROJO: El precio normal subió más del 15% respecto al promedio y pusieron un "descuento"
-        WHEN precio_normal > (promedio_historico * 1.15) AND precio_descuento IS NOT NULL THEN '🔴 ROJO - OFERTA TRAMPA'
+        -- ROJO: El precio normal subió más del 15% respecto al promedio y metieron un "descuento" encima
+        WHEN precio_normal > (COALESCE(promedio_historico, precio_final) * 1.15) AND precio_descuento IS NOT NULL THEN '🔴 ROJO - OFERTA TRAMPA'
         -- VERDE: El precio final es al menos un 10% menor al promedio histórico real
-        WHEN precio_final < (promedio_historico * 0.90) THEN '🟢 VERDE - DESCUENTO REAL'
-        -- AMARILLO: El precio está en el rango normal
+        WHEN precio_final < (COALESCE(promedio_historico, precio_final) * 0.90) THEN '🟢 VERDE - DESCUENTO REAL'
+        -- AMARILLO: El precio está en los parámetros normales
         ELSE '🟡 AMARILLO - PRECIO ESTÁNDAR'
     END AS semaforo_auditoria
 FROM historico;

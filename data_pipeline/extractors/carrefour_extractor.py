@@ -159,51 +159,36 @@ class CarrefourExtractor:
             logger.debug(f"Error silencioso en _cerrar_popups_molestos: {e}")
         
     def extraer_producto(self, url):
-        """Extrae datos de un producto individual - VERSIÓN CORREGIDA CON ANTI-CACHE"""
+        """
+        Extrae datos de un producto individual - Integra el flag de corte rápido
+        si el producto no cuenta con stock disponible.
+        """
         try:
-            logger.info("[EXTRACT] INICIANDO EXTRACCIÓN CARREFOUR")
-            logger.info(f"[EXTRACT] URL: {url}")
-            
-            # Asegurar sesión activa UNA SOLA VEZ al inicio
-            if not self.sesion_iniciada:
-                if not self.asegurar_sesion_activa():
-                    logger.error("[ERROR] No se pudo establecer sesión")
-                    return {"error_type": "no_session", "url": url, "titulo": "No se pudo establecer sesión"}
-                
+            logger.info(f"[EXTRACT] Navegando al producto...")
             self.driver.get(url)
-            # AUMENTADO: Dar más tiempo para que VTEX hidrate los precios (crítico en AWS)
-            SmartWait.wait_minimal(2.0) 
-            logger.info(f"[EXTRACT] Página cargada: {self.driver.title}")
+            SmartWait.wait_minimal(2.0) # Espera de hidratación de componentes de Carrefour
             
             self._cerrar_popups_molestos()
-
-            # Verificar si es página de error 404
-            if self._es_pagina_error():
-                logger.warning(f"[WARNING] Página no encontrada (404): {url}")
-                return {"error_type": "404", "url": url, "titulo": self.driver.title}
             
-            # Nombre del producto
-            logger.info("[EXTRACT] EXTRAYENDO NOMBRE...")
+            # CORTE RÁPIDO: Validar disponibilidad antes de perder tiempo buscando nombres o precios
+            if self._producto_no_disponible():
+                logger.warning(f"[STOCK] Cancelando extracción: Producto sin stock.")
+                return {"error_type": "no_disponible", "url": url, "titulo": self.driver.title}
+
+            # Continuar con la extracción normal si hay stock
             nombre = self._extraer_nombre(self.wait)
             if not nombre:
-                logger.warning(f"[ERROR] No se pudo extraer nombre de {url}")
                 return {"error_type": "no_name", "url": url, "titulo": self.driver.title}
-            logger.info(f"[OK] Nombre extraído: {nombre}")
             
-            # Precios - USAR MÉTODOS ORIGINALES
-            logger.info("[EXTRACT] ========== EXTRACCIÓN DE PRECIOS ==========")
-            precio_desc = self._extraer_precio_descuento(self.driver)  # MÉTODO ORIGINAL
-            precio_normal = self._extraer_precio_normal(self.driver, precio_desc)  # MÉTODO ORIGINAL
+            precio_desc, precio_normal, tiene_descuento = self._extraer_precios_mejorado(self.driver)
+            
+            if precio_normal == "0":
+                return {"error_type": "no_disponible", "url": url, "nombre": nombre}
+
             precio_completo, unidad_text = self._extraer_precio_unidad(self.driver)
-            logger.info("[EXTRACT] ===========================================")
-            
-            # Descuentos
-            logger.info("[EXTRACT] EXTRAYENDO DESCUENTOS...")
             descuentos = self._extraer_descuentos(self.driver)
-            logger.info(f"[OK] Descuentos encontrados: {len(descuentos)}")
             
-            # Construir resultado
-            resultado = {
+            return {
                 "nombre": nombre,
                 "precio_normal": self._clean_price(precio_normal),
                 "precio_descuento": self._clean_price(precio_desc),
@@ -214,26 +199,8 @@ class CarrefourExtractor:
                 "supermercado": self.nombre_super,
                 "url": url
             }
-            
-            # Verificación final
-            logger.info("RESUMEN EXTRACCIÓN:")
-            logger.info(f"   Nombre: {resultado['nombre']}")
-            logger.info(f"   Precio normal: {resultado['precio_normal']}")
-            logger.info(f"   Precio descuento: {resultado['precio_descuento']}")
-            logger.info(f"   Precio unidad: {resultado['precio_por_unidad']}")
-            logger.info(f"   Unidad: {resultado['unidad']}")
-            logger.info(f"   Descuentos: {resultado['descuentos']}")
-            
-            if resultado['precio_descuento'] != "0":
-                logger.info(f"[OK] EXTRACCIÓN EXITOSA: {nombre}")
-            else:
-                logger.warning(f"[WARNING] Producto sin precio: {nombre}")
-                
-            return resultado
-            
         except Exception as e:
-            logger.error(f"ERROR crítico extrayendo {url}: {str(e)}")
-            # NO resetear sesión automáticamente - solo en casos muy específicos
+            logger.error(f"Error crítico en extractor: {e}")
             return {"error_type": "exception", "url": url, "titulo": str(e)}
         
     def extract_products(self, urls):
@@ -280,7 +247,7 @@ class CarrefourExtractor:
         return None
     
     def _extraer_precio_descuento(self, driver):
-        """Extrae precio con descuento"""
+        """Extrae precio con descuento - DEPRECATED, usar _extraer_precios_mejorado"""
         selectores = [
             ".vtex-product-price-1-x-sellingPriceValue",
             "span.valtech-carrefourar-product-price-0-x-sellingPriceValue",
@@ -291,7 +258,83 @@ class CarrefourExtractor:
         ]
         
         return self._buscar_precio(driver, selectores, "0")
-    
+
+    def _extraer_precios_mejorado(self, driver) -> tuple:
+        """
+        Extrae ambos precios (descuento y normal) de forma inteligente.
+        Retorna: (precio_descuento, precio_normal, tiene_descuento)
+        
+        Lógica:
+        - Si hay 2 precios diferentes: menor=descuento, mayor=normal
+        - Si hay 1 precio: descuento=0, ese es normal
+        - Si no hay precios: retorna ("0", "0", False)
+        """
+        logger.info("[PRICE] Extrayendo precios guiados por selectores de la inspección de elementos...")
+        
+        if self._producto_no_disponible():
+            return ("0", "0", False)
+
+        precio_descuento = None
+        precio_normal = None
+
+        # 1. Intentar capturar el precio de oferta de Mi Carrefour mediante su atributo único
+        try:
+            elem_mif_crf = driver.find_element(By.CSS_SELECTOR, "span[data-highlight-name='Mi CRF ']")
+            if elem_mif_crf.is_displayed():
+                precio_descuento = self._extraer_price_string_seguro(elem_mif_crf.text)
+                logger.info(f"[PRICE] Detectado descuento Mi Carrefour (data-highlight): {precio_descuento}")
+        except:
+            pass
+
+        # 2. Capturar el precio de venta general (sellingPriceValue)
+        try:
+            # Buscamos los spans que tengan la clase base que viste en la foto 2 y 3
+            elems_selling = driver.find_elements(By.CSS_SELECTOR, "span[class*='sellingPriceValue']")
+            for elem in elems_selling:
+                if elem.is_displayed():
+                    texto = elem.text.strip()
+                    precio_cand = self._extraer_price_string_seguro(texto)
+                    
+                    # Si ya encontramos un descuento por Mi Carrefour, el otro valor sellingPrice es el normal
+                    if precio_descuento and precio_cand != precio_descuento:
+                        precio_normal = precio_cand
+                    elif not precio_descuento:
+                        # Si no hay descuento Mi Carrefour, este sellingPrice es el precio base/normal
+                        precio_normal = precio_cand
+        except Exception as e:
+            logger.debug(f"Error extrayendo sellingPrice base: {e}")
+
+        # 3. Si no se cruzó con Mi Carrefour, buscar el precio de lista tachado (listPriceValue) como alternativa
+        if not precio_normal or (precio_descuento and precio_normal == precio_descuento):
+            try:
+                elem_list = driver.find_element(By.CSS_SELECTOR, "span[class*='listPriceValue']")
+                if elem_list.is_displayed():
+                    precio_normal = self._extraer_price_string_seguro(elem_list.text)
+            except:
+                pass
+
+        # 4. Aplicar tus reglas de negocio estrictas para el resultado final
+        if precio_descuento and precio_normal:
+            try:
+                v_desc = float(precio_descuento)
+                v_norm = float(precio_normal)
+                if v_desc < v_norm:
+                    return (precio_descuento, precio_normal, True)
+                else:
+                    return (precio_normal, precio_descuento, True)
+            except:
+                return (precio_descuento, precio_normal, True)
+
+        if precio_normal and not precio_descuento:
+            # Regla de negocio: Si no hay descuento, se guarda "0" y el valor va a precio_normal
+            return ("0", precio_normal, False)
+
+        if precio_descuento and not precio_normal:
+            # Contingencia por si solo leyó el de Mi Carrefour
+            return ("0", precio_descuento, False)
+
+        return ("0", "0", False)
+
     def _extraer_precio_normal(self, driver, precio_desc):
         """Extrae precio normal"""
         selectores = [
@@ -328,10 +371,64 @@ class CarrefourExtractor:
                 
         except Exception as e:
             logger.info(f"No se pudo obtener precio por unidad: {e}")
-            # Aquí puedes agregar tus intentos alternativos
+            try:
+                # Intento alternativo: buscar cualquier texto visible con formato de precio y unidad
+                precio_unidad = driver.find_element(By.XPATH, "//*[contains(text(), 'kg') or contains(text(), 'l') or contains(text(), 'unidad')]")
+                texto = precio_unidad.text.strip()
+                if texto:
+                    unidad_text = texto
+            except:
+                pass
             
         return precio_completo, unidad_text
     
+    def _wait_for_carrefour_price_ready(self, timeout=None):
+        """Espera de forma inteligente a que la página cargue el precio o el nombre del producto."""
+        if timeout is None:
+            timeout = self.timeout
+
+        selectores = [
+            ".vtex-product-price-1-x-sellingPriceValue",
+            "span.valtech-carrefourar-product-price-0-x-sellingPriceValue",
+            "span[class*='sellingPrice']",
+            "span[class*='price']",
+            "[data-testid='price-value']",
+            "h1",
+            "h1[data-testid='product-name']"
+        ]
+
+        for selector in selectores:
+            if SmartWait.wait_for_element(self.driver, selector, timeout=timeout):
+                logger.info(f"[WAIT] Elemento cargado: {selector}")
+                return True
+
+        logger.warning("[WAIT] No se detectó un selector de precio/nombre antes de extraer.")
+        return False
+
+    def _buscar_precio_por_texto(self, driver):
+        """Busca un valor de precio en texto libre dentro de la página como fallback."""
+        try:
+            xpath = "//*[not(self::script) and not(self::style) and not(self::noscript) and not(self::template) and contains(text(), '$')]"
+            elementos = driver.find_elements(By.XPATH, xpath)
+            for elem in elementos:
+                try:
+                    if not elem.is_displayed():
+                        continue
+                except:
+                    continue
+
+                texto = (elem.text or elem.get_attribute('textContent') or '').strip()
+                if not texto:
+                    continue
+
+                precio_candidato = self._extraer_precio_desde_texto(texto)
+                if precio_candidato:
+                    logger.info(f"[FALLBACK] Precio detectado por texto: '{precio_candidato}' (raw: '{texto[:200]}')")
+                    return precio_candidato
+        except Exception as e:
+            logger.debug(f"[FALLBACK] Error buscando precio por texto: {e}")
+        return ""
+
     def _extraer_descuentos(self, driver):
         """Extrae descuentos con múltiples estrategias"""
         descuentos = []
@@ -361,7 +458,7 @@ class CarrefourExtractor:
                     for elem in elementos:
                         if elem.is_displayed():
                             texto = elem.text.strip()
-                            if self.es_descuento_valido(texto):
+                            if self.descuento_es_valido(texto):
                                 descuentos.append(texto)
                                 logger.debug(f"Descuento encontrado con selector '{selector}': {texto}")
                 except:
@@ -496,7 +593,7 @@ class CarrefourExtractor:
 
     
     def _buscar_precio(self, driver, selectores, default):
-        """Busca precio en múltiples selectores - VERSIÓN CON DEBUG"""
+        """Busca precio en múltiples selectores de forma más robusta."""
         logger.info(f"[SEARCH] BUSCANDO PRECIO - Selectores: {len(selectores)}, Default: {default}")
         
         for i, selector in enumerate(selectores):
@@ -505,26 +602,106 @@ class CarrefourExtractor:
                 logger.info(f"   Selector {i+1}: '{selector}' - Elementos: {len(elementos)}")
                 
                 for j, elem in enumerate(elementos):
-                    # FLEXIBILIZADO: Intentar obtener texto incluso si Selenium duda de la visibilidad
                     texto = elem.text.strip()
                     if not texto:
-                        texto = elem.get_attribute("textContent").strip()
-                    
-                    is_visible = elem.is_displayed()
+                        texto = (elem.get_attribute("textContent") or "").strip()
+
+                    is_visible = False
+                    try:
+                        is_visible = elem.is_displayed()
+                    except:
+                        pass
                     logger.info(f"     Elemento {j+1}: '{texto}' - Visible: {is_visible}")
-                    
-                    # Si tiene números y $ o solo números, lo consideramos válido
-                    if texto and any(c.isdigit() for c in texto):
-                        logger.info(f"     [OK] PRECIO ENCONTRADO: '{texto}'")
-                        return texto
+
+                    precio_candidato = self._extraer_precio_desde_texto(texto)
+                    if precio_candidato:
+                        logger.info(f"     [OK] PRECIO CANDIDATO: '{precio_candidato}' (raw: '{texto}')")
+                        return precio_candidato
                         
             except Exception as e:
                 logger.debug(f"   Error en selector {selector}: {e}")
                 continue
-        
+
+        fallback = self._buscar_precio_por_texto(driver)
+        if fallback:
+            return fallback
+
         logger.warning(f"[WARNING] No se encontró precio, usando default: {default}")
         return default
-    
+
+    def _extraer_precio_desde_texto(self, texto: str) -> str:
+        """Extrae un valor de precio válido desde un texto dado."""
+        if not texto:
+            return ""
+
+        texto = re.sub(r"[\u00A0\u2007\u202F]", " ", texto)
+        texto = texto.replace("\n", " ").replace("\r", " ")
+
+        tiene_moneda = bool(re.search(r"\$|ars\$|ar\$", texto, flags=re.IGNORECASE))
+
+        # Priorizar coincidencias con símbolo de moneda
+        patrones = [
+            r"(?:\$|ars\$|ar\$)\s*([\d]{1,3}(?:[\.,]\d{3})*(?:[\.,]\d{1,2})?)",
+            r"([\d]{1,3}(?:[\.,]\d{3})+(?:[\.,]\d{1,2})?)",
+            r"([\d]+(?:[\.,]\d{1,2})?)"
+        ]
+
+        for patron in patrones:
+            coincidencias = re.findall(patron, texto, flags=re.IGNORECASE)
+            for coincidencia in coincidencias:
+                precio_normalizado = self._normalize_price_string(coincidencia)
+                if not precio_normalizado:
+                    continue
+
+                if not self._es_precio_plausible(precio_normalizado):
+                    continue
+
+                # No aceptar valores demasiado pequeños sin contexto de moneda
+                if not tiene_moneda and float(precio_normalizado) < 10:
+                    continue
+
+                return precio_normalizado
+
+        return ""
+
+    def _normalize_price_string(self, price_str: str) -> str:
+        """Normaliza un número de precio para conversión consistente."""
+        if not price_str:
+            return ""
+
+        precio = re.sub(r"[^\d\.,]", "", price_str)
+
+        if not precio:
+            return ""
+
+        if "." in precio and "," in precio:
+            if precio.rfind(",") > precio.rfind("."):
+                precio = precio.replace(".", "").replace(",", ".")
+            else:
+                precio = precio.replace(",", "")
+        elif "," in precio:
+            partes = precio.split(",")
+            if len(partes[-1]) == 2:
+                precio = precio.replace(",", ".")
+            else:
+                precio = precio.replace(",", "")
+
+        try:
+            valor = float(precio)
+            if valor.is_integer():
+                return str(int(valor))
+            return f"{valor:.2f}"
+        except:
+            return precio
+
+    def _es_precio_plausible(self, price_text: str) -> bool:
+        """Verifica que el precio extraído sea numéricamente plausible."""
+        try:
+            valor = float(price_text)
+            return 0 < valor < 1000000
+        except:
+            return False
+
     def login_con_email_password(self):
         """Login completo con DEBUGGING DETALLADO"""
         try:
@@ -1082,15 +1259,20 @@ class CarrefourExtractor:
             return "0"
         
         try:
-            # Remover TODOS los caracteres no numéricos excepto punto
-            clean_price = re.sub(r'[^\d,]', '', str(price_text))
-            # Reemplazar coma por punto para decimales
-            clean_price = clean_price.replace(',', '.')
-            
+            # Remover caracteres no numéricos, preservando punto y coma como separadores
+            clean_price = re.sub(r'[^\d\.,]', '', str(price_text))
+            # Normalizar separadores: convertir coma decimal a punto
+            if clean_price.count(',') == 1 and clean_price.count('.') == 0:
+                clean_price = clean_price.replace(',', '.')
+            elif clean_price.count('.') > 1 and clean_price.count(',') == 1:
+                # Caso tipo 1.415,10 -> borrar miles y usar coma como decimal
+                clean_price = clean_price.replace('.', '').replace(',', '.')
+            else:
+                clean_price = clean_price.replace(',', '')
+
             # Convertir a float y luego a string para formato consistente
             try:
                 price_float = float(clean_price)
-                # Formatear sin decimales si es entero, con 2 decimales si no
                 if price_float.is_integer():
                     return str(int(price_float))
                 else:
@@ -1473,39 +1655,24 @@ class CarrefourExtractor:
     
     def _producto_no_disponible(self):
         """
-        VERIFICACIÓN MEJORADA - Solo marca como no disponible si hay indicadores CLAROS
+        Detecta disponibilidad basándose exactamente en la estructura del DOM
+        de la captura de pantalla para productos fuera de stock.
         """
         try:
-            # SELECTORES MÁS ESPECÍFICOS Y CONFIABLES para "No Disponible"
-            selectores_estrictos = [
-            # Botón deshabilitado con texto EXPLÍCITO "No Disponible"
-            "//button[@disabled]//span[contains(text(), 'No Disponible')]",
-            "//span[contains(text(), 'No Disponible') and contains(@class, 'isUnavailable')]",
-            # Elemento que claramente dice "No Disponible" y está visible
-            "//*[contains(text(), 'No Disponible') and not(ancestor::*[contains(@style, 'display:none')])]"
-             ]
-
-            
-            for selector in selectores_estrictos:
-                try:
-                    elementos = self.driver.find_elements(By.XPATH, selector)
-                    for elemento in elementos:
-                        if elemento.is_displayed():
-                            texto = elemento.text.strip()
-                            if "No Disponible" in texto:
-                                logger.info(f" Confirmado: Producto NO disponible - {selector}")
-                                return True
-                except:
-                    continue
-            
-            # Verificación adicional: Si hay botón deshabilitado PERO sin texto claro, no asumir no disponible
+            # Selector directo al span que viste en el inspector de elementos
+            xpath_no_disp = (
+                "//span[contains(@class, 'valtech-carrefourar-incompatible-cart') "
+                "and contains(text(), 'No Disponible')]"
+            )
+            elementos = self.driver.find_elements(By.XPATH, xpath_no_disp)
+            for elem in elementos:
+                if elem.is_displayed():
+                    logger.info("[STOCK] Botón 'No Disponible' detectado mediante span específico.")
+                    return True
             return False
-            
         except Exception as e:
-            logger.debug(f"Error en verificación mejorada de no disponibilidad: {e}")
+            logger.debug(f"Error verificando no disponibilidad con DOM real: {e}")
             return False
-
-
     
     def _guardar_links_invalidos_csv(self, datos, nombre_archivo):
         """

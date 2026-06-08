@@ -1,0 +1,82 @@
+url,success,error_type,precio_descuento,precio_normal,unidad,titulo,raw_nombre
+\,False,exception,0,0,,"Message: invalid argument
+  (Session info: chrome=148.0.7778.181)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff72d817de5+14895]
+	chromedriver!GetHandleVerifier [0x7ff72d817e50+14900]
+	chromedriver!(No symbol) [0x7ff72d57d396]
+	chromedriver!(No symbol) [0x7ff72d569944]
+	chromedriver!(No symbol) [0x7ff72d567d05]
+	chromedriver!(No symbol) [0x7ff72d568272]
+	chromedriver!(No symbol) [0x7ff72d581866]
+	chromedriver!(No symbol) [0x7ff72d6256c4]
+	chromedriver!(No symbol) [0x7ff72d60005a]
+	chromedriver!(No symbol) [0x7ff72d62486f]
+	chromedriver!(No symbol) [0x7ff72d5c9df8]
+	chromedriver!(No symbol) [0x7ff72d5cace3]
+	chromedriver!GetHandleVerifier [0x7ff72db2cc49+3296f9]
+	chromedriver!GetHandleVerifier [0x7ff72db27375+323e25]
+	chromedriver!GetHandleVerifier [0x7ff72db4bc82+348732]
+	chromedriver!GetHandleVerifier [0x7ff72d836045+32af5]
+	chromedriver!GetHandleVerifier [0x7ff72d83ecec+3b79c]
+	chromedriver!GetHandleVerifier [0x7ff72d821bc4+1e674]
+	chromedriver!GetHandleVerifier [0x7ff72d821d54+1e804]
+	chromedriver!GetHandleVerifier [0x7ff72d8060e7+2b97]
+	KERNEL32!BaseThreadInitThunk [0x7ff8e57fe957+17]
+	ntdll!RtlUserThreadStart [0x7ff8e5de427c+2c]
+",
+https://www.carrefour.com.ar/yogur-bebible-frutilla-la-serenisima-clasico-900-g-726990/p,False,no_disponible,0,0,,Carrefour,Yogur bebible frutilla La SerenÍsima clásico 900 g.
+\,False,exception,0,0,,"Message: invalid argument
+  (Session info: chrome=148.0.7778.181)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff72d817de5+14895]
+	chromedriver!GetHandleVerifier [0x7ff72d817e50+14900]
+	chromedriver!(No symbol) [0x7ff72d57d396]
+	chromedriver!(No symbol) [0x7ff72d569944]
+	chromedriver!(No symbol) [0x7ff72d567d05]
+	chromedriver!(No symbol) [0x7ff72d568272]
+	chromedriver!(No symbol) [0x7ff72d581866]
+	chromedriver!(No symbol) [0x7ff72d6256c4]
+	chromedriver!(No symbol) [0x7ff72d60005a]
+	chromedriver!(No symbol) [0x7ff72d62486f]
+	chromedriver!(No symbol) [0x7ff72d5c9df8]
+	chromedriver!(No symbol) [0x7ff72d5cace3]
+	chromedriver!GetHandleVerifier [0x7ff72db2cc49+3296f9]
+	chromedriver!GetHandleVerifier [0x7ff72db27375+323e25]
+	chromedriver!GetHandleVerifier [0x7ff72db4bc82+348732]
+	chromedriver!GetHandleVerifier [0x7ff72d836045+32af5]
+	chromedriver!GetHandleVerifier [0x7ff72d83ecec+3b79c]
+	chromedriver!GetHandleVerifier [0x7ff72d821bc4+1e674]
+	chromedriver!GetHandleVerifier [0x7ff72d821d54+1e804]
+	chromedriver!GetHandleVerifier [0x7ff72d8060e7+2b97]
+	KERNEL32!BaseThreadInitThunk [0x7ff8e57fe957+17]
+	ntdll!RtlUserThreadStart [0x7ff8e5de427c+2c]
+",
+https://www.carrefour.com.ar/galletitas-carrefour-classic-con-chips-chocolate-172-grs-664917/p,True,,1415.10,1590,1 K.,,Galletitas Carrefour Classic con chips chocolate 172 grs
+\,False,exception,0,0,,"Message: invalid argument
+  (Session info: chrome=148.0.7778.181)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff72d817de5+14895]
+	chromedriver!GetHandleVerifier [0x7ff72d817e50+14900]
+	chromedriver!(No symbol) [0x7ff72d57d396]
+	chromedriver!(No symbol) [0x7ff72d569944]
+	chromedriver!(No symbol) [0x7ff72d567d05]
+	chromedriver!(No symbol) [0x7ff72d568272]
+	chromedriver!(No symbol) [0x7ff72d581866]
+	chromedriver!(No symbol) [0x7ff72d6256c4]
+	chromedriver!(No symbol) [0x7ff72d60005a]
+	chromedriver!(No symbol) [0x7ff72d62486f]
+	chromedriver!(No symbol) [0x7ff72d5c9df8]
+	chromedriver!(No symbol) [0x7ff72d5cace3]
+	chromedriver!GetHandleVerifier [0x7ff72db2cc49+3296f9]
+	chromedriver!GetHandleVerifier [0x7ff72db27375+323e25]
+	chromedriver!GetHandleVerifier [0x7ff72db4bc82+348732]
+	chromedriver!GetHandleVerifier [0x7ff72d836045+32af5]
+	chromedriver!GetHandleVerifier [0x7ff72d83ecec+3b79c]
+	chromedriver!GetHandleVerifier [0x7ff72d821bc4+1e674]
+	chromedriver!GetHandleVerifier [0x7ff72d821d54+1e804]
+	chromedriver!GetHandleVerifier [0x7ff72d8060e7+2b97]
+	KERNEL32!BaseThreadInitThunk [0x7ff8e57fe957+17]
+	ntdll!RtlUserThreadStart [0x7ff8e5de427c+2c]
+",
+https://www.carrefour.com.ar/cacao-en-polvo-chocolino-bolsa-180-g/p,True,,0,2289,1 K.,,Cacao en polvo Chocolino bolsa 180 g.

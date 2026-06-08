@@ -78,8 +78,8 @@ class ReportCanastaBasica:
         
         logger.info("\n" + "!"*40 + "\n")
 
-    def clean_old_reports(self, keep_last: int = 5):
-        """Limpia reportes antiguos"""
+    def clean_old_reports(self, keep_last: int = 21):
+        """Limpia reportes antiguos conservando un histórico de 21 archivos."""
         try:
             files = sorted(
                 [f for f in os.listdir(self.output_dir) if f.startswith('LINKS_FALLIDOS_')],

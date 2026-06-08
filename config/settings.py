@@ -12,6 +12,8 @@ class DatabaseSettings:
     user: str = os.getenv("DB_USER", "postgres")
     password: str = os.getenv("DB_PASSWORD", "")
     name: str = os.getenv("DB_NAME", "canasta_basica_super")
+    database_url: str = os.getenv("DATABASE_URL", "")
+    ssl_mode: str = os.getenv("DB_SSLMODE", "prefer")
 
 @dataclass
 class GCPSettings:

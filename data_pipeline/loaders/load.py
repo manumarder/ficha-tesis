@@ -25,7 +25,9 @@ class LoadCanastaBasica:
             user=settings.db.user,
             password=settings.db.password,
             database=settings.db.name,
-            port=settings.db.port
+            port=settings.db.port,
+            database_url=settings.db.database_url,
+            ssl_mode=settings.db.ssl_mode
         )
 
     def registrar_inicio_extraccion(self, nombre_log):
