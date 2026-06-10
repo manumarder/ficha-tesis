@@ -1,0 +1,1851 @@
+﻿
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Asistente Reparador de Links - Canasta Básica</title>
+        <style>
+            body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; margin: 0; padding: 20px; }
+            .container { max-width: 1300px; margin: 0 auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+            h1 { color: #2c3e50; text-align: center; }
+            table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+            th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+            th { background-color: #2c3e50; color: white; position: sticky; top: 0; }
+            tr:hover { background-color: #f1f1f1; }
+            .btn { padding: 8px 12px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; text-decoration: none; display: inline-block; }
+            .btn-search { background-color: #3498db; color: white; font-size: 0.9em; }
+            .btn-search:hover { background-color: #2980b9; }
+            .btn-export { background-color: #27ae60; color: white; padding: 12px 24px; font-size: 1.1em; display: block; margin: 20px auto; width: fit-content; }
+            .btn-export:hover { background-color: #2ecc71; }
+            .header-info { background-color: #e8f4f8; padding: 15px; border-left: 4px solid #3498db; margin-bottom: 20px; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>🛠️ Asistente de Reparación de Links</h1>
+            <div class="header-info">
+                <p><strong>Instrucciones:</strong></p>
+                <ol>
+                    <li>Haz clic en <strong>"Buscar en Súper"</strong> para abrir la tienda oficial con el producto ya buscado.</li>
+                    <li>Navega en la pestaña nueva y copia la URL correcta del producto.</li>
+                    <li>Pega la nueva URL en la columna <strong>"Nueva URL"</strong>.</li>
+                    <li>Si el producto ya no existe definitivamente, escribe la palabra <strong>"NO"</strong> para darlo de baja en la DB.</li>
+                    <li>Cuando termines, haz clic en el botón <strong>"Exportar Correcciones"</strong> al final de la página.</li>
+                </ol>
+            </div>
+            
+            <table id="linksTable">
+                <thead>
+                    <tr>
+                        <th>URL Rota (Actual)</th>
+                        <th>Supermercado</th>
+                        <th>Tipo Error</th>
+                        <th>Término Detectado</th>
+                        <th>Buscador Automático</th>
+                        <th>Nueva URL (Pegar aquí)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/huevo-blanco-extragrande-opi-6-ud-114868/p" target="_blank">https://diaonline.supermercadosdia.com.ar/huevo-blanco-extragrande-opi-6-ud-114868/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>huevo blanco extragrande opi 6 ud 114868</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/huevo%20blanco%20extragrande%20opi%206%20ud%20114868?_q=huevo%20blanco%20extragrande%20opi%206%20ud%20114868&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/papas-fritas-lays-clasicas-x-85-gr-172869/p" target="_blank">https://diaonline.supermercadosdia.com.ar/papas-fritas-lays-clasicas-x-85-gr-172869/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>papas fritas lays clasicas x 85 gr 172869</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/papas%20fritas%20lays%20clasicas%20x%2085%20gr%20172869?_q=papas%20fritas%20lays%20clasicas%20x%2085%20gr%20172869&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/papas-fritas-sabor-a-jamon-serrano-lays-x-77-gr-213435/p" target="_blank">https://diaonline.supermercadosdia.com.ar/papas-fritas-sabor-a-jamon-serrano-lays-x-77-gr-213435/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>papas fritas sabor a jamon serrano lays x 77 gr 213435</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/papas%20fritas%20sabor%20a%20jamon%20serrano%20lays%20x%2077%20gr%20213435?_q=papas%20fritas%20sabor%20a%20jamon%20serrano%20lays%20x%2077%20gr%20213435&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/te-negro-morenita-25-ud-307681/p" target="_blank">https://diaonline.supermercadosdia.com.ar/te-negro-morenita-25-ud-307681/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>te negro morenita 25 ud 307681</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/te%20negro%20morenita%2025%20ud%20307681?_q=te%20negro%20morenita%2025%20ud%20307681&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/te-la-morenita-comun-50-ud-273325/p" target="_blank">https://diaonline.supermercadosdia.com.ar/te-la-morenita-comun-50-ud-273325/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>te la morenita comun 50 ud 273325</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/te%20la%20morenita%20comun%2050%20ud%20273325?_q=te%20la%20morenita%20comun%2050%20ud%20273325&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/dentifrico-extra-blancura-con-bicarbonato-oral-b-180-gr-304310/p" target="_blank">https://diaonline.supermercadosdia.com.ar/dentifrico-extra-blancura-con-bicarbonato-oral-b-180-gr-304310/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>dentifrico extra blancura con bicarbonato oral b 180 gr 304310</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/dentifrico%20extra%20blancura%20con%20bicarbonato%20oral%20b%20180%20gr%20304310?_q=dentifrico%20extra%20blancura%20con%20bicarbonato%20oral%20b%20180%20gr%20304310&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/tampon-regular-nosotras-8-ud-308301/p" target="_blank">https://diaonline.supermercadosdia.com.ar/tampon-regular-nosotras-8-ud-308301/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>tampon regular nosotras 8 ud 308301</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/tampon%20regular%20nosotras%208%20ud%20308301?_q=tampon%20regular%20nosotras%208%20ud%20308301&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/suavizantes-para-ropa-vivere-explosion-floral-plancha-facil-doypack-810-ml-307704/p" target="_blank">https://diaonline.supermercadosdia.com.ar/suavizantes-para-ropa-vivere-explosion-floral-plancha-facil-doypack-810-ml-307704/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>suavizantes para ropa vivere explosion floral plancha facil doypack 810 ml 307704</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/suavizantes%20para%20ropa%20vivere%20explosion%20floral%20plancha%20facil%20doypack%20810%20ml%20307704?_q=suavizantes%20para%20ropa%20vivere%20explosion%20floral%20plancha%20facil%20doypack%20810%20ml%20307704&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-chocolate-rellena-coco-rumba-x3-110-g-739662/p" target="_blank">https://www.carrefour.com.ar/galletitas-chocolate-rellena-coco-rumba-x3-110-g-739662/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas chocolate rellena coco rumba x3 110 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20chocolate%20rellena%20coco%20rumba%20x3%20110%20g?_q=galletitas%20chocolate%20rellena%20coco%20rumba%20x3%20110%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-mana-de-vainilla-livianas-fp-3x-136-g-704899/p" target="_blank">https://www.carrefour.com.ar/galletitas-mana-de-vainilla-livianas-fp-3x-136-g-704899/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas mana de vainilla livianas fp 3x 136 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20mana%20de%20vainilla%20livianas%20fp%203x%20136%20g?_q=galletitas%20mana%20de%20vainilla%20livianas%20fp%203x%20136%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-frambuesa-rell-fruti-sonrisas-3-108-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-frambuesa-rell-fruti-sonrisas-3-108-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas frambuesa rell fruti sonrisas 3 108 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20frambuesa%20rell%20fruti%20sonrisas%203%20108%20g?_q=galletitas%20frambuesa%20rell%20fruti%20sonrisas%203%20108%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-pepas-carrefour-500-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-pepas-carrefour-500-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas pepas carrefour 500 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20pepas%20carrefour%20500%20g?_q=galletitas%20pepas%20carrefour%20500%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/vainillas-carrefour-flow-pack-444-g-700137/p" target="_blank">https://www.carrefour.com.ar/vainillas-carrefour-flow-pack-444-g-700137/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>vainillas carrefour flow pack 444 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/vainillas%20carrefour%20flow%20pack%20444%20g?_q=vainillas%20carrefour%20flow%20pack%20444%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-merengadas-fresa-3-x-88-g-708528/p" target="_blank">https://www.carrefour.com.ar/galletitas-merengadas-fresa-3-x-88-g-708528/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas merengadas fresa 3 x 88 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20merengadas%20fresa%203%20x%2088%20g?_q=galletitas%20merengadas%20fresa%203%20x%2088%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-vainilla-rellenas-almendra-amor-x3-110-g-737526/p" target="_blank">https://www.carrefour.com.ar/galletitas-vainilla-rellenas-almendra-amor-x3-110-g-737526/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas vainilla rellenas almendra amor x3 110 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20vainilla%20rellenas%20almendra%20amor%20x3%20110%20g?_q=galletitas%20vainilla%20rellenas%20almendra%20amor%20x3%20110%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-pepas-carrefour-900-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-pepas-carrefour-900-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas pepas carrefour 900 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20pepas%20carrefour%20900%20g?_q=galletitas%20pepas%20carrefour%20900%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-dulces-mielita-vainilla-miel-159-g-713281/p" target="_blank">https://www.carrefour.com.ar/galletitas-dulces-mielita-vainilla-miel-159-g-713281/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas dulces mielita vainilla miel 159 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20dulces%20mielita%20vainilla%20miel%20159%20g?_q=galletitas%20dulces%20mielita%20vainilla%20miel%20159%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-vainilla-rell-chocolate-mana-152-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-vainilla-rell-chocolate-mana-152-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas vainilla rell chocolate mana 152 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20vainilla%20rell%20chocolate%20mana%20152%20g?_q=galletitas%20vainilla%20rell%20chocolate%20mana%20152%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-acarameladas-portenitas-x3-139-grs-760862/p" target="_blank">https://www.carrefour.com.ar/galletitas-acarameladas-portenitas-x3-139-grs-760862/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas acarameladas portenitas x3 139 grs</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20acarameladas%20portenitas%20x3%20139%20grs?_q=galletitas%20acarameladas%20portenitas%20x3%20139%20grs&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-vainilla-rell-frutilla-mana-152-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-vainilla-rell-frutilla-mana-152-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas vainilla rell frutilla mana 152 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20vainilla%20rell%20frutilla%20mana%20152%20g?_q=galletitas%20vainilla%20rell%20frutilla%20mana%20152%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-vainilla-rellenas-almendra-amor-110-g-737507/p" target="_blank">https://www.carrefour.com.ar/galletitas-vainilla-rellenas-almendra-amor-110-g-737507/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas vainilla rellenas almendra amor 110 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20vainilla%20rellenas%20almendra%20amor%20110%20g?_q=galletitas%20vainilla%20rellenas%20almendra%20amor%20110%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-de-vainilla-mellizas-rellenas-de-limon-x3-110-g-742461/p" target="_blank">https://www.carrefour.com.ar/galletitas-de-vainilla-mellizas-rellenas-de-limon-x3-110-g-742461/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas de vainilla mellizas rellenas de limon x3 110 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20de%20vainilla%20mellizas%20rellenas%20de%20limon%20x3%20110%20g?_q=galletitas%20de%20vainilla%20mellizas%20rellenas%20de%20limon%20x3%20110%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-chocolate-rell-vainilla-mana-152-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-chocolate-rell-vainilla-mana-152-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas chocolate rell vainilla mana 152 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20chocolate%20rell%20vainilla%20mana%20152%20g?_q=galletitas%20chocolate%20rell%20vainilla%20mana%20152%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-tia-maruca-manteca200-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-tia-maruca-manteca200-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas tia maruca manteca200 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20tia%20maruca%20manteca200%20g?_q=galletitas%20tia%20maruca%20manteca200%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-dulces-lincoln-terrabusi-153-g-520829/p" target="_blank">https://www.carrefour.com.ar/galletitas-dulces-lincoln-terrabusi-153-g-520829/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas dulces lincoln terrabusi 153 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20dulces%20lincoln%20terrabusi%20153%20g?_q=galletitas%20dulces%20lincoln%20terrabusi%20153%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-banadas-de-chocolate-bridges-100-grs-753061/p" target="_blank">https://www.carrefour.com.ar/galletitas-banadas-de-chocolate-bridges-100-grs-753061/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas banadas de chocolate bridges 100 grs</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20banadas%20de%20chocolate%20bridges%20100%20grs?_q=galletitas%20banadas%20de%20chocolate%20bridges%20100%20grs&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-dulces-de-vainilla-rellenas-sabor-dulce-de-leche-carrefour-classic-120-grs-766242/p" target="_blank">https://www.carrefour.com.ar/galletitas-dulces-de-vainilla-rellenas-sabor-dulce-de-leche-carrefour-classic-120-grs-766242/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas dulces de vainilla rellenas sabor dulce de leche carrefour classic 120 grs</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20dulces%20de%20vainilla%20rellenas%20sabor%20dulce%20de%20leche%20carrefour%20classic%20120%20grs?_q=galletitas%20dulces%20de%20vainilla%20rellenas%20sabor%20dulce%20de%20leche%20carrefour%20classic%20120%20grs&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-crackers-criollitas-mas-grandes-3-x-169-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-crackers-criollitas-mas-grandes-3-x-169-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas crackers criollitas mas grandes 3 x 169 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20crackers%20criollitas%20mas%20grandes%203%20x%20169%20g?_q=galletitas%20crackers%20criollitas%20mas%20grandes%203%20x%20169%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-sandwich-mediatarde-x5-107-g-733628/p" target="_blank">https://www.carrefour.com.ar/galletitas-sandwich-mediatarde-x5-107-g-733628/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas sandwich mediatarde x5 107 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20sandwich%20mediatarde%20x5%20107%20g?_q=galletitas%20sandwich%20mediatarde%20x5%20107%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-criollitas-crackers-5-x-998-g-708531/p" target="_blank">https://www.carrefour.com.ar/galletitas-criollitas-crackers-5-x-998-g-708531/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas criollitas crackers 5 x 998 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20criollitas%20crackers%205%20x%20998%20g?_q=galletitas%20criollitas%20crackers%205%20x%20998%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-sandwich-traviata-x3-108-g-739531/p" target="_blank">https://www.carrefour.com.ar/galletitas-sandwich-traviata-x3-108-g-739531/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas sandwich traviata x3 108 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20sandwich%20traviata%20x3%20108%20g?_q=galletitas%20sandwich%20traviata%20x3%20108%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-crackers-carrefour-classic-3-x-110-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-crackers-carrefour-classic-3-x-110-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas crackers carrefour classic 3 x 110 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20crackers%20carrefour%20classic%203%20x%20110%20g?_q=galletitas%20crackers%20carrefour%20classic%203%20x%20110%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/galletitas-crackers-tia-maruca-3-x-106-g/p" target="_blank">https://www.carrefour.com.ar/galletitas-crackers-tia-maruca-3-x-106-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>galletitas crackers tia maruca 3 x 106 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/galletitas%20crackers%20tia%20maruca%203%20x%20106%20g?_q=galletitas%20crackers%20tia%20maruca%203%20x%20106%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/harina-de-maiz-amarilla-albor-800-grs-211677?productLinkNotFound=harina-de-maiz-amarilla-albor-800-grs-211677" target="_blank">https://www.carrefour.com.ar/harina-de-maiz-amarilla-albor-800-grs-211677?productLinkNotFound=harina-de-maiz-amarilla-albor-800-grs-211677</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>harina de maiz amarilla albor 800 grs 211677?productlinknotfound=harina de maiz amarilla albor 800 grs</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/harina%20de%20maiz%20amarilla%20albor%20800%20grs%20211677%3Fproductlinknotfound%3Dharina%20de%20maiz%20amarilla%20albor%20800%20grs?_q=harina%20de%20maiz%20amarilla%20albor%20800%20grs%20211677%3Fproductlinknotfound%3Dharina%20de%20maiz%20amarilla%20albor%20800%20grs&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/harina-000-chacabuco-1-kg/p" target="_blank">https://www.carrefour.com.ar/harina-000-chacabuco-1-kg/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>harina 000 chacabuco 1 kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/harina%20000%20chacabuco%201%20kg?_q=harina%20000%20chacabuco%201%20kg&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/aceite-de-girasol-alto-omega-carrefour-pet-1-5-l/p" target="_blank">https://www.carrefour.com.ar/aceite-de-girasol-alto-omega-carrefour-pet-1-5-l/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>aceite de girasol alto omega carrefour pet 1 5 l</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/aceite%20de%20girasol%20alto%20omega%20carrefour%20pet%201%205%20l?_q=aceite%20de%20girasol%20alto%20omega%20carrefour%20pet%201%205%20l&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/queso-crema-la-paulina-tradicional-290-g/p" target="_blank">https://www.carrefour.com.ar/queso-crema-la-paulina-tradicional-290-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>queso crema la paulina tradicional 290 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/queso%20crema%20la%20paulina%20tradicional%20290%20g?_q=queso%20crema%20la%20paulina%20tradicional%20290%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/queso-rallado-la-paulina-flow-pack-40-g/p" target="_blank">https://www.carrefour.com.ar/queso-rallado-la-paulina-flow-pack-40-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>queso rallado la paulina flow pack 40 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/queso%20rallado%20la%20paulina%20flow%20pack%2040%20g?_q=queso%20rallado%20la%20paulina%20flow%20pack%2040%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/yogur-bebible-frutilla-yogurisimo-900-g-726385/p" target="_blank">https://www.carrefour.com.ar/yogur-bebible-frutilla-yogurisimo-900-g-726385/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>yogur bebible frutilla yogurisimo 900 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/yogur%20bebible%20frutilla%20yogurisimo%20900%20g?_q=yogur%20bebible%20frutilla%20yogurisimo%20900%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/sal-fina-carrefour-bolsa-500-g/p" target="_blank">https://www.carrefour.com.ar/sal-fina-carrefour-bolsa-500-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>sal fina carrefour bolsa 500 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/sal%20fina%20carrefour%20bolsa%20500%20g?_q=sal%20fina%20carrefour%20bolsa%20500%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/mayonesa-fiesta-1-kg-721945/p" target="_blank">https://www.carrefour.com.ar/mayonesa-fiesta-1-kg-721945/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>mayonesa fiesta 1 kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/mayonesa%20fiesta%201%20kg?_q=mayonesa%20fiesta%201%20kg&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/vinagre-de-alcohol-alcazar-1-l/p" target="_blank">https://www.carrefour.com.ar/vinagre-de-alcohol-alcazar-1-l/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>vinagre de alcohol alcazar 1 l</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/vinagre%20de%20alcohol%20alcazar%201%20l?_q=vinagre%20de%20alcohol%20alcazar%201%20l&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/mermelada-de-ciruela-light-carrefour-classic-390-grs-629268/p" target="_blank">https://www.carrefour.com.ar/mermelada-de-ciruela-light-carrefour-classic-390-grs-629268/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>mermelada de ciruela light carrefour classic 390 grs</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/mermelada%20de%20ciruela%20light%20carrefour%20classic%20390%20grs?_q=mermelada%20de%20ciruela%20light%20carrefour%20classic%20390%20grs&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/gaseosa-cola-pepsi-regular-pet-2-lts-740265/p" target="_blank">https://www.carrefour.com.ar/gaseosa-cola-pepsi-regular-pet-2-lts-740265/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>gaseosa cola pepsi regular pet 2 lts</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/gaseosa%20cola%20pepsi%20regular%20pet%202%20lts?_q=gaseosa%20cola%20pepsi%20regular%20pet%202%20lts&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/gaseosa-fanta-naranja-2-25-lts-30139/p" target="_blank">https://www.carrefour.com.ar/gaseosa-fanta-naranja-2-25-lts-30139/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>gaseosa fanta naranja 2 25 lts</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/gaseosa%20fanta%20naranja%202%2025%20lts?_q=gaseosa%20fanta%20naranja%202%2025%20lts&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/gaseosa-tonica-carrefour-classic-225-lts-572681/p" target="_blank">https://www.carrefour.com.ar/gaseosa-tonica-carrefour-classic-225-lts-572681/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>gaseosa tonica carrefour classic 225 lts</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/gaseosa%20tonica%20carrefour%20classic%20225%20lts?_q=gaseosa%20tonica%20carrefour%20classic%20225%20lts&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/gaseosa-tonica-carrefour-classic-light-225-lts-735676/p" target="_blank">https://www.carrefour.com.ar/gaseosa-tonica-carrefour-classic-light-225-lts-735676/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>gaseosa tonica carrefour classic light 225 lts</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/gaseosa%20tonica%20carrefour%20classic%20light%20225%20lts?_q=gaseosa%20tonica%20carrefour%20classic%20light%20225%20lts&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/soda-carrefour-classic-600-ml-740284/p" target="_blank">https://www.carrefour.com.ar/soda-carrefour-classic-600-ml-740284/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>soda carrefour classic 600 ml</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/soda%20carrefour%20classic%20600%20ml?_q=soda%20carrefour%20classic%20600%20ml&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/cerveza-rubia-imperial-ipa-473-ml-639588/p" target="_blank">https://www.carrefour.com.ar/cerveza-rubia-imperial-ipa-473-ml-639588/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>cerveza rubia imperial ipa 473 ml</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/cerveza%20rubia%20imperial%20ipa%20473%20ml?_q=cerveza%20rubia%20imperial%20ipa%20473%20ml&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/cafe-instantaneo-la-morenita-frasco-170-g/p" target="_blank">https://www.carrefour.com.ar/cafe-instantaneo-la-morenita-frasco-170-g/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>cafe instantaneo la morenita frasco 170 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/cafe%20instantaneo%20la%20morenita%20frasco%20170%20g?_q=cafe%20instantaneo%20la%20morenita%20frasco%20170%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/yerba-la-tranquera-liviana-1-kg-713946/p" target="_blank">https://www.carrefour.com.ar/yerba-la-tranquera-liviana-1-kg-713946/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>yerba la tranquera liviana 1 kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/yerba%20la%20tranquera%20liviana%201%20kg?_q=yerba%20la%20tranquera%20liviana%201%20kg&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/te-en-saquitos-diamantado-taragui-x-50-uni/p" target="_blank">https://www.carrefour.com.ar/te-en-saquitos-diamantado-taragui-x-50-uni/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>te en saquitos diamantado taragui x 50 uni</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/te%20en%20saquitos%20diamantado%20taragui%20x%2050%20uni?_q=te%20en%20saquitos%20diamantado%20taragui%20x%2050%20uni&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/te-en-saquitos-carrefour-classic-sin-tacc-x-50-uni-679247/p" target="_blank">https://www.carrefour.com.ar/te-en-saquitos-carrefour-classic-sin-tacc-x-50-uni-679247/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>te en saquitos carrefour classic sin tacc x 50 uni</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/te%20en%20saquitos%20carrefour%20classic%20sin%20tacc%20x%2050%20uni?_q=te%20en%20saquitos%20carrefour%20classic%20sin%20tacc%20x%2050%20uni&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/te-molienda-controlada-la-virginia-x-50-uni/p" target="_blank">https://www.carrefour.com.ar/te-molienda-controlada-la-virginia-x-50-uni/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>te molienda controlada la virginia x 50 uni</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/te%20molienda%20controlada%20la%20virginia%20x%2050%20uni?_q=te%20molienda%20controlada%20la%20virginia%20x%2050%20uni&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/carne-picada-novillo-x-kg-678596/p" target="_blank">https://www.carrefour.com.ar/carne-picada-novillo-x-kg-678596/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>carne picada novillo x kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/carne%20picada%20novillo%20x%20kg?_q=carne%20picada%20novillo%20x%20kg&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/pollo-fresco-en-bandeja-marca-propia-x-kg-689035/p" target="_blank">https://www.carrefour.com.ar/pollo-fresco-en-bandeja-marca-propia-x-kg-689035/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>pollo fresco en bandeja marca propia x kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/pollo%20fresco%20en%20bandeja%20marca%20propia%20x%20kg?_q=pollo%20fresco%20en%20bandeja%20marca%20propia%20x%20kg&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/mortadela-mini-con-pimienta-300-grs-730188/p" target="_blank">https://www.carrefour.com.ar/mortadela-mini-con-pimienta-300-grs-730188/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>mortadela mini con pimienta 300 grs</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/mortadela%20mini%20con%20pimienta%20300%20grs?_q=mortadela%20mini%20con%20pimienta%20300%20grs&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/jabon-de-tocador-palmolive-naturals-karite-y-vit-e-90-g-3-uni-713803/p" target="_blank">https://www.carrefour.com.ar/jabon-de-tocador-palmolive-naturals-karite-y-vit-e-90-g-3-uni-713803/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>jabon de tocador palmolive naturals karite y vit e 90 g 3 uni</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/jabon%20de%20tocador%20palmolive%20naturals%20karite%20y%20vit%20e%2090%20g%203%20uni?_q=jabon%20de%20tocador%20palmolive%20naturals%20karite%20y%20vit%20e%2090%20g%203%20uni&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/pasta-dental-colgate-triple-beneficio-180-g-718629/p" target="_blank">https://www.carrefour.com.ar/pasta-dental-colgate-triple-beneficio-180-g-718629/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>pasta dental colgate triple beneficio 180 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/pasta%20dental%20colgate%20triple%20beneficio%20180%20g?_q=pasta%20dental%20colgate%20triple%20beneficio%20180%20g&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/detergente-ultra-carrefour-expert-limon-600-cc-710552/p" target="_blank">https://www.carrefour.com.ar/detergente-ultra-carrefour-expert-limon-600-cc-710552/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>detergente ultra carrefour expert limon 600 cc</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/detergente%20ultra%20carrefour%20expert%20limon%20600%20cc?_q=detergente%20ultra%20carrefour%20expert%20limon%20600%20cc&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/rollo-de-cocina-carrefour-essential-3-x-50-panos/p" target="_blank">https://www.carrefour.com.ar/rollo-de-cocina-carrefour-essential-3-x-50-panos/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>rollo de cocina carrefour essential 3 x 50 panos</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/rollo%20de%20cocina%20carrefour%20essential%203%20x%2050%20panos?_q=rollo%20de%20cocina%20carrefour%20essential%203%20x%2050%20panos&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/rollo-de-cocina-elegante-3-x-50-panos/p" target="_blank">https://www.carrefour.com.ar/rollo-de-cocina-elegante-3-x-50-panos/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>rollo de cocina elegante 3 x 50 panos</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/rollo%20de%20cocina%20elegante%203%20x%2050%20panos?_q=rollo%20de%20cocina%20elegante%203%20x%2050%20panos&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/alcohol-etilico-carrefour-1-l/p" target="_blank">https://www.carrefour.com.ar/alcohol-etilico-carrefour-1-l/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>alcohol etilico carrefour 1 l</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/alcohol%20etilico%20carrefour%201%20l?_q=alcohol%20etilico%20carrefour%201%20l&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.carrefour.com.ar/alimento-seco-para-gato-sabrositos-pescado-3-kg-670856/p" target="_blank">https://www.carrefour.com.ar/alimento-seco-para-gato-sabrositos-pescado-3-kg-670856/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Carrefour</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>alimento seco para gato sabrositos pescado 3 kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.carrefour.com.ar/alimento%20seco%20para%20gato%20sabrositos%20pescado%203%20kg?_q=alimento%20seco%20para%20gato%20sabrositos%20pescado%203%20kg&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/otros/producto-100/" target="_blank">https://depotexpress.com.ar/productos/otros/producto-100/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>producto</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=producto&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/desayuno/gald-a-diversion-390x/" target="_blank">https://depotexpress.com.ar/productos/desayuno/gald-a-diversion-390x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gald a diversion 390x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gald%20a%20diversion%20390x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/desayuno/gald-bagley-surtido-398x/" target="_blank">https://depotexpress.com.ar/productos/desayuno/gald-bagley-surtido-398x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gald bagley surtido 398x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gald%20bagley%20surtido%20398x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/comestibles/arr-danubio-integral-1x/" target="_blank">https://depotexpress.com.ar/productos/comestibles/arr-danubio-integral-1x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>arr danubio integral 1x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=arr%20danubio%20integral%201x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/ofertas/arroz-la-correntina-00000-x-1kg/" target="_blank">https://depotexpress.com.ar/productos/ofertas/arroz-la-correntina-00000-x-1kg/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>arroz la correntina 00000 x 1kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=arroz%20la%20correntina%2000000%20x%201kg&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/limpieza/arroz-danubio-larg-fino-00000-x-1kg/" target="_blank">https://depotexpress.com.ar/productos/limpieza/arroz-danubio-larg-fino-00000-x-1kg/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>arroz danubio larg fino 00000 x 1kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=arroz%20danubio%20larg%20fino%2000000%20x%201kg&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/comestibles/fido-arcor-spaghetti-500x/" target="_blank">https://depotexpress.com.ar/productos/comestibles/fido-arcor-spaghetti-500x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>fido arcor spaghetti 500x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=fido%20arcor%20spaghetti%20500x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-coca-cola-500x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-coca-cola-500x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gas coca cola 500x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gas%20coca%20cola%20500x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-sprite-500x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-sprite-500x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gas sprite 500x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gas%20sprite%20500x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-pepsi-black-pet-1-5x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-pepsi-black-pet-1-5x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gas pepsi black pet 1 5x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gas%20pepsi%20black%20pet%201%205x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-fanta-nja-500x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-fanta-nja-500x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gas fanta nja 500x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gas%20fanta%20nja%20500x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-pepsi-pet-500x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-pepsi-pet-500x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gas pepsi pet 500x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gas%20pepsi%20pet%20500x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-mirinda-mzna-2-25x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-s-alcohol/gaseosas/gas-mirinda-mzna-2-25x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gas mirinda mzna 2 25x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gas%20mirinda%20mzna%202%2025x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/aper-campari-450x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/aper-campari-450x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>aper campari 450x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=aper%20campari%20450x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/gin-bosque-500x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/gin-bosque-500x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gin bosque 500x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gin%20bosque%20500x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-c-alcohol/blancas-y-licores/gin-beefeater-1x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-c-alcohol/blancas-y-licores/gin-beefeater-1x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gin beefeater 1x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gin%20beefeater%201x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-c-alcohol/blancas-y-licores/gin-beefeater-london-750-kts/" target="_blank">https://depotexpress.com.ar/productos/bebidas-c-alcohol/blancas-y-licores/gin-beefeater-london-750-kts/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gin beefeater london 750 kts</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gin%20beefeater%20london%20750%20kts&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/gin-gordons-700x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/gin-gordons-700x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gin gordons 700x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gin%20gordons%20700x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/gin-ginkgo-bot-500x/" target="_blank">https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/gin-ginkgo-bot-500x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>gin ginkgo bot 500x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=gin%20ginkgo%20bot%20500x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/tocador-y-cosmtica/cred-oral-b-4-en-1-pasta-dental-70x/" target="_blank">https://depotexpress.com.ar/productos/tocador-y-cosmtica/cred-oral-b-4-en-1-pasta-dental-70x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cred oral b 4 en 1 pasta dental 70x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=cred%20oral%20b%204%20en%201%20pasta%20dental%2070x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/tocador-y-cosmtica/cred-oral-b-4-en-1-pasta-dental-180x/" target="_blank">https://depotexpress.com.ar/productos/tocador-y-cosmtica/cred-oral-b-4-en-1-pasta-dental-180x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cred oral b 4 en 1 pasta dental 180x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=cred%20oral%20b%204%20en%201%20pasta%20dental%20180x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/ofertas/pape-hig-panal-d-h-4x50x/" target="_blank">https://depotexpress.com.ar/productos/ofertas/pape-hig-panal-d-h-4x50x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>pape hig panal d h 4x50x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=pape%20hig%20panal%20d%20h%204x50x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/productos/limpieza/pape-elegante-h-s-bco-4x80x/" target="_blank">https://depotexpress.com.ar/productos/limpieza/pape-elegante-h-s-bco-4x80x/</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>pape elegante h s bco 4x80x</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=pape%20elegante%20h%20s%20bco%204x80x&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://depotexpress.com.ar/?s=ECHO&post_type=product&dgwt_wcas=1" target="_blank">https://depotexpress.com.ar/?s=ECHO&post_type=product&dgwt_wcas=1</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Depot</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">no_name</span></td>
+            <td>?s=echo&post type=product&dgwt wcas=1</td>
+            <td style="text-align:center;">
+                <a href="https://www.depotexpress.com.ar/?s=%3Fs%3Decho%26post%20type%3Dproduct%26dgwt%20wcas%3D1&post_type=product" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/leche_en_polvo_instantanea_entera_purisima_800_gr2" target="_blank">https://www.delimart.com.ar/leche_en_polvo_instantanea_entera_purisima_800_gr2</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>leche en polvo instantanea entera purisima 800 gr2</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=leche%20en%20polvo%20instantanea%20entera%20purisima%20800%20gr2" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/yogur_bebible_clasico_de_vainilla_la_serenisima_x_900_gr" target="_blank">https://www.delimart.com.ar/yogur_bebible_clasico_de_vainilla_la_serenisima_x_900_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>yogur bebible clasico de vainilla la serenisima x 900 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=yogur%20bebible%20clasico%20de%20vainilla%20la%20serenisima%20x%20900%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/yogur_bebible_clasico_de_frutilla_la_serenisima_x_900_gr" target="_blank">https://www.delimart.com.ar/yogur_bebible_clasico_de_frutilla_la_serenisima_x_900_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>yogur bebible clasico de frutilla la serenisima x 900 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=yogur%20bebible%20clasico%20de%20frutilla%20la%20serenisima%20x%20900%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/yogur_bebible_sabor_frutilla_cremigal_1kg" target="_blank">https://www.delimart.com.ar/yogur_bebible_sabor_frutilla_cremigal_1kg</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>yogur bebible sabor frutilla cremigal 1kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=yogur%20bebible%20sabor%20frutilla%20cremigal%201kg" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/yogur_bebible_sabor_vainilla_cremigal_1kg" target="_blank">https://www.delimart.com.ar/yogur_bebible_sabor_vainilla_cremigal_1kg</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>yogur bebible sabor vainilla cremigal 1kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=yogur%20bebible%20sabor%20vainilla%20cremigal%201kg" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/dulce_de_leche_clasico_ilolay_405_gr" target="_blank">https://www.delimart.com.ar/dulce_de_leche_clasico_ilolay_405_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>dulce de leche clasico ilolay 405 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=dulce%20de%20leche%20clasico%20ilolay%20405%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/mayonesa_dfisesta_475_gr" target="_blank">https://www.delimart.com.ar/mayonesa_dfisesta_475_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>mayonesa dfisesta 475 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=mayonesa%20dfisesta%20475%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/pure_de_tomate_noel_530_g" target="_blank">https://www.delimart.com.ar/pure_de_tomate_noel_530_g</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>pure de tomate noel 530 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=pure%20de%20tomate%20noel%20530%20g" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://diaonline.supermercadosdia.com.ar/arvejas-secas-remojadas-sin-sal-dia-300-gr-280242/p" target="_blank">https://diaonline.supermercadosdia.com.ar/arvejas-secas-remojadas-sin-sal-dia-300-gr-280242/p</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">Dia</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>arvejas secas remojadas sin sal dia 300 gr</td>
+            <td style="text-align:center;">
+                <a href="https://diaonline.supermercadosdia.com.ar/arvejas%20secas%20remojadas%20sin%20sal%20dia%20300%20gr?_q=arvejas%20secas%20remojadas%20sin%20sal%20dia%20300%20gr&map=ft" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/jugo_de_naranaja_la_campagnola_bc_x_1_lt" target="_blank">https://www.delimart.com.ar/jugo_de_naranaja_la_campagnola_bc_x_1_lt</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>jugo de naranaja la campagnola bc x 1 lt</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=jugo%20de%20naranaja%20la%20campagnola%20bc%20x%201%20lt" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_suave_170_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_suave_170_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo nescafe dolca suave 170 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20nescafe%20dolca%20suave%20170%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_suave_x_50_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_suave_x_50_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo nescafe dolca suave x 50 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20nescafe%20dolca%20suave%20x%2050%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_la_virginia_clasico_50_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_la_virginia_clasico_50_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo la virginia clasico 50 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20la%20virginia%20clasico%2050%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_la_virginia_clasico_100_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_la_virginia_clasico_100_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo la virginia clasico 100 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20la%20virginia%20clasico%20100%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_la_virginia_suave_170_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_la_virginia_suave_170_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo la virginia suave 170 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20la%20virginia%20suave%20170%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_la_virginia_suave_50_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_la_virginia_suave_50_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo la virginia suave 50 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20la%20virginia%20suave%2050%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_la_virginia_suave_100_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_la_virginia_suave_100_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo la virginia suave 100 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20la%20virginia%20suave%20100%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_dolca_nescafe_x_100_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_dolca_nescafe_x_100_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo dolca nescafe x 100 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20dolca%20nescafe%20x%20100%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_la_virginia_clasico_170_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_la_virginia_clasico_170_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo la virginia clasico 170 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20la%20virginia%20clasico%20170%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_aroma_original_50_g" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_aroma_original_50_g</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo nescafe dolca aroma original 50 g</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20nescafe%20dolca%20aroma%20original%2050%20g" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_original_170_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_original_170_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo nescafe dolca original 170 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20nescafe%20dolca%20original%20170%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_la_morenita_torrado_intenso_100_gr" target="_blank">https://www.delimart.com.ar/cafe_la_morenita_torrado_intenso_100_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe la morenita torrado intenso 100 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20la%20morenita%20torrado%20intenso%20100%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/cafe_instantaneo_tradicion_nescafe_x170_gr" target="_blank">https://www.delimart.com.ar/cafe_instantaneo_tradicion_nescafe_x170_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>cafe instantaneo tradicion nescafe x170 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=cafe%20instantaneo%20tradicion%20nescafe%20x170%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/yerba_mate_suave_4f_union_500_gr" target="_blank">https://www.delimart.com.ar/yerba_mate_suave_4f_union_500_gr</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>yerba mate suave 4f union 500 gr</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=yerba%20mate%20suave%204f%20union%20500%20gr" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/yerba_suave_nobleza_gaucha_500gr2" target="_blank">https://www.delimart.com.ar/yerba_suave_nobleza_gaucha_500gr2</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>yerba suave nobleza gaucha 500gr2</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=yerba%20suave%20nobleza%20gaucha%20500gr2" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/yerba_mate_union_suave_original_1_kg" target="_blank">https://www.delimart.com.ar/yerba_mate_union_suave_original_1_kg</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>yerba mate union suave original 1 kg</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=yerba%20mate%20union%20suave%20original%201%20kg" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/osobuco_aguma_el_kg_a" target="_blank">https://www.delimart.com.ar/osobuco_aguma_el_kg_a</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>osobuco aguma el kg a</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=osobuco%20aguma%20el%20kg%20a" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/acelga_por_1200g_aprox" target="_blank">https://www.delimart.com.ar/acelga_por_1200g_aprox</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>acelga por 1200g aprox</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=acelga%20por%201200g%20aprox" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+        <tr>
+            <td class="td-old-url" style="word-break: break-all; font-size: 0.85em;">
+                <a href="https://www.delimart.com.ar/suavizante_de_ropa_comfort_botella__cuidado_intensivo_500_ml" target="_blank">https://www.delimart.com.ar/suavizante_de_ropa_comfort_botella__cuidado_intensivo_500_ml</a>
+            </td>
+            <td style="font-weight: bold; color: #2c3e50;">DeliMart</td>
+            <td><span class="badge" style="background-color: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8em;">exception</span></td>
+            <td>suavizante de ropa comfort botella  cuidado intensivo 500 ml</td>
+            <td style="text-align:center;">
+                <a href="https://www.delimart.com.ar/catalogsearch/result/?q=suavizante%20de%20ropa%20comfort%20botella%20%20cuidado%20intensivo%20500%20ml" target="_blank" class="btn btn-search">🔍 Buscar en Súper</a>
+            </td>
+            <td>
+                <input type="text" class="new-url-input" placeholder="Pegar nueva URL o escribir 'NO'..." style="width: 100%; padding: 8px;">
+            </td>
+        </tr>
+        
+                </tbody>
+            </table>
+            
+            <button class="btn btn-export" onclick="exportToCSV()">💾 Exportar Correcciones</button>
+        </div>
+
+        <script>
+            function exportToCSV() {
+                const table = document.getElementById('linksTable');
+                const rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                
+                let csvContent = "viejo_link,nuevo_link\n";
+                let count = 0;
+                
+                for (let i = 0; i < rows.length; i++) {
+                    const oldUrlAnchor = rows[i].querySelector('.td-old-url a');
+                    const input = rows[i].querySelector('.new-url-input');
+                    
+                    if (oldUrlAnchor && input) {
+                        const oldUrl = oldUrlAnchor.innerText.trim();
+                        const newUrl = input.value.trim();
+                        if (newUrl && newUrl !== "") {
+                            csvContent += `"${oldUrl}","${newUrl}"\n`;
+                            count++;
+                        }
+                    }
+                }
+                
+                if (count === 0) {
+                    alert("No has ingresado ninguna nueva URL para exportar.");
+                    return;
+                }
+                
+                const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                const link = document.createElement("a");
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", "links_corregidos.csv");
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        </script>
+    </body>
+    </html>
+    

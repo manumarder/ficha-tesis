@@ -1,0 +1,28 @@
+name: Supabase Keep Alive
+
+on:
+  schedule:
+    # Se ejecuta todos los días a las 12:00 UTC (9:00 AM hora de Argentina)
+    - cron: '0 12 * * *'
+  workflow_dispatch: # Esto te permite activar el ping manualmente desde GitHub si querés probarlo
+
+jobs:
+  ping-db:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Chequear el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Instalar dependencias
+        run: |
+          pip install psycopg2-binary
+
+      - name: Ejecutar ping a la Base de Datos
+        env:
+          DB_CONNECTION_STRING: ${{ secrets.SUPABASE_DB_URL }}
+        run: python supabase_ping.py

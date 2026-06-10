@@ -1,0 +1,4 @@
+url,success,error_type,precio_descuento,precio_normal,unidad,titulo,raw_nombre
+https://www.carrefour.com.ar/yogur-bebible-frutilla-la-serenisima-clasico-900-g-726990/p,False,no_disponible,0,0,,Carrefour,Yogur bebible frutilla La SerenÍsima clásico 900 g
+https://www.carrefour.com.ar/galletitas-carrefour-classic-con-chips-chocolate-172-grs-664917/p,True,,1415.10,1590,1 K.,,Galletitas Carrefour Classic con chips chocolate 172 grs
+https://www.carrefour.com.ar/lentejas-albor-500-grs-271300/p,True,,2190,2190,1 K.,,Lentejas Albor 500 grs

@@ -37,6 +37,7 @@ def sample_urls(df: pd.DataFrame, sample_size: int) -> list[str]:
 
 def test_urls(urls: list[str], output_dir: str) -> pd.DataFrame:
     extractor = CarrefourExtractor()
+    extractor.setup_driver()
     results = []
 
     for index, url in enumerate(urls, 1):
@@ -63,6 +64,8 @@ def test_urls(urls: list[str], output_dir: str) -> pd.DataFrame:
     df_results.to_csv(output_file, index=False)
     logger.info(f'Resultados guardados en: {output_file}')
     logger.info(f'\n{df_results.to_string()}')
+
+    extractor.cleanup_driver()
     return df_results
 
 

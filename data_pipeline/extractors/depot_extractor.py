@@ -223,21 +223,26 @@ class DepotExtractor:
 
     def _extract_name(self):
         """Extrae y limpia el nombre del producto - VERSIÓN MEJORADA"""
-        for i, selector in enumerate(self.SELECTORS['name'], 1):
-            try:
-                logger.debug(f"Probando selector de nombre {i}: {selector}")
-                element = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, selector)))
-                raw_name = element.text.strip()
-                
-                if raw_name:
-                    logger.debug(f"Nombre encontrado con selector {i}: {raw_name}")
-                    clean_name = self._clean_name(raw_name)
-                    logger.debug(f"Nombre limpio: {clean_name}")
-                    return clean_name
+        for intento in range(2):
+            for i, selector in enumerate(self.SELECTORS['name'], 1):
+                try:
+                    element = self.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, selector)))
+                    raw_name = element.text.strip()
+                    if not raw_name:
+                        raw_name = element.get_attribute("textContent").strip()
                     
-            except Exception as e:
-                logger.debug(f"Selector {i} fallo: {str(e)}")
-                continue
+                    if raw_name:
+                        logger.debug(f"Nombre encontrado con selector {i}: {raw_name}")
+                        clean_name = self._clean_name(raw_name)
+                        logger.debug(f"Nombre limpio: {clean_name}")
+                        return clean_name
+                        
+                except Exception as e:
+                    continue
+            
+            # Si no encontró texto en el primer intento, esperamos a que JS hidrate el DOM
+            if intento == 0:
+                time.sleep(1.5)
         
         logger.error("No se pudo encontrar el nombre con ningun selector")
         return None

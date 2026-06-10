@@ -1,0 +1,7 @@
+url,success,error_type,precio_descuento,precio_normal,unidad,titulo,raw_nombre
+\,False,exception,0,0,,'NoneType' object has no attribute 'get',
+https://www.carrefour.com.ar/yogur-bebible-frutilla-la-serenisima-clasico-900-g-726990/p,False,exception,0,0,,'NoneType' object has no attribute 'get',
+\,False,exception,0,0,,'NoneType' object has no attribute 'get',
+https://www.carrefour.com.ar/galletitas-carrefour-classic-con-chips-chocolate-172-grs-664917/p,False,exception,0,0,,'NoneType' object has no attribute 'get',
+\,False,exception,0,0,,'NoneType' object has no attribute 'get',
+https://www.carrefour.com.ar/cacao-en-polvo-chocolino-bolsa-180-g/p,False,exception,0,0,,'NoneType' object has no attribute 'get',
