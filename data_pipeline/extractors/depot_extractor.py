@@ -98,6 +98,9 @@ class DepotExtractor:
         """Configura el driver de Selenium - OPTIMIZADO"""
         if self.driver is None:
             options = Options()
+
+            options.page_load_strategy = 'eager'
+
             # OPTIMIZADO: Aplicar optimizaciones automáticas (incluye flags obligatorios)
             optimize_driver_options(options)
             

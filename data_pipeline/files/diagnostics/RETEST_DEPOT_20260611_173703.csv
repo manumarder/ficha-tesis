@@ -1,0 +1,39 @@
+url,success,error_type,precio_descuento,precio_normal,unidad,titulo,raw_nombre
+https://depotexpress.com.ar/productos/alimentos-para-mascotas/alpe-pedig-dentatix-raz-peq-47-1x/,False,exception,0,0,,"Message: timeout: Timed out receiving message from renderer: 5.952
+  (Session info: chrome=149.0.7827.103)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79559fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff79559fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7950d78fd]
+	chromedriver!(No symbol) [0x7ff7950c4439]
+	chromedriver!(No symbol) [0x7ff7950c4121]
+	chromedriver!(No symbol) [0x7ff7950c1e0b]
+	chromedriver!(No symbol) [0x7ff7950c272f]
+	chromedriver!(No symbol) [0x7ff7950d1dea]
+	chromedriver!(No symbol) [0x7ff7950e8a27]
+	chromedriver!(No symbol) [0x7ff7950f08ca]
+	chromedriver!(No symbol) [0x7ff7950c2ef1]
+	chromedriver!(No symbol) [0x7ff7950e8755]
+	chromedriver!(No symbol) [0x7ff79517ee69]
+	chromedriver!(No symbol) [0x7ff795123a58]
+	chromedriver!(No symbol) [0x7ff795124953]
+	chromedriver!GetHandleVerifier [0x7ff795b65511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff795b5f8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff795b83205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7955bcc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7955c562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7955a9984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7955a9b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff79558ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ff99f82e957+17]
+	ntdll!RtlUserThreadStart [0x7ff9a0a4427c+2c]
+",
+https://depotexpress.com.ar/productos/limpieza/cera-echo-clasico-d-p-450x/,True,,4519.55,4519.55,,CERA ECHO CLASICO D/P 450X,CERA ECHO CLASICO D/P 450X
+https://depotexpress.com.ar/productos/limpieza/roll-coc-sussex-maxirollo-300x/,True,,4788.88,4788.88,,ROLLO COCINA SUSSEX MAXIROLLO 300X,ROLLO COCINA SUSSEX MAXIROLLO 300X
+https://depotexpress.com.ar/productos/otros/producto-100/,True,,1118.64,1118.64,,PANI MARTIN PAN SURTIDO 500 X,PANI MARTIN PAN SURTIDO 500 X
+https://depotexpress.com.ar/productos/alimentos-para-mascotas/pisa-nic-piedra-sanitaria-2kg/,True,,2161.23,2161.23,,PISA NIC PIEDRA SANITARIA 2KG,PISA NIC PIEDRA SANITARIA 2KG
+https://depotexpress.com.ar/productos/alimentos-para-mascotas/alpe-pedig-adul-raz-peq-1-5x/,True,,6330.59,6330.59,,ALPE PEDIG ADUL RAZ PEQ 1.5X,ALPE PEDIG ADUL RAZ PEQ 1.5X
+https://depotexpress.com.ar/productos/limpieza/suav-downy-lirios-primav-500x/,True,,7468.53,7468.53,,SUAV DOWNY LIRIOS PRIMAV 500X,SUAV DOWNY LIRIOS PRIMAV 500X
+https://depotexpress.com.ar/productos/alimentos-para-mascotas/alpe-sabro-cach-1-5x/,True,,4248.48,4248.48,,ALPE SABRO CACH 1.5X,ALPE SABRO CACH 1.5X
+https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vinf-fca-las-moras-malbec-750x/,True,,4035.44,4035.44,,VINF FCA LAS MORAS MALBEC 750X,VINF FCA LAS MORAS MALBEC 750X
+https://depotexpress.com.ar/productos/limpieza/roll-coc-elite-maxirollo-2x120/,True,,3371.38,3371.38,,ROLL COC ELITE MAXIROLLO 2X120,ROLL COC ELITE MAXIROLLO 2X120
