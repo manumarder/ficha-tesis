@@ -81,7 +81,14 @@ def obtener_ofertas_reales(db: ConexionBaseDatos = Depends(get_db)):
     Trae los productos de la Canasta Básica cuyo semáforo es VERDE 🟢
     calculado dinámicamente contra su promedio móvil de 21 días.
     """
-    query = "SELECT * FROM public.vista_auditoria_consumo WHERE semaforo = '🟢' ORDER BY ahorro_real_pct DESC;"
+    query = """
+        WITH precios_recientes AS (
+            SELECT DISTINCT ON (id_link) *
+            FROM public.vista_auditoria_consumo
+            ORDER BY id_link, created_at DESC
+        )
+        SELECT * FROM precios_recientes WHERE semaforo = '🟢' ORDER BY ahorro_real_pct DESC;
+    """
     try:
         # Usamos Pandas para leer directo la query y transformarla a JSON nativo
         df = pd.read_sql(query, db.engine)
@@ -101,7 +108,14 @@ def obtener_alertas_trampa(db: ConexionBaseDatos = Depends(get_db)):
     Trae los productos de la Canasta Básica cuyo semáforo es ROJO 🔴
     (Productos con inflado artificial previo en el precio normal).
     """
-    query = "SELECT * FROM public.vista_auditoria_consumo WHERE semaforo = '🔴' ORDER BY ahorro_real_pct ASC;"
+    query = """
+        WITH precios_recientes AS (
+            SELECT DISTINCT ON (id_link) *
+            FROM public.vista_auditoria_consumo
+            ORDER BY id_link, created_at DESC
+        )
+        SELECT * FROM precios_recientes WHERE semaforo = '🔴' ORDER BY ahorro_real_pct ASC;
+    """
     try:
         df = pd.read_sql(query, db.engine)
         resultado = df.to_dict(orient="records")
@@ -158,9 +172,15 @@ def buscar_productos(q: str, db: ConexionBaseDatos = Depends(get_db)):
     
     # Búsqueda insensible a mayúsculas/minúsculas (ILIKE) para una UX robusta
     query = """
-        SELECT * FROM public.vista_auditoria_consumo 
+        WITH precios_recientes AS (
+            SELECT DISTINCT ON (id_link) *
+            FROM public.vista_auditoria_consumo
+            ORDER BY id_link, created_at DESC
+        )
+        SELECT *, COALESCE(precio_descuento, precio_normal) AS precio_final
+        FROM precios_recientes 
         WHERE nombre_generico ILIKE %s OR url_producto ILIKE %s
-        ORDER BY precio_descuento ASC;
+        ORDER BY precio_final ASC;
     """
     param_busqueda = f"%{q.strip()}%"
     
@@ -191,9 +211,11 @@ def comparar_canasta(payload: CanastaRequest, db: ConexionBaseDatos = Depends(ge
     # Query que extrae las últimas lecturas vigentes para los productos seleccionados
     query = """
         SELECT DISTINCT ON (supermercado, nombre_generico)
-            supermercado, nombre_generico, precio_descuento, semaforo
+            supermercado, nombre_generico, 
+            COALESCE(precio_descuento, precio_normal) AS precio_efectivo, 
+            semaforo, created_at
         FROM public.vista_auditoria_consumo
-        WHERE nombre_generico ANY(%s)
+        WHERE nombre_generico = ANY(%s)
         ORDER BY supermercado, nombre_generico, created_at DESC;
     """
     
@@ -205,21 +227,22 @@ def comparar_canasta(payload: CanastaRequest, db: ConexionBaseDatos = Depends(ge
             return {"status": "success", "mensaje": "No se encontraron precios vigentes para los productos seleccionados.", "totales": {}, "desglose": {}}
         
         # 1. Calcular el costo total sumando los productos agrupados por supermercado
-        df_totales = df.groupby("supermercado")["precio_descuento"].sum().reset_index()
-        df_totales = df_totales.sort_values(by="precio_descuento", ascending=True)
-        totales_dict = df_totales.set_index("supermercado")["precio_descuento"].to_dict()
+        df_totales = df.groupby("supermercado")["precio_efectivo"].sum().reset_index()
+        df_totales = df_totales.sort_values(by="precio_efectivo", ascending=True)
+        totales_dict = df_totales.set_index("supermercado")["precio_efectivo"].to_dict()
         
         # 2. Generar el desglose individual por ítem para auditoría visual en el frontend
         desglose_dict = {}
         for superm in df["supermercado"].unique():
             df_sub = df[df["supermercado"] == superm]
-            desglose_dict[superm] = df_sub.set_index("nombre_generico")[["precio_descuento", "semaforo"]].to_dict(orient="index")
+            desglose_dict[superm] = df_sub.set_index("nombre_generico")[["precio_efectivo", "semaforo"]].to_dict(orient="index")
             
         return {
             "status": "success",
             "productos_solicitados": payload.productos,
             "totales": totales_dict,
-            "desglose": desglose_dict
+            "desglose": desglose_dict,
+            "items": df.to_dict(orient="records")
         }
     except Exception as e:
         logger.error(f"Error optimizando presupuesto de canasta: {e}")
