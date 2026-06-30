@@ -51,6 +51,11 @@ class DiaExtractor:
             options = Options()
             # OPTIMIZADO: Aplicar optimizaciones automáticas (incluye flags obligatorios)
             optimize_driver_options(options)
+
+            # --- NUEVA DIRECTIVA DE RENDIMIENTO (FASE 20) ---
+            # Forzamos estrategia 'eager' para retornar el control a Python 
+            # apenas renderice el DOM, evitando timeouts de renderizado de 40s por scripts pesados.
+            options.page_load_strategy = 'eager'
             
             options.add_argument('user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36')
             options.add_argument('--window-size=1920,1080')

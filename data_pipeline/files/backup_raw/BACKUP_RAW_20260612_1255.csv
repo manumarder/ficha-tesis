@@ -1,0 +1,135 @@
+supermercado,producto_nombre,nombre,precio_descuento,precio_normal,precio_por_unidad,unidad,descuentos,url,fecha_extraccion,id_link_producto,fecha,error_type,titulo
+Dia,Gaseosa Cola Regular Pepsi 2 Lt.,Gaseosa Cola Regular Pepsi 2 Lt.,4400.0,4400.0,,,2do al 50%,https://diaonline.supermercadosdia.com.ar/gaseosa-cola-regular-pepsi-2-lt-115102/p,2026-06-12 12:52:14,2351,,,
+Delimart,,Mayonesa Regular Hellmanns Dp 237 Gr,1292.42,1292.42,0,,Ninguno,https://www.delimart.com.ar/mayonesa_regular_hellmanns_dp_237_gr2,,3982,2026-06-12,,
+Delimart,,Yerba Mate Playadito Sin Palo X 500 Gr,3936.02,3936.02,0,,Ninguno,https://www.delimart.com.ar/yerba_mate_playadito_sin_palo_x_500_gr2,,4221,2026-06-12,,
+Delimart,,Mayonesa Clásica Hellmanns Dp 118 Gr,960.82,960.82,0,,Ninguno,https://www.delimart.com.ar/mayonesa_clasica_hellmanns_dp_118_gr,,3987,2026-06-12,,
+,,Galletitas Gold Mundo anillos chocolate y vainilla 250 g.,,,,,,https://www.carrefour.com.ar/galletitas-gold-mundo-anillos-chocolate-y-vainilla-250-g-621326/p,,2801,,no_disponible,Galletitas Gold Mundo anillos chocolate y vainilla 250 g. - Carrefour
+,,Fideos tallarines Marolio 500 g.,,,,,,https://www.carrefour.com.ar/fideos-tallarines-marolio-500-g-746925/p,,2862,,no_disponible,Fideos tallarines Marolio 500 g - Carrefour
+Carrefour,,Caldo Knorr de gallina deshidratado 12 cubos.,2839,2839,24903.51,1 K.,Ninguno,https://www.carrefour.com.ar/caldo-knorr-de-gallina-deshidratado-12-cubos-737144/p,,3003,2026-06-12,,
+,,,,,,,,https://www.delimart.com.ar/papas_fritas_lays_x_134_gr,,4092,,exception,"Message: timeout: Timed out receiving message from renderer: 13.889
+  (Session info: chrome=149.0.7827.103)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce454439]
+	chromedriver!(No symbol) [0x7ff7ce454121]
+	chromedriver!(No symbol) [0x7ff7ce451e0b]
+	chromedriver!(No symbol) [0x7ff7ce45272f]
+	chromedriver!(No symbol) [0x7ff7ce461dea]
+	chromedriver!(No symbol) [0x7ff7ce478a27]
+	chromedriver!(No symbol) [0x7ff7ce4808ca]
+	chromedriver!(No symbol) [0x7ff7ce452ef1]
+	chromedriver!(No symbol) [0x7ff7ce478755]
+	chromedriver!(No symbol) [0x7ff7ce50ee69]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+"
+,,,,,,,,https://www.delimart.com.ar/aceite_de_girasol_familia_vicentin_900_ml,,3881,,exception,"Message: timeout: Timed out receiving message from renderer: 13.874
+  (Session info: chrome=149.0.7827.103)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce454439]
+	chromedriver!(No symbol) [0x7ff7ce454121]
+	chromedriver!(No symbol) [0x7ff7ce451e0b]
+	chromedriver!(No symbol) [0x7ff7ce45272f]
+	chromedriver!(No symbol) [0x7ff7ce461dea]
+	chromedriver!(No symbol) [0x7ff7ce478a27]
+	chromedriver!(No symbol) [0x7ff7ce4808ca]
+	chromedriver!(No symbol) [0x7ff7ce452ef1]
+	chromedriver!(No symbol) [0x7ff7ce478755]
+	chromedriver!(No symbol) [0x7ff7ce50ee69]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+"
+Carrefour,,Limpiador Líquido Multisuperficies Glade Lavanda Fragancia Duradera para Pisos y Superficies 1760 ml,4749,4749,2698.30,1 L.,Ninguno,https://www.carrefour.com.ar/limpiador-liquido-multisuperficies-glade-lavanda-fragancia-duradera-para-pisos-y-superficies-1760-ml-750593/p,,3399,2026-06-12,,
+Carrefour,,"Galletitas Oreo rellenas con crema sabor original 182,5 g.",3349,3349,18350.68,1 K.,Ninguno,https://www.carrefour.com.ar/galletitas-oreo-rellena-con-crema-sabor-original-1825-g-715950/p,,2764,2026-06-12,,
+Dia,Suavizantes Para Ropa Vivere Explosion Floral Plancha Facil Doypack 810 Ml 307704,Suavizantes Para Ropa Vivere Explosion Floral Plancha Facil Doypack 810 Ml 307704,0.0,0.0,,,,https://diaonline.supermercadosdia.com.ar/suavizantes-para-ropa-vivere-explosion-floral-plancha-facil-doypack-810-ml-307704/p,2026-06-12 12:53:29,2626,,,
+Dia,Vino Tinto Estancia Mendoza Malbec 750 ml.,Vino Tinto Estancia Mendoza Malbec 750 ml.,4100.0,4100.0,,,,https://diaonline.supermercadosdia.com.ar/vino-tinto-estancia-mendoza-malbec-750-ml-117701/p,2026-06-12 12:53:32,2419,,,
+,,Choclo en granos Arcor amarillo lata 300 g.,,,,,,https://www.carrefour.com.ar/choclo-en-granos-arcor-amarillo-lata-300-g-699528-699528/p,,3286,,no_disponible,Carrefour
+Delimart,,Rollo De Cocina Elegante Premium 3 rollos x 100 Paños,4886.94,4886.94,0,,Ninguno,https://www.delimart.com.ar/rollo_de_cocina_elegante_premium_3_rollos_x_100_panos,,4388,2026-06-12,,
+,,,,,,,,https://depotexpress.com.ar/productos/bebidas-c-alcohol/cerveza/cerv-antares-kolch-lata-473x/,,3583,,exception,"Message: timeout: Timed out receiving message from renderer: 3.031
+  (Session info: chrome=149.0.7827.103)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce454439]
+	chromedriver!(No symbol) [0x7ff7ce454121]
+	chromedriver!(No symbol) [0x7ff7ce451e0b]
+	chromedriver!(No symbol) [0x7ff7ce45272f]
+	chromedriver!(No symbol) [0x7ff7ce461dea]
+	chromedriver!(No symbol) [0x7ff7ce478a27]
+	chromedriver!(No symbol) [0x7ff7ce4808ca]
+	chromedriver!(No symbol) [0x7ff7ce452ef1]
+	chromedriver!(No symbol) [0x7ff7ce478755]
+	chromedriver!(No symbol) [0x7ff7ce50ee69]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+"
+Dia,Caldo De Gallina Maggi X 12 Ud.,Caldo De Gallina Maggi X 12 Ud.,1884.0,1884.0,,,,https://diaonline.supermercadosdia.com.ar/caldo-de-gallina-maggi-x-12-ud-284602/p,2026-06-12 12:53:50,2304,,,
+,,Palitos salados Bulnez 120 g.,,,,,,https://www.carrefour.com.ar/palitos-salados-bulnez-120-g-745556/p,,3127,,no_disponible,Carrefour
+Delimart,,GALLETITAS RELLENAS DELICIAS DE LA NONNA X160G VAINILLA,1040.13,1040.13,0,,Ninguno,https://www.delimart.com.ar/galletitas_rellenas_delicias_de_la_nonna_x160g_vainilla,,3773,2026-06-12,,
+,,,,,,,,https://www.carrefour.com.ar/galletitas-merengadas-fresa-x3-264-grs-708528/p,,2676,,404,Carrefour
+Dia,Whisky Pride Blenders 1 Lt.,Whisky Pride Blenders 1 Lt.,12178.0,12178.0,,,,https://diaonline.supermercadosdia.com.ar/whisky-pride-blenders-1-lt-111986/p,2026-06-12 12:54:15,2473,,,
+Dia,Vodka Smirnoff Rojo 700 ml.,Vodka Smirnoff Rojo 700 ml.,11900.0,11900.0,,,,https://diaonline.supermercadosdia.com.ar/vodka-smirnoff-rojo-700-ml-85973/p,2026-06-12 12:54:19,2461,,,
+Carrefour,,Mortadela mini El Bierzo 300 g.,4760,4760,15866.67,1 K.,Ninguno,https://www.carrefour.com.ar/mortadela-mini-el-bierzo-300-g-730209/p,,3266,2026-06-12,,
+Carrefour,,Alcohol etílico Carrefour Soft 1 lt,4401,4890,4401,1 L.,Ninguno,https://www.carrefour.com.ar/alcohol-etilico-carrefour-soft-1-lt-336874/p,,3412,2026-06-12,,
+Dia,Té Taragui Sin Ensobrado 25 Ud.,Té Taragui Sin Ensobrado 25 Ud.,1250.0,1250.0,,,,https://diaonline.supermercadosdia.com.ar/te-taragui-sin-ensobrado-25-ud-283639/p,2026-06-12 12:54:28,2508,,,
+Carrefour,,Cerveza rubia Imperial Apa 473 ml,3025,3025,6395.35,1 L.,Ninguno,https://www.carrefour.com.ar/cerveza-rubia-imperial-apa-473-ml-650275/p,,3152,2026-06-12,,
+Delimart,,Mate Cocido Nobleza Gaucha 50 saquitos,2407.14,2407.14,0,,Ninguno,https://www.delimart.com.ar/mate_cocido_nobleza_gaucha_50_saquitos,,4240,2026-06-12,,
+Carrefour,,Cebolla x kg.,1199,1199,1199,1 K.,Ninguno,https://www.carrefour.com.ar/cebolla-x-kg-734857/p,,3283,2026-06-12,,
+Delimart,,Cerveza Rubia Stella Artois 473 Cc,2266.66,2833.33,0,,Ninguno,https://www.delimart.com.ar/cerveza_rubia_stella_artois_473_cc,,4118,2026-06-12,,
+Carrefour,,Mermelada de frutilla La Campagnola 454 g.,5129,5129,11297.36,1 K.,Ninguno,https://www.carrefour.com.ar/mermelada-de-frutilla-la-campagnola-454-g/p,,3037,2026-06-12,,
+Carrefour,,Galletitas dulces Melitas vainilla miel 159 g.,1399,1399,8798.74,1 K.,Ninguno,https://www.carrefour.com.ar/galletitas-dulces-melitas-vainilla-miel-159-g-713281/p,,2705,2026-06-12,,
+Carrefour,,Té verde Green Hills saquitos momentos x 50 uni,4499,4499,44990,1 K.,Ninguno,https://www.carrefour.com.ar/te-verde-green-hills-saquitos-momentos-x-50-uni-691016/p,,3237,2026-06-12,,
+Carrefour,,Fernet Branca botella 750 cc.,18400,18400,24533.33,1 L.,Ninguno,https://www.carrefour.com.ar/fernet-branca-botella-750-cc/p,,3174,2026-06-12,,
+Carrefour,,Mermelada Dulcor durazno 454 g.,2829,2829,6231.28,1 K.,Ninguno,https://www.carrefour.com.ar/mermelada-dulcor-durazno-454-g/p,,3055,2026-06-12,,
+Delimart,,Dermo Acondicionador Head & Shoulders Hidratacion Coco 300 ml,10198.52,10198.52,0,,Ninguno,https://www.delimart.com.ar/dermo_acondicionador_head__shoulders_hidratacion_coco_300_ml,,4321,2026-06-12,,
+Delimart,,Rollos de cocina Vual grofado 120 paños,1773.02,2085.90,0,,Ninguno,https://www.delimart.com.ar/rollos_de_cocina_vual_grofado_120_panos,,4389,2026-06-12,,
+Delimart,,Queso Crema Casancrem Clasico La Serenísima 290 G,4386.65,4386.65,0,,Ninguno,https://www.delimart.com.ar/queso_crema_casancrem_clasico_la_serenisima_290_g,,3908,2026-06-12,,
+Dia,Dentifrico Extra Blancura Con Bicarbonato Oral B 180 Gr 304310,Dentifrico Extra Blancura Con Bicarbonato Oral B 180 Gr 304310,0.0,0.0,,,,https://diaonline.supermercadosdia.com.ar/dentifrico-extra-blancura-con-bicarbonato-oral-b-180-gr-304310/p,2026-06-12 12:55:06,2595,,,
+Carrefour,,Huevos frescos blancos Carrefour 6 u.,1922.80,2090,320.47,1 U.,Ninguno,https://www.carrefour.com.ar/huevos-frescos-blancos-carrefour-6-u/p,,2957,2026-06-12,,
+Delimart,,Galletitas Granovita Granix sabor Coco 140 gr,1501.20,1501.20,0,,Ninguno,https://www.delimart.com.ar/galletitas_granovita_granix_sabor_coco_140_gr,,3792,2026-06-12,,
+Carrefour,,Caldo de gallina Bulnez 6 uni,594,594,10421.05,1 K.,Ninguno,https://www.carrefour.com.ar/caldo-de-gallina-bulnez-6-uni-746514/p,,3011,2026-06-12,,
+Carrefour,,Rollo de cocina Sussex Ultra 100 paños 3 uni,6999,6999,23.33,1 Pano,Ninguno,https://www.carrefour.com.ar/rollo-de-cocina-sussex-ultra-100-panos-3-uni-578816/p,,3410,2026-06-12,,
+Carrefour,,Tapa de nalga Novillito x kg.,20600,20600,20600,1 K.,Ninguno,https://www.carrefour.com.ar/tapa-de-nalga-novillito-x-kg-678569/p,,3247,2026-06-12,,
+,,Detergente Líquido Ala + Concentrado Limón Botella 500 ml,,,,,,https://www.carrefour.com.ar/detergente-liquido-ala-concentrado-limon-botella-500-ml-722418/p,,3368,,no_disponible,Carrefour
+Dia,Tapa de Asado Envasado al Vacío x Kg.,Tapa de Asado Envasado al Vacío x Kg.,20900.0,20900.0,,,,https://diaonline.supermercadosdia.com.ar/tapa-de-asado-envasado-al-vacio-x-kg-279530/p,2026-06-12 12:55:30,2513,,,
+Dia,Lomos De Atun Al Natural Swift 170 Gr.,Lomos De Atun Al Natural Swift 170 Gr.,4199.0,4199.0,,,,https://diaonline.supermercadosdia.com.ar/lomos-de-atun-al-natural-swift-170-gr-311354/p,2026-06-12 12:55:30,2534,,,
+Delimart,,Galletitas Surtido Bagley x400 Gr,3802.75,3802.75,0,,Ninguno,https://www.delimart.com.ar/galletitas_surtido_bagley_x400_gr,,3826,2026-06-12,,
+Delimart,,Cacao En Polvo Nesquik 800gr,10411.70,10411.70,0,,Ninguno,https://www.delimart.com.ar/cacao_en_polvo_nesquik_800gr2,,4193,2026-06-12,,
+Carrefour,,Galletitas dulces Lincoln coco Terrabusi 153 g.,1248,1920,11851.85,1 K.,exclusivo online 2do al 70% iguales,https://www.carrefour.com.ar/galletitas-dulces-lincoln-coco-terrabusi-153-g-521106/p,,2797,2026-06-12,,
+,,"Gaseosa Crush pomelo amarillo 2,25 lts",,,,,,https://www.carrefour.com.ar/gaseosa-crush-pomelo-amarillo-2-25-lts-337554/p,,3077,,no_disponible,Carrefour

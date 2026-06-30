@@ -65,7 +65,7 @@ def main():
                     if res:
                         id_link = res[0]
                         conn.execute(
-                            text("UPDATE link_productos SET url_producto = :nuevo, activo = false WHERE id = :id"),
+                            text("UPDATE link_productos SET url_producto = :nuevo, activo = false, ultima_sincronizacion = CURRENT_TIMESTAMP WHERE id = :id"),
                             {"nuevo": f"BAJA_{id_link}", "id": id_link}
                         )
                         total_modificados += 1
@@ -74,7 +74,7 @@ def main():
                 # Caso B: El usuario ingresó una nueva URL válida de reemplazo
                 else:
                     conn.execute(
-                        text("UPDATE link_productos SET url_producto = :nuevo, activo = true WHERE url_producto = :link"),
+                        text("UPDATE link_productos SET url_producto = :nuevo, activo = true, ultima_sincronizacion = CURRENT_TIMESTAMP WHERE url_producto = :link"),
                         {"nuevo": nuevo, "link": viejo}
                     )
                     total_modificados += 1

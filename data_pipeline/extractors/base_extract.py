@@ -1,3 +1,5 @@
+# data_pipeline\extractors\base_extract.py
+
 """
 Módulo de Extracción para Canasta Básica
 Responsabilidad: Leer links de BASE DE DATOS e extraer productos
@@ -28,7 +30,7 @@ from extractors.dia_extractor import DiaExtractor
 logger = logging.getLogger(__name__)
 
 class ExtractCanastaBasica:
-    def __init__(self, enable_parallel: bool = True, max_workers: int = 3):
+    def __init__(self, enable_parallel: bool = True, max_workers: int = 4):
         load_dotenv()
         self.enable_parallel = enable_parallel
         self.max_workers = max_workers if enable_parallel else 1
@@ -137,9 +139,9 @@ class ExtractCanastaBasica:
 
             # 2. Worker Loop
             def worker_loop(worker_id):
-                # AJUSTE: Delay aleatorio entre el inicio de cada worker para evitar logins simultáneos
-                stagger_delay = random.uniform(1, 3)
-                logger.info(f"[WORKER {worker_id}] Esperando {stagger_delay:.2f}s para inicio escalonado...")
+                # AJUSTE (Fase 19): Staggering ampliado para evadir anti-scraping y saturación de red
+                stagger_delay = random.uniform(3, 7)
+                logger.info(f"[WORKER {worker_id}] Esperando {stagger_delay:.2f}s para inicio escalonado robusto...")
                 time.sleep(stagger_delay)
                 
                 local_extractors = {}

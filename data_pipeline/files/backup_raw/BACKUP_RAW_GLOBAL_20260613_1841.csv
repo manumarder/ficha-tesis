@@ -1,0 +1,622 @@
+error_type,url,nombre,titulo,id_link_producto,precio_normal,precio_descuento,precio_por_unidad,unidad,descuentos,fecha,supermercado,producto_nombre,fecha_extraccion
+no_disponible,https://www.carrefour.com.ar/jugo-natural-biofrut-naranja-1-l/p,Jugo natural Biofrut naranja 1 l.,Carrefour,3098,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/sal-fina-dos-estrellas-500-g/p,Sal fina Dos Estrellas 500 g.,Carrefour,2977,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/harina-de-trigo-000-ultra-refinada-canuelas-1-kg/p,Harina de trigo 000 ultra refinada Cañuelas 1 kg.,Harina de trigo 000 ultra refinada Cañuelas - Carrefour,2835,,,,,,,,,
+,https://www.delimart.com.ar/acondicionador_plusbelle_1lt_hidratacion_nutritiva,Acondicionador Plusbelle 1lt Hidratacion Nutritiva,,4327,5734.80,5734.80,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/rollo_de_cocina_elegante_premium_3_rollos_x_100_panos,Rollo De Cocina Elegante Premium 3 rollos x 100 Paños,,4388,4886.94,4886.94,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/yogur-bebible-danonino-sabor-frutilla-900-grs-747999/p,Yogur bebible Danonino sabor frutilla 900 grs,Carrefour,2932,,,,,,,,,
+,https://www.delimart.com.ar/limpiador_aromatizante_desinfectante_poett_flores_de_primavera_x_4_lt,Limpiador Aromatizante Desinfectante Poett Flores De Primavera x 4 lt,,4377,8774.87,8774.87,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-dulces-carrefour-classic-con-chips-de-chocolate-357-grs-754015/p,Galletitas dulces Carrefour Classic con chips de chocolate 357 grs,Galletitas dulces Carrefour Classic con chips de chocolat... - Carrefour,2772,,,,,,,,,
+,https://www.delimart.com.ar/yogur_bebible_sabor_vainilla_cremigal_900_gr,Yogur Bebible Sabor Vainilla Cremigal 900 Gr,,3938,2174.05,1847.94,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/limpiador_de_piso_esencial_lavanda_natural_900_ml,Limpiador De Piso Esencial Lavanda Natural 900 ML,,4382,1461.75,1461.75,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-dulces-carrefour-classic-de-vainilla-120-grs-759353/p,Galletitas dulces Carrefour Classic de vainilla 120 grs,Galletitas dulces Carrefour Classic de vainilla 120 grs - Carrefour,2793,,,,,,,,,
+,https://www.delimart.com.ar/desodorante_axe_aerosol_marine_150_ml,Desodorante Axe Aerosol Marine 150 Ml,,4330,4535.04,4535.04,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/harina-de-trigo-barbara-000-x-1-kg-573044/p,Harina de trigo Bárbara 000 x 1 kg,Harina de Trigo 000 Bárbara - Carrefour,2838,,,,,,,,,
+,https://www.carrefour.com.ar/galletitas-vainilla-portenitas-139-g/p,Galletitas vainilla Porteñitas 139 g.,,2661,1369,1369,9848.92,1 K.,Ninguno,2026-06-13,Carrefour,,
+no_disponible,https://www.carrefour.com.ar/copos-de-maiz-azucarados-skarchitos-240-g/p,Copos de maíz azucarados Skarchitos 240 g.,Carrefour,2943,,,,,,,,,
+,https://www.carrefour.com.ar/galletitas-de-vainilla-carrefour-classic-rellenas-de-frutilla-120-grs-763858/p,Galletitas de vainilla Carrefour Classic rellenas de frutilla 120 grs,,2799,849,772.59,6438.25,1 K.,Ninguno,2026-06-13,Carrefour,,
+no_disponible,https://www.carrefour.com.ar/lentejas-secas-bulnez-400-grs-760491/p,Lentejas secas Bulnez 400 grs,Lentejas secas Bulnez 400 grs - Carrefour,3029,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/soda-cordoba-sifon-2-lts-603857/p,Soda Córdoba sifón 2 lts,Carrefour,3107,,,,,,,,,
+,https://www.delimart.com.ar/crema_dental_kolynos_triple_extra_fresh_x70_gr,Crema Dental Kolynos Triple Extra Fresh X70 Gr,,4335,1877.47,1877.47,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/mermelada-carrefour-classic-de-frutos-rojos-454-g-739421/p,Mermelada Carrefour Classic de frutos rojos 454 g.,Mermelada Carrefour Classic de frutos rojos 454 g. - Carrefour,3046,,,,,,,,,
+,https://www.delimart.com.ar/rollo_de_cocina_doble_hoja_elegante_gigante_200_panos,Rollo De Cocina Doble Hoja Elegante Gigante 200 Paños,,4392,3626.64,3626.64,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-pepas-9-de-oro-350-g-724195/p,Galletitas pepas 9 de Oro 350 g.,Galletitas pepas 9 de Oro 350 g. - Carrefour,2768,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/fideos-spaghetti-marolio-500-g-746919/p,Fideos spaghetti Marolio 500 g.,Fideos spaghetti Marolio 500 g - Carrefour,2861,,,,,,,,,
+,https://www.delimart.com.ar/shampoo_sedal_acido_hialuronico_y_vitamina_a_190_ml,Shampoo Sedal Acido Hialuronico Y Vitamina A 190 Ml,,4310,3872.57,3872.57,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/aceite-de-girasol-lira-15-l/p,Aceite de girasol Lira 1.5 l.,Aceite de girasol Lira 1.5 l - Carrefour,2877,,,,,,,,,
+,https://www.delimart.com.ar/alimento_para_perros_adultos_mordida_pequena_mix_carnes_y_vedura_keiko_3kg,Alimento Para Perros Adultos Mordida Pequeña Mix Carnes y Vedura Keiko 3Kg,,4399,7644.83,7644.83,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-crackers-la-providencia-505-g/p,Galletitas crackers La Providencia 505 g.,Carrefour,2813,,,,,,,,,
+,https://www.delimart.com.ar/dermo_acondicionador_head__shoulders_hidratacion_coco_300_ml,Dermo Acondicionador Head & Shoulders Hidratacion Coco 300 ml,,4321,10198.52,10198.52,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/lavandina_desinfectante_triple_poder_pureza_glaciar_ayudin_4l,Lavandina Desinfectante Triple Poder Pureza Glaciar Ayudin 4L,,4360,8140.64,8140.64,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-carrefour-light-naranja-225-l/p,Gaseosa Carrefour light naranja 2.25 l.,Carrefour,3089,,,,,,,,,
+404,https://www.carrefour.com.ar/soda-carrefour-classic-600-ml-740284/p,,Carrefour - Las mejores ofertas en supermercados,3105,,,,,,,,,
+,https://www.delimart.com.ar/jabon_palmolive_frescura_purificante_3x_90_gr,Jabon Palmolive Frescura Purificante 3x 90 Gr,,4303,4173.18,4173.18,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/carne-picada-swift-congelada-500-g-703600/p,Carne picada Swift congelada 500 g.,Carrefour,3243,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/soda-carrefour-classic-225-lts-735713/p,"Soda Carrefour Classic 2,25 lts",Carrefour,3104,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/cerveza-rubia-quilmes-1890-473-ml-746759/p,Cerveza rubia Quilmes 1890 473 ml,Carrefour,3156,,,,,,,,,
+,https://www.delimart.com.ar/leche_en_polvo_entera_purisima_800_gr,Leche En Polvo Entera Purisima 800 Gr,,3905,8166.14,8166.14,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/cebolla_el_kg_a,Cebolla el kg a,,4292,1680.01,1680.01,0,,Ninguno,2026-06-13,Delimart,,
+,https://diaonline.supermercadosdia.com.ar/arvejas-secas-remojadas-sin-sal-dia-300-gr-280242/p,Arvejas Secas Remojadas Sin Sal Dia 300 Gr.,,2317,746.0,746.0,,,,,Dia,Arvejas Secas Remojadas Sin Sal Dia 300 Gr.,2026-06-13 18:29:28
+,https://www.delimart.com.ar/jabon_rexona_antibacterial_con_aloe_90_gr,Jabon Rexona Antibacterial Con Aloe 90 Gr,,4309,1727.18,1727.18,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/rollos_de_cocina_vual_grofado_120_panos,Rollos de cocina Vual grofado 120 paños,,4389,2085.90,1773.02,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_liquido_baja_espuma_ala_eco_lavado_dp_800_ml,Jabón Líquido Baja Espuma Ala Eco Lavado D/P 800 Ml,,4367,3996.21,3996.21,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/leche-entera-lechelita-uat-tetra-1-l-689731-689731/p,Leche entera Lechelita uat tetra 1 l.,Carrefour,2902,,,,,,,,,
+exception,https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_suave_x_50_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4178,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-carrefour-classic-mini-frolitas-160-g/p,Galletitas Carrefour classic mini frolitas 160 g.,Galletitas Carrefour classic mini frolitas 160 g. - Carrefour,2744,,,,,,,,,
+,https://diaonline.supermercadosdia.com.ar/gaseosa-7-up-botella-225-lt-33239/p,Gaseosa 7 Up Botella 225 Lt 33239,,2352,0.0,0.0,,,,,Dia,Gaseosa 7 Up Botella 225 Lt 33239,2026-06-13 18:31:00
+,https://www.carrefour.com.ar/jabon-liquido-para-ropa-woolite-bebe-en-maquina-repuesto-900-ml-619920/p,Jabón líquido para ropa Woolite bebé en máquina repuesto 900 ml.,,3383,7169,7169,7965.56,1 L.,Ninguno,2026-06-13,Carrefour,,
+,https://www.delimart.com.ar/yogur_bebible_de_frutilla_la_serenisima_nutricion_activa_x_900_gr,Yogur Bebible De Frutilla La Serenisima Nutricion Activa x 900 Gr,,3936,2024.02,2024.02,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/shampoo_head__shoulders_manzana_fresh__180ml,Shampoo Head & Shoulders Manzana Fresh 180ml,,4312,6749.88,6749.88,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/limpiador_aromatizante_desinfectante_poett_flores_de_primavera_x_18_ml,Limpiador Aromatizante Desinfectante Poett Flores De Primavera x 1.8 Ml,,4378,3599.54,3599.54,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/shampoo_sedal_restauracion_instantanea_190_ml,Shampoo Sedal Restauración Instantánea 190 Ml,,4311,3874.11,3874.11,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-clasicas-lincoln-vainilla-153-g/p,Gelletitas clásicas Lincoln vainilla 153 g.,Carrefour,2716,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/harina-de-trigo-000-blancaflor-1-kg-735294/p,Harina de trigo 000 Blancaflor 1 kg.,Harina de trigo 000 Blancaflor - Carrefour,2833,,,,,,,,,
+,https://www.delimart.com.ar/jabon_dove_antibacterial_cuida__protege_90_gr,Jabón Dove Antibacterial Cuida & Protege 90 Gr,,4306,2939.09,2939.09,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_liquido_granby_fragancia_duradera_de_rosas_3l,Jabon Liquido Granby Fragancia Duradera de Rosas 3L,,4369,10380.06,10380.06,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/fernet-1882-750-cc/p,Fernet 1882 750 cc,Carrefour,3175,,,,,,,,,
+,https://www.delimart.com.ar/jabon_rexona_glicerina_citrus_x_90_grs,Jabon Rexona Glicerina Citrus x 90 grs,,4307,1659.91,1659.91,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/jugo-de-pomelo-exprimido-puro-sol-tetra-1-lt/p,Jugo de pomelo exprimido Puro Sol tetra 1 lt.,Carrefour,3101,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-dulces-cereal-mix-sabor-cacao-150-grs-748630/p,Galletitas dulces Cereal Mix sabor cacao 150 grs,Carrefour,2773,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-cola-coca-cola-sabor-liviano-225-lts-159570/p,"Gaseosa cola Coca Cola sabor liviano 2,25 lts",Carrefour,3070,,,,,,,,,
+,https://www.delimart.com.ar/acondicionador_crema_balance_190_ml,Acondicionador Crema Balance 190 Ml,,4320,3661.24,3661.24,0,,Ninguno,2026-06-13,Delimart,,
+404,https://www.carrefour.com.ar/cerveza-rubia-imperial-ipa-473-ml-639588/p,,Carrefour - Las mejores ofertas en supermercados,3144,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/vino-tinto-malbec-tierra-del-fuego-750-cc/p,Vino tinto Malbec Tierra de Fuego 750 ml,Vino tinto Malbec Tierra de Fuego 750 ml - Carrefour,3169,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/fideos-tallarines-marolio-500-g-746925/p,Fideos tallarines Marolio 500 g.,Fideos tallarines Marolio 500 g - Carrefour,2862,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-crackers-argentitas-3-x-102-g/p,Galletitas crackers Argentitas 3 x 102 g.,Carrefour,2826,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/nalga-entera-x-kg-678583/p,Nalga entera x kg.,Carrefour,3245,,,,,,,,,
+,https://www.delimart.com.ar/limpiador_de_pisos_plastificados_y_flotantes_blem_almendras_dp_400_cc,Limpiador de Pisos Plastificados y Flotantes Blem Almendras Dp 400 Cc,,4375,5370.12,5370.12,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/leche-en-polvo-franciscana-pouch-800-g-715359/p,Leche en polvo Franciscana pouch 800 g.,Carrefour,2898,,,,,,,,,
+,https://www.delimart.com.ar/alimento_para_perros_mix_carnes_y_verduras_adultos_keiko_3_kg,Alimento Para Perros Mix Carnes y Verduras Adultos Keiko 3 Kg,,4398,7644.83,7644.83,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/papas-fritas-pringles-de-crema-y-cebolla-109-g-730296/p,Papas fritas Pringles de crema y cebolla 109 g,Carrefour,3115,,,,,,,,,
+exception,https://www.delimart.com.ar/cafe_instantaneo_tradicion_nescafe_x170_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4191,,,,,,,,,
+404,https://www.carrefour.com.ar/carne-picada-novillo-x-kg-678596/p,,Carrefour - Las mejores ofertas en supermercados,3242,,,,,,,,,
+,https://www.delimart.com.ar/detergente_ala_ultra_limon_300_ml,Detergente Ala Ultra Limon 300 Ml,,4357,2106.52,2106.52,0,,Ninguno,2026-06-13,Delimart,,
+404,https://www.carrefour.com.ar/galletitas-banadas-de-chocolate-bridges-100-grs-753061/p,,Carrefour - Las mejores ofertas en supermercados,2800,,,,,,,,,
+,https://www.delimart.com.ar/shampoo_suave_brilloceramidas_930_ml,Shampoo Suave Brillo/Ceramidas 930 Ml,,4313,4410.23,4410.23,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/rollo_de_cocina_elegante_3_rollos_x_50_panos_21_cm_x_187_cm_cu,"Rollo De Cocina Elegante 3 rollos x 50 Paños 21 Cm x 18,7 Cm c/u",,4390,2996.39,2996.39,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/desodorante_dove_roll_on_original_50_ml,Desodorante Dove Roll On Original 50 Ml,,4328,3504.65,3504.65,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/mortadela-calchaqui-piccola-300-g/p,Mortadela Calchaqui piccola 300 g.,Carrefour,3259,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/mortadela-mini-con-pistacho-300-grs-730186/p,Mortadela mini con pistacho 300 grs,Carrefour,3260,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-frutigran-salvado-250-g/p,Galletitas Frutigran salvado 250 g.,Carrefour,2734,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/leche-en-polvo-santa-clara-fortificado-400-g-727232/p,Leche en polvo Santa clara fortificado 400 g.,Leche en polvo Santa clara fortificado 400 g. - Carrefour,2899,,,,,,,,,
+,https://www.delimart.com.ar/choclo_en_grano_amarillo_bahia_x170g,Choclo en Grano Amarillo Bahia x170g,,4294,1643.94,1643.94,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/desodorante_de_ambiente_aerosol_glade_potpourri__360_ml,Desodorante de Ambiente Aerosol Glade Potpourri 360 Ml,,4383,3728.87,3728.87,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_liquido_avenaoats_protex_221_ml,Jabon Liquido Avena/Oats Protex 221 Ml,,4347,4603.95,4603.95,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-dulces-bulnez-con-chips-50-grs-758854/p,Galletitas dulces Bulnez con chips 50 grs,Carrefour,2745,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/arroz-largo-fino-gallo-00000-en-bolsa-1-kg-718789/p,Arroz largo fino Gallo 00000 en bolsa 1 kg,Arroz largo fino Gallo 00000 en bolsa 1 kg - Carrefour,2851,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/harina-leudante-carrefour-classic-1-kg-776765/p,Harina leudante Carrefour Classic 1 kg,Harina leudante Carrefour Classic 1 kg Carrefour - Carrefour,2841,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-dale-chocolate-rellenas-de-vainilla-115-g/p,Galletitas Dale chocolate rellenas de vainilla 115 g.,Galletitas Dale chocolate rellenas de vainilla 115 g. - Carrefour,2805,,,,,,,,,
+404,https://www.carrefour.com.ar/dulce-de-leche-ilolay-clasico-400-g/p,,Carrefour,2953,,,,,,,,,
+exception,https://www.delimart.com.ar/yerba_mate_suave_4f_union_500_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4211,,,,,,,,,
+,https://www.delimart.com.ar/jabon_liquido_skip_para_diluir_x500ml,Jabón Liquido Skip Para Diluir X500ml,,4365,11373.93,11373.93,0,,Ninguno,2026-06-13,Delimart,,
+exception,https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_aroma_original_50_g,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4186,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/nesquik-cereal-210-grs-721284/p,Nesquik cereal 210 grs,Carrefour,2945,,,,,,,,,
+404,https://www.carrefour.com.ar/vainillas-carrefour-flow-pack-444-g-700137/p,,Carrefour - Las mejores ofertas en supermercados,2675,,,,,,,,,
+,https://www.delimart.com.ar/cafe_la_virginia_clasico_frasco_x50_gr,Cafe La Virginia Clasico Frasco x50 Gr,,4179,3184.33,3184.33,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/edulcorante-liquido-carrefour-classic-con-stevia-250-ml-661992/p,Edulcorante líquido Carrefour Classic con stevia 250 ml,Carrefour,2971,,,,,,,,,
+,https://www.delimart.com.ar/acondicionador_tresemme_cauterizacion_reparadora_250_ml,Acondicionador Tresemme Cauterizacion Reparadora 250 ml,,4325,7672.67,7672.67,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/toalla_calipso_normal_x82,Toalla Calipso Normal X8,,4351,1097.93,1097.93,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/lechuga_criolla__bolsa_x250_gr,Lechuga Criolla bolsa x250 Gr,,4296,3164.32,3164.32,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/medio-pollo-congelado-x-kg-738510/p,Medio pollo congelado x kg.,Carrefour,3251,,,,,,,,,
+,https://www.delimart.com.ar/acondicionador_suave_brilloceramidas_930_ml,Acondicionador Suave Brillo/Ceramidas 930 Ml,,4322,3634.31,3634.31,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_liquido_descanso_floral_x_200ml,Jabon Liquido Descanso Floral x 200ml,,4349,2474.01,2474.01,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_liquido_ariel_limpieza_profunda_doy_pack_x800_ml,Jabon Liquido Ariel Limpieza Profunda Doy Pack x800 Ml,,4368,5324.51,5324.51,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-de-vainillas-merengadas-rellenas-de-frutilla-88-g-716912/p,Galletitas de vainillas Merengadas rellenas de frutilla 88 g.,Carrefour,2698,,,,,,,,,
+,https://www.delimart.com.ar/batata__el_kg_a,Batata el kg a,,4289,1570.90,1570.90,0,,Ninguno,2026-06-13,Delimart,,
+404,https://www.carrefour.com.ar/galletitas-criollitas-crackers-5-x-998-g-708531/p,,Carrefour - Las mejores ofertas en supermercados,2816,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/alimento-a-base-de-queso-rallado-la-quesera-100-g-664368/p,Alimento a base de queso rallado La quesera 100 g.,Carrefour,2927,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/dulce-de-leche-santa-clara-400-g-722007/p,Dulce de leche Santa clara 400 g.,Carrefour,2951,,,,,,,,,
+,https://www.delimart.com.ar/detergente_magistral_ultra_limon_300_ml,Detergente Magistral Ultra Limón 300 Ml,,4355,3153.85,3153.85,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/choclo-en-granos-arcor-amarillo-lata-300-g-699528-699528/p,Choclo en granos Arcor amarillo lata 300 g.,Carrefour,3286,,,,,,,,,
+,https://www.delimart.com.ar/toallitas_femeninas_kotex_esencial_x_16_unidades,Toallitas Femeninas Kotex Esencial x 16 Unidades,,4354,4234.29,4234.29,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-formis-vainilla-rellenas-chocolate-102-g-712647/p,Galletitas Formis vainilla rellenas chocolate 102 g.,Carrefour,2685,,,,,,,,,
+,https://diaonline.supermercadosdia.com.ar/huevo-blanco-extragrande-opi-6-ud-114868/p,Huevo Blanco Extragrande Opi 6 Ud 114868,,2282,0.0,0.0,,,,,Dia,Huevo Blanco Extragrande Opi 6 Ud 114868,2026-06-13 18:24:44
+,https://www.delimart.com.ar/alcohol_etilico_al_70_ibatin_x_1_lt,Alcohol Etilico al 70% Ibatin x 1 lt,,4396,2607.59,2607.59,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/dulce-de-leche-bulnes-clasico-400-grs-753522/p,Dulce de leche Bulnez clásico 400 grs,Carrefour,2949,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/harina-leudante-caserita-x-1-kg-131557/p,Harina leudante Caserita x 1 kg,Harina leudante Caserita x 1 kg - Carrefour,2842,,,,,,,,,
+,https://www.delimart.com.ar/desodorante_go_fresh_aroma_pepino_y_te_verde_dove_87_gr,Desodorante Go Fresh Aroma Pepino Y te Verde Dove 87 Gr,,4333,6104.27,6104.27,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/detergente_concentrado_heroe_ultra_x500_ml_limon,Detergente Concentrado Heroe Ultra X500 Ml Limon,,4358,2108.12,1791.90,0,,Ninguno,2026-06-13,Delimart,,
+exception,https://www.delimart.com.ar/suavizante_de_ropa_comfort_botella__cuidado_intensivo_500_ml,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4372,,,,,,,,,
+,https://www.delimart.com.ar/suavizante_comfort_cuidado_intensivo_oleo_de_argan_450_ml,Suavizante Comfort Cuidado Intensivo Oleo de Argan 450 Ml,,4371,5329.84,5329.84,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/cafe_la_virginia_suave_frasco_x50_gr,Cafe La Virginia Suave Frasco x50 Gr,,4182,3184.33,3184.33,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/cafe_la_virginia_suave_frasco_x170_gr,Café La Virginia Suave Frasco x170 Gr,,4181,8967.64,8967.64,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-de-chocolate-bulnez-rellenas-6-uni-758857/p,Galletitas de chocolates Bulnez rellenas 6 uni,Carrefour,2753,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-crush-pomelo-amarillo-2-25-lts-337554/p,"Gaseosa Crush pomelo amarillo 2,25 lts",Carrefour,3077,,,,,,,,,
+,https://www.delimart.com.ar/papel_higienico_campanita_soft_xl_sh_4_x_80_mts,Papel Higienico Campanita Soft Xl SH 4 x 80 Mts,,4346,3067.88,3067.88,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/caldo-de-verduras-carrefour-classic-caja-12-u/p,Caldo de verduras Carrefour classic caja 12 u.,Caldo de verduras Carrefour classic caja 12 u. - Carrefour,3004,,,,,,,,,
+404,https://www.carrefour.com.ar/queso-cremoso-silvia-media-horma/p,,Carrefour - Las mejores ofertas en supermercados,2921,,,,,,,,,
+,https://www.delimart.com.ar/toallitas_femeninas_doncella_calas_sin_perfume_8_unid,Toallitas Femeninas Doncella C/Alas Sin Perfume 8 Unid.,,4353,1153.24,1153.24,0,,Ninguno,2026-06-13,Delimart,,
+exception,https://www.delimart.com.ar/jugo_de_naranaja_la_campagnola_bc_x_1_lt,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4078,,,,,,,,,
+,https://www.delimart.com.ar/limon_el_kilo_a,Limón el kilo a,,4302,1142.30,1142.30,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/papel_higienico_triple_hoja_elegante_extra_confort_4_rollos_x_30_m,Papel Higienico Triple Hoja Elegante Extra Confort 4 Rollos x 30 m,,4342,6430.11,6430.11,0,,Ninguno,2026-06-13,Delimart,,
+,https://depotexpress.com.ar/productos/comestibles/cald-molto-carne-12x/,CALD MOLTO CARNE 12X,,3506,1353.46,1353.46,0,,Ninguno,2026-06-13,Depot,,
+no_disponible,https://www.carrefour.com.ar/galletitas-rellenas-de-frutilla-bulnez-6-uni-758856/p,Galletitas rellenas de frutilla Bulnez 6 uni,Carrefour,2776,,,,,,,,,
+exception,https://www.delimart.com.ar/cafe_instantaneo_dolca_nescafe_x_100_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4184,,,,,,,,,
+,https://www.carrefour.com.ar/galletitas-9-de-oro-con-chips-de-chocolate-blanco-180-g/p,Galletitas 9 De Oro con chips de chocolate blanco 180 g.,,2792,2869,2869,15938.89,1 K.,Ninguno,2026-06-13,Carrefour,,
+404,https://www.carrefour.com.ar/gaseosa-fanta-naranja-2-25-lts-30139/p,,Carrefour - Las mejores ofertas en supermercados,3072,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-formis-vainilla-rellenas-frutilla-102-g-712649/p,Galletitas Formis vainilla rellenas frutilla 102 g.,Carrefour,2708,,,,,,,,,
+,https://www.delimart.com.ar/lavandina_sedille_2_l,Lavandina Sedille 2 L,,4363,2235.37,2235.37,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_de_tocador_dove_original_original_individual_90_gr,Jabón De Tocador Dove Original Original Individual 90 Gr,,4305,2939.09,2939.09,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/zapallo_brasilero_chico_hasta_2_kg_aprox,Zapallo Brasilero CHICO (hasta 2 kg aprox),,4300,1944.01,1944.01,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/harina-de-trigo-tassara-tipo-000-1-kg-703208/p,Harina de trigo Tassara tipo 000 1 kg.,Harina de trigo Tassara tipo 000 1 kg Tassara - Carrefour,2839,,,,,,,,,
+,https://www.delimart.com.ar/cafe_la_virginia_suave_frasco_x100_gr,Café La Virginia Suave Frasco x100 Gr,,4183,5702.27,5702.27,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/limpiador_aromatizante_desinfectante_poett_flores_de_primavera_x_900_ml,Limpiador Aromatizante Desinfectante Poett Flores De Primavera x 900 Ml,,4379,2075.99,2075.99,0,,Ninguno,2026-06-13,Delimart,,
+404,https://www.carrefour.com.ar/pollo-fresco-en-bandeja-marca-propia-x-kg-689035/p,,Carrefour - Las mejores ofertas en supermercados,3250,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/huevo-blanco-carnave-carton-6-u/p,Huevo blanco Carnave cartón 6 u.,Carrefour,2960,,,,,,,,,
+,https://www.carrefour.com.ar/galletitas-dulces-terrabusi-miel-120-grs-743101/p,Galletitas dulces Terrabusi miel 120 grs,,2748,1259,1259,10491.67,1 K.,Ninguno,2026-06-13,Carrefour,,
+,https://www.delimart.com.ar/limpiador_glade_liquido_paraiso_azul_176lt,"Limpiador Glade Liquido Paraiso Azul 1,76lt",,4381,5628.68,5628.68,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/tomate_perita_x_1_kg_2da_seleccion_blando-manchas,Tomate Perita x 1 kg (2da Selección BLANDO-MANCHAS),,4298,1500.11,1500.11,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-formis-vainilla-rellenas-frutilla-72-g-712646/p,Galletitas Formis vainilla rellenas frutilla 72 g.,Carrefour,2684,,,,,,,,,
+,https://www.delimart.com.ar/choclo_en_grano_dona_pupa_340_gr,Choclo En Grano Doña Pupa 340 Gr,,4293,2023.99,2023.99,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/osobuco_congelado_aguma_el_kg_a,Osobuco Congelado Aguma el Kg a,,4260,9738.03,8277.33,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/acondicionador_dove_reconstruccion_completa_x_200_ml,Acondicionador Dove Reconstruccion Completa x 200 Ml,,4326,5013.48,5013.48,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_de_tocador__plusbelle_bradiante_x120_g,Jabon De Tocador Plusbelle B.Radiante X120 G,,4304,1404.88,1404.88,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-crackers-tripack-pindy-306-g/p,Galletitas crackers tripack Pindy 306 g.,Galletitas crackers tripack Pindy 306 g. - Carrefour,2823,,,,,,,,,
+404,https://www.carrefour.com.ar/vinagre-de-alcohol-alcazar-1-l/p,,Carrefour - Las mejores ofertas en supermercados,2999,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/jabon-de-tocador-palmolive-naturals-kerite-y-vitamina-e-nutricion-intensiva-x3-980-grs-713803/p,Jabón de tocador Palmolive Naturals Karité y Vitamina E Nutrición Intensiva x3 90 grs,Carrefour,3299,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/huevo-color-carnave-carton-6-u/p,Huevo color Carnave cartón 6 u.,Carrefour,2961,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/cerveza-rubia-schneider-473-ml-176451/p,Cerveza rubia Schneider 473 ml,Carrefour,3147,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/cacao-en-polvo-chocolino-bolsa-180-g/p,Cacao en polvo Chocolino bolsa 180 g.,Cacao en polvo Chocolino bolsa 180 g. - Carrefour,3219,,,,,,,,,
+404,https://www.carrefour.com.ar/galletitas-crackers-tia-maruca-3-x-106-g/p,,Carrefour - Las mejores ofertas en supermercados,2825,,,,,,,,,
+,https://www.delimart.com.ar/tomate_perita_el_kilo_a,Tomate Perita el kilo a,,4297,4408.00,4408.00,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-lima-limon-7-up-regular-pet-225-lts-745245/p,"Gaseosa lima limón 7 Up regular pet 2,25 lts",Carrefour,3067,,,,,,,,,
+,https://www.delimart.com.ar/rollo_de_cocina_campanita_classic_3x50,Rollo De Cocina Campanita Classic 3x50,,4387,1984.50,1984.50,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/vinagre-de-alcohol-carrefour-classic-500-cc/p,Vinagre de alcohol Carrefour classic 500 cc.,Vinagre de alcohol classic 500 cc - Carrefour,2993,,,,,,,,,
+exception,https://www.delimart.com.ar/cafe_la_morenita_torrado_intenso_100_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4189,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/jugo-natural-biofrut-multifruta-1-l-38393/p,Jugo natural Biofrut multifruta 1 l.,Carrefour,3100,,,,,,,,,
+,https://www.delimart.com.ar/alimento_para_perros_cachorros_infinity_10_kg,Alimento Para Perros Cachorros Infinity 10 Kg,,4403,38661.06,38661.06,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/detergente-liquido-ala-concentrado-limon-botella-500-ml-722418/p,Detergente Líquido Ala + Concentrado Limón Botella 500 ml,Carrefour,3368,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/mortadela-con-queso-paladini-300-g/p,Mortadela con queso Paladini 300 g.,Carrefour,3262,,,,,,,,,
+,https://www.carrefour.com.ar/galleta-de-vainilla-9-de-oro-con-relleno-de-chocolate-160-g-635370/p,Galleta de vainilla 9 de Oro con relleno de chocolate 160 g.,,2790,2369,2369,14806.25,1 K.,Ninguno,2026-06-13,Carrefour,,
+no_disponible,https://www.carrefour.com.ar/galletitas-chocolate-negro-macucas-black-110-grs-760486/p,Galletitas chocolate negro Macucas black 110 grs,Carrefour,2709,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-crush-naranja-2-25-lts-158471/p,"Gaseosa Crush Naranja 2,25 lts",Carrefour,3078,,,,,,,,,
+,https://www.carrefour.com.ar/galletitas-scons-carrefour-classic-250-g-740652/p,Galletitas scons Carrefour Classic 250 g.,,2780,1850,1702,6808,1 K.,Ninguno,2026-06-13,Carrefour,,
+no_disponible,https://www.carrefour.com.ar/jugo-natural-naranja-puro-sol-lt/p,Jugo natural naranja Puro Sol 1 lt.,Carrefour,3097,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-crush-lima-limon-2-25-lts-168638/p,"Gaseosa Crush Lima-Limón 2,25 lts",Carrefour,3073,,,,,,,,,
+,https://www.delimart.com.ar/jabon_lux_orquidea_negra_x3_125_gr,Jabon Lux Orquidea Negra x3 125 Gr,,4308,4085.14,4085.14,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/aerosol_desinfectante_expert_ayudin_frescura_matinal_277_gr,Aerosol Desinfectante Expert Ayudin Frescura Matinal 277 Gr,,4384,4054.79,4054.79,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/mermelada-carrefour-classic-de-arandanos-454-g-739420/p,Mermelada Carrefour Classic de arándanos 454 g.,Mermelada Carrefour Classic de arándanos 454 g. - Carrefour,3052,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/yogur-bebible-bulnez-sabor-frutilla-900-grs-754974/p,Yogur bebible Bulnez sabor frutilla 900 grs,Carrefour,2937,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-dulce-carrefour-classic-anillo-sabor-coco-300-grs-754968/p,Galletitas dulces Carrefour Classic anillo sabor coco 300 grs,Galletitas dulces Carrefour Classic anillo sabor coco 300... - Carrefour,2795,,,,,,,,,
+,https://www.delimart.com.ar/alcohol_etilico_al_96_ibatin_x_1_lt,Alcohol Etilico al 96% Ibatin x 1 lt,,4395,3259.48,3259.48,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/jabon_en_polvo_ala_eco_lavado_800_gr,Jabon En Polvo Ala Eco Lavado 800 Gr,,4366,4870.38,4870.38,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/papel_higienico_doble_hoja_infinity_4_un_felpita_30_mt2,Papel Higienico Doble Hoja Infinity 4 Un Felpita 30 Mt,,4344,3282.40,3282.40,0,,Ninguno,2026-06-13,Delimart,,
+404,https://www.carrefour.com.ar/alimento-seco-para-gato-sabrositos-pescado-3-kg-670856/p,,Carrefour - Las mejores ofertas en supermercados,3427,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/suavizante-vivere-plancha-facil-900-ml-769534/p,Suavizante Vivere plancha facil 900 ml,Carrefour,3386,,,,,,,,,
+,https://www.delimart.com.ar/conserva_granos_de_choclo_amarillo_entero_arcor_x_205_gr,Conserva Granos De Choclo Amarillo Entero Arcor x 205 Gr,,4295,2330.12,2330.12,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/harina-de-trigo-morixe-000-1-kg/p,Harina de trigo Morixe 000 1 kg.,Harina de trigo Morixe 000 1 kg. Morixe - Carrefour,2840,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/pure-de-tomates-alco-520-g/p,Pure de tomates Alco 520 g.,Carrefour,3022,,,,,,,,,
+,https://www.delimart.com.ar/acondicionador_guisseny_x_900_ml__brillo_ceramidas,Acondicionador Guisseny X 900 Ml + Brillo Ceramidas,,4323,3012.59,3012.59,0,,Ninguno,2026-06-13,Delimart,,
+exception,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vino-callia-alta-malbec-x-750c-c/,,"Message: timeout: Timed out receiving message from renderer: 6.448
+  (Session info: chrome=149.0.7827.103)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce454439]
+	chromedriver!(No symbol) [0x7ff7ce454121]
+	chromedriver!(No symbol) [0x7ff7ce451e0b]
+	chromedriver!(No symbol) [0x7ff7ce45272f]
+	chromedriver!(No symbol) [0x7ff7ce461dea]
+	chromedriver!(No symbol) [0x7ff7ce478a27]
+	chromedriver!(No symbol) [0x7ff7ce4808ca]
+	chromedriver!(No symbol) [0x7ff7ce452ef1]
+	chromedriver!(No symbol) [0x7ff7ce478755]
+	chromedriver!(No symbol) [0x7ff7ce50ee69]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",3611,,,,,,,,,
+,https://www.delimart.com.ar/papa_blanca_el_kg_a,Papa Blanca el Kg a,,4290,1712.75,1712.75,0,,Ninguno,2026-06-13,Delimart,,
+,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vino-dilema-day-malbec-x-750/,VINF DILEMA DAY MALBEC 750X,,3613,3583.58,3583.58,0,,Ninguno,2026-06-13,Depot,,
+,https://www.delimart.com.ar/alimento_para_gatos_keiko_fraccionado_x15kg,"Alimento para Gatos Keiko Fraccionado X1,5kg",,4404,2854.75,2854.75,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/rollo_de_cocina_doble_hoja_elegante_premium_3_rollos_x_120_panos,Rollo De Cocina Doble Hoja Elegante Premium 3 rollos x 120 Paños,,4391,5122.04,5122.04,0,,Ninguno,2026-06-13,Delimart,,
+exception,https://www.delimart.com.ar/mayonesa_dfisesta_475_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",3988,,,,,,,,,
+,https://www.delimart.com.ar/zanahorias_el_kilo_a,Zanahorias el kilo a,,4299,2040.01,2040.01,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/limpiador_liquido_pisos_procenex_desinfectante_original_900_ml,Limpiador Líquido Pisos Procenex Desinfectante Original 900 Ml,,4373,3433.76,3433.76,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-tipo-crackers-bulnez-pack-303-grs-752504/p,Galletitas tipo crackers Bulnez pack 303 grs,Carrefour,2824,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/osobuco-x-kg-678577/p,Osobuco x kg.,Carrefour,3241,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/fideos-tallarines-n7-terrabusi-500-g-729392/p,Fideos tallarines N7 Terrabusi 500 g.,Fideos tallarines N7 Terrabusi 500 g - Carrefour,2867,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/azucar-comun-carrefour-classic-tipo-a-en-bolsa-1-kg-723266/p,Azúcar común Carrefour classic tipo A en bolsa 1 kg.,Azúcar común Carrefour classic tipo A en bolsa 1 kg. - Carrefour,2963,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/azucar-comun-tipo-a-bella-vista-1-kg-421740/p,Azúcar comun tipo A Bella vista 1 kg.,Carrefour,2965,,,,,,,,,
+,https://www.delimart.com.ar/alcohol_etilico_frau_1_lt,Alcohol Etilico Frau 1 Lt,,4394,4547.66,4547.66,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/pure-de-tomate-dona-pupa-tetra-520-g/p,Puré de tomate Doña Pupa tetra 520 g.,Carrefour,3023,,,,,,,,,
+,https://www.delimart.com.ar/crema_dental_colgate_luminous_white_brilliant_90_gr,Crema Dental Colgate Luminous White Brilliant 90 Gr,,4339,7321.86,7321.86,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/acondicionador_estrella_200_ml,Acondicionador Estrella 200 Ml,,4324,4557.67,4557.67,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/desodorante_antit_rexona_antibacterial_89_g,Desodorante Antit Rexona Antibacterial 89 G,,4332,4584.42,4584.42,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/cafe_la_virginia_clasico_frasco_x100_gr,Café La Virginia Clasico Frasco x100 Gr,,4180,5702.27,5702.27,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/shampoo_dove_reconstruccion_completa_200_ml,Shampoo Dove Reconstrucción Completa 200 Ml,,4319,5186.36,5186.36,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-pomelo-schweppes-zero-225-lts-613051/p,"Gaseosa pomelo Schweppes Zero 2,25 lts",Carrefour,3068,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-naranja-cunnington-classic-pet-225-lts-721468/p,"Gaseosa naranja Cunnington classic pet 2,25 lts",Carrefour,3086,,,,,,,,,
+,https://www.carrefour.com.ar/jabon-de-tocador-estrella-relajacion-3-x-130-g-661759/p,Jabón de tocador Estrella relajación 3 x 130 g.,,3300,4599,4599,11792.31,1 K.,Ninguno,2026-06-13,Carrefour,,
+,https://diaonline.supermercadosdia.com.ar/aceite-de-girasol-legitimo-15-lt-15122/p,Aceite De Girasol Legitimo 15 Lt 15122,,2241,0.0,0.0,,,,,Dia,Aceite De Girasol Legitimo 15 Lt 15122,2026-06-13 18:34:40
+,https://www.delimart.com.ar/suavizante_para_ropa_vivere_explosion_floral_x900_ml,Suavizante para Ropa Vivere Explosion Floral X900 Ml,,4370,3797.60,3797.60,0,,Ninguno,2026-06-13,Delimart,,
+404,https://www.carrefour.com.ar/aceite-de-girasol-canuelas-900-cc/p,,Aceite de girasol Cañuelas 900 cc - Carrefour,2874,,,,,,,,,
+,https://www.delimart.com.ar/alimento_para_perros_mordida_pequena_keiko_fraccionado_x15kg_sabor_carne_y_verduras,"Alimento para Perros Mordida Pequeña Keiko Fraccionado X1,5kg Sabor carne y verduras",,4397,2854.75,2854.75,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/yogur_bebible_de_vainilla_la_serenisima_nutricion_activa_x_900_gr,Yogur Bebible De Vainilla La Serenisima Nutricion Activa x 900 Gr,,3935,2024.02,2024.02,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/desodorante_rexona_aerosol_odorono_150_ml,Desodorante Rexona Aerosol Odorono 150 Ml,,4331,3927.92,3927.92,0,,Ninguno,2026-06-13,Delimart,,
+exception,https://www.delimart.com.ar/dulce_de_leche_clasico_ilolay_405_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",3953,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/rollo-de-cocina-bulnez-doble-hoja-x3-40-panos-769300/p,Rollo de cocina Bulnez doble hoja x3 40 paños,Carrefour,3406,,,,,,,,,
+,https://www.delimart.com.ar/shampoo_color_vive_elvive_loreal_paris_x_200_ml2,Shampoo Color Vive Elvive Loreal Paris X 200 Ml,,4317,5665.81,5665.81,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/shampoo_pantene_keratina_repara_y_protege_200_ml,Shampoo Pantene Keratina Repara y Protege 200 ml,,4316,5962.87,5962.87,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/crema_dental_odol_doble_accion_180_gr,Crema Dental Odol Doble Accion 180 Gr,,4336,5789.34,5789.34,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.carrefour.com.ar/mermelada-carrefour-classic-frutilla-454-grs-629266/p,Mermelada Carrefour Classic frutilla 454 grs,,3042,3190,2966.70,6534.58,1 K.,Ninguno,2026-06-13,Carrefour,,
+no_disponible,https://www.carrefour.com.ar/galletitas-mana-sabor-chocolatada-136-g-704900/p,Galletitas Maná sabor chocolatada 136 g.,Carrefour,2752,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/desinfectante-elimina-olores-lysoform-original-aerosol-360-ml-688630/p,Desinfectante elimina olores Lysoform original aerosol 360 ml,Carrefour,3404,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-pepa-arcor-183-grs-748628/p,Galletitas pepa Arcor 183 grs,Carrefour,2665,,,,,,,,,
+,https://www.delimart.com.ar/crema_dental_odol_doble_accion_70_gr,Crema Dental Odol Doble Accion 70 Gr,,4337,2265.45,2265.45,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/te-en-saquitos-green-hills-50-u/p,Té en saquitos Green Hills 50 u.,Carrefour,3231,,,,,,,,,
+exception,https://www.delimart.com.ar/acelga_por_1200g_aprox,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4291,,,,,,,,,
+,https://www.delimart.com.ar/lavandina_esencial_tradicional_1_lt,Lavandina Esencial Tradicional 1 Lt,,4362,1486.90,1486.90,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/soda-bulnez-225-lts-728710/p,"Soda Bulnez 2,25 lts",Carrefour,3103,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/queso-rallado-milkaut-40-g-744749/p,Queso rallado Milkaut 40 g.,Carrefour,2929,,,,,,,,,
+,https://www.delimart.com.ar/desodorante_dove_roll_on_insible_dry_50_ml,Desodorante Dove Roll On Insible Dry 50 Ml,,4329,4438.96,4438.96,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/papel_higienico_doble_hoja_felpita_4_un_x_20_mt2,Papel Higienico Doble Hoja Felpita 4 Un X 20 Mt,,4343,2297.85,2297.85,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/limpiador_liquido_pisos_procenex_desinfectante_original_18_lts,"Limpiador Líquido Pisos Procenex Desinfectante Original 1,8 Lts",,4374,6719.13,6719.13,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/queso_cremoso_cremigal_fracc_aprox_900g,Queso Cremoso Cremigal Fracc Aprox 900g,,3917,10928.24,9289.00,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/yogur-bebible-frutilla-la-serenisima-clasico-900-g-726990/p,Yogur bebible frutilla La SerenÍsima clásico 900 g.,Carrefour,2931,,,,,,,,,
+exception,https://www.delimart.com.ar/cafe_instantaneo_nescafe_dolca_original_170_gr,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4188,,,,,,,,,
+,https://www.delimart.com.ar/pasta_dental_colgate_triple_accion_180_gr,Pasta dental Colgate Triple Accion 180 Gr,,4338,7237.73,7237.73,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/alcohol_etilico_frau_500_cm,Alcohol Etilico Frau 500 Cm,,4393,2626.28,2626.28,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/cafe_la_virginia_clasico_frasco_x170_gr,Café La Virginia Clasico Frasco x170 Gr,,4185,8967.64,8967.64,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/toallita_femenina_ladysoft_confort_soft_x_8_uni,Toallita Femenina Ladysoft Confort Soft x 8 uni,,4352,1021.14,1021.14,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/queso-cremoso-sudamlac-x-kg-755753/p,Queso cremoso Sudamlac x kg,Carrefour,2922,,,,,,,,,
+exception,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vino-circus-roble-malbec-x-750/,,"Message: timeout: Timed out receiving message from renderer: 6.239
+  (Session info: chrome=149.0.7827.103)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce454439]
+	chromedriver!(No symbol) [0x7ff7ce454121]
+	chromedriver!(No symbol) [0x7ff7ce451e0b]
+	chromedriver!(No symbol) [0x7ff7ce45272f]
+	chromedriver!(No symbol) [0x7ff7ce461dea]
+	chromedriver!(No symbol) [0x7ff7ce478a27]
+	chromedriver!(No symbol) [0x7ff7ce4808ca]
+	chromedriver!(No symbol) [0x7ff7ce452ef1]
+	chromedriver!(No symbol) [0x7ff7ce478755]
+	chromedriver!(No symbol) [0x7ff7ce50ee69]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",3612,,,,,,,,,
+,https://www.delimart.com.ar/protector_diario_doncella_anatomicos_con_perfume_20_unid,Protector Diario Doncella Anatomicos Con Perfume 20 Unid.,,4350,1275.58,1275.58,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/shampoo_guisseny_x_900_ml_repara_granadacabellos_tenidos,Shampoo Guisseny X 900 Ml Repara Granada/Cabellos Teñidos,,4314,2761.56,2761.56,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/maggi-caldo-de-carne-menos-sodio-12-uni-723124/p,Maggi Caldo de Carne Menos Sodio 12 uni,Carrefour,3009,,,,,,,,,
+,https://www.delimart.com.ar/cafe_dolca_suave_frasco_x170_gr,Café Dolca Suave Frasco x170 Gr,,4177,12726.72,12726.72,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/alimento_para_perros_adultos_raza_pequenas_infinity_8_kg,Alimento Para Perros Adultos Raza Pequeñas Infinity 8 Kg,,4402,29837.35,29837.35,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/alimento_para_perros_cachorros_keiko_max_8_kg,Alimento Para Perros Cachorros Keiko Max 8 Kg,,4401,23852.82,23852.82,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/alimento_para_perros_adultos_keiko_max_3_kg,Alimento Para Perros Adultos Keiko Max 3 Kg,,4400,8917.44,8917.44,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/vino-tinto-malbec-cosecha-elegido-norton-750-cc-586173/p,Vino tinto Malbec Cosecha Elegido Nortón 750 ml,Carrefour,3166,,,,,,,,,
+404,https://www.carrefour.com.ar/mortadela-mini-con-pimienta-300-grs-730188/p,,Carrefour - Las mejores ofertas en supermercados,3264,,,,,,,,,
+404,https://www.carrefour.com.ar/galletitas-mana-de-vainilla-livianas-fp-3x-136-g-704899/p,,Carrefour - Las mejores ofertas en supermercados,2671,,,,,,,,,
+,https://www.delimart.com.ar/papel_higienico_elegante_aloe_vera_premium-max_4_rollos_x_80_m_x_10_cm,Papel Higienico Elegante Aloe Vera Premium-Max 4 rollos x 80 m x 10 Cm,,4341,6324.97,6324.97,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/yogur_bebible_sabor_frutilla_cremigal_900g,Yogur Bebible Sabor Frutilla Cremigal 900g,,3937,2174.05,1847.94,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/rollo_de_cocina_textura_mas_fuerte_3x40_panos_felpita,Rollo De Cocina Textura Mas Fuerte 3x40 Paños Felpita,,4386,2575.49,2575.49,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-de-chocolate-macucas-85-g-744854/p,Galletitas de chocolate Macucas 85 g.,Galletitas de chocolate Macucas 85 g. - Carrefour,2682,,,,,,,,,
+,https://www.delimart.com.ar/pera_el_kilo_a,Pera el kilo a,,4288,5000.00,5000.00,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-cola-cunnington-suave-sin-tacc-225-lts-723483/p,"Gaseosa cola Cunnington suave sin tacc 2,25 lts",Carrefour,3063,,,,,,,,,
+,https://www.delimart.com.ar/crema_dental_colgate_herbal_x_90_gr,Crema Dental Colgate Herbal x 90 Gr,,4340,4382.20,4382.20,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/vinagre-de-alcohol-bulnez-500-ml-761713/p,Vinagre de alcohol Bulnez 500 ml,Vinagre de alcohol Bulnez 500 ml - Carrefour,2992,,,,,,,,,
+,https://www.delimart.com.ar/jabon_liquido_floral_rain_algabo_300_ml,Jabon Liquido Floral Rain Algabo 300 Ml,,4348,2209.51,2209.51,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/shampoo_clear_men_anticaspa_caida_control_x200ml,Shampoo Clear Men Anticaspa Caida Control X200ML,,4315,6621.95,6621.95,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/crema_dental_kolynos_super_blanco_x_90_gr,Crema Dental Kolynos Super Blanco x 90 Gr,,4334,3028.09,3028.09,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galletitas-de-avena-bulnez-con-chips-175-grs-758858/p,Galletitas de avena Bulnez con chips 175 grs,Carrefour,2784,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/vinagre-de-alcohol-menoyo-pet-250-g-585328/p,Vinagre de alcohol Menoyo pet 250 g.,Vinagre de alcohol pet 250 g - Carrefour,2994,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-pomelo-cunnignton-suave-sin-tacc-225-lts-723486/p,"Gaseosa pomelo Cunnignton suave sin tacc 2,25 lts",Carrefour,3064,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/alimento-a-base-de-queso-rallado-bulnez-en-sobre-40-g-740456/p,Alimento a base de queso rallado Bulnez en sobre 40 g.,Carrefour,2930,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/leche-en-polvo-entera-purisima-400-g/p,Leche en polvo entera Purísima 400 g.,Carrefour,2895,,,,,,,,,
+,https://www.delimart.com.ar/limpiador_glade_liquido_floral_875_ml,Limpiador Glade Liquido Floral 875 ml,,4380,3223.05,3223.05,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/limpiador-liquido-aromatizante-poett-flores-de-primavera-900-ml-671375/p,Limpiador líquido aromatizante Poett flores de primavera 900 ml.,Carrefour,3397,,,,,,,,,
+,https://www.delimart.com.ar/lavandina_heroe_x1_lt_clasica,Lavandina Heroe X1 LT Clasica,,4364,1102.43,937.07,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/lavandina_ayudin__triple_poder_pureza_glaciar_2l,Lavandina Ayudin Triple Poder Pureza Glaciar 2L,,4359,4401.83,4401.83,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/pollo-entero-congelado-el-mercado-x-kg-741361/p,Pollo entero congelado El Mercado x kg.,Carrefour,3249,,,,,,,,,
+,https://diaonline.supermercadosdia.com.ar/huevos-grandes-blancos-don-ramon-6-ud-54365/p,Huevos Grandes Blancos Don Ramon 6 Ud 54365,,2284,0.0,0.0,,,,,Dia,Huevos Grandes Blancos Don Ramon 6 Ud 54365,2026-06-13 18:38:32
+,https://www.delimart.com.ar/lysoform_en_aerosol_aire_de_montana_x_360_cc,Lysoform En Aerosol Aire De Montaña x 360 cc,,4385,4729.94,4729.94,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/blem_embellece_cera_liquida_incolora_800_cc,Blem Embellece Cera Líquida Incolora 800 CC,,4376,13313.80,13313.80,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/asado-novillo-x-kg-6631/p,Asado Novillo x kg.,Carrefour,3240,,,,,,,,,
+404,https://www.carrefour.com.ar/alimento-seco-para-perro-dogui-adultos-8-kg-689084/p,,Alimento seco para perro Dogui adultos 8 kg - Carrefour,3421,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-gold-mundo-anillos-chocolate-y-vainilla-250-g-621326/p,Galletitas Gold Mundo anillos chocolate y vainilla 250 g.,Galletitas Gold Mundo anillos chocolate y vainilla 250 g. - Carrefour,2801,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/gaseosa-tonica-cunnington-suave-sin-tacc-225-lts-723484/p,"Gaseosa tónica Cunnington suave sin tacc 2,25 lts",Carrefour,3069,,,,,,,,,
+no_disponible,https://www.carrefour.com.ar/galletitas-carrefour-classic-con-chips-chocolate-172-grs-664917/p,Galletitas Carrefour Classic con chips chocolate 172 grs,Carrefour,2751,,,,,,,,,
+,https://www.delimart.com.ar/lavandina_esencial_tradicional_2_lt,Lavandina Esencial Tradicional 2 Lt,,4361,2634.77,2634.77,0,,Ninguno,2026-06-13,Delimart,,
+,https://www.delimart.com.ar/detergente_cif_bioactive_lima_500_ml,Detergente Cif Bioactive Lima 500 Ml,,4356,4686.35,4686.35,0,,Ninguno,2026-06-13,Delimart,,
+exception,https://diaonline.supermercadosdia.com.ar/arvejas-secas-remojadas-sin-sal-dia-300-gr-280242/p,,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",4018,,,,,,,,,
+,https://www.carrefour.com.ar/galletitas-de-avena-y-semilla-bulnez-175-grs-758859/p,Galletitas de avena y semilla Bulnez 175 grs,,2788,1307,1307,7468.57,1 K.,Ninguno,2026-06-13,Carrefour,,
+,https://www.delimart.com.ar/zapallo_brasilero_mediano_2_kg_a_4_kg_aprox,Zapallo Brasilero MEDIANO (2 kg a 4 kg aprox),,4301,4725.00,4725.00,0,,Ninguno,2026-06-13,Delimart,,
+404,https://www.carrefour.com.ar/queso-crema-la-paulina-tradicional-290-g/p,,Carrefour - Las mejores ofertas en supermercados,2907,,,,,,,,,
+,https://www.delimart.com.ar/papel_higienico_texturado_simple_hoja_campanita_4_un_30_mts2,Papel Higienico Texturado Simple Hoja Campanita 4 Un 30 Mts,,4345,1306.81,1306.81,0,,Ninguno,2026-06-13,Delimart,,
+no_disponible,https://www.carrefour.com.ar/galleta-dulce-scons-terrabusi-160-g-682549/p,Galletitas dulces Scons Terrabusi 160 g.,Carrefour,2808,,,,,,,,,
+,https://www.delimart.com.ar/shampoo_plusbelle_1lt_nutricion_cremosa,Shampoo Plusbelle 1lt Nutricion Cremosa,,4318,4118.74,4118.74,0,,Ninguno,2026-06-13,Delimart,,

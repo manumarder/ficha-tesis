@@ -1,0 +1,27 @@
+nombre,precio_normal,precio_descuento,precio_por_unidad,unidad,descuentos,fecha,supermercado,url,id_link_producto,error_type,titulo
+Alimento Para Perros Adultos Keiko Max 3 Kg,8917.44,8917.44,0,,Ninguno,2026-06-13,Delimart,https://www.delimart.com.ar/alimento_para_perros_adultos_keiko_max_3_kg,4400,,
+,,,,,,,,https://www.delimart.com.ar/suavizante_de_ropa_comfort_botella__cuidado_intensivo_500_ml,4372,exception,"Message: 
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff7ce92fd95+15395]
+	chromedriver!GetHandleVerifier [0x7ff7ce92fdf0+153f0]
+	chromedriver!(No symbol) [0x7ff7ce4678fd]
+	chromedriver!(No symbol) [0x7ff7ce4c1479]
+	chromedriver!(No symbol) [0x7ff7ce4c177c]
+	chromedriver!(No symbol) [0x7ff7ce511ef7]
+	chromedriver!(No symbol) [0x7ff7ce50eaeb]
+	chromedriver!(No symbol) [0x7ff7ce4b3a58]
+	chromedriver!(No symbol) [0x7ff7ce4b4953]
+	chromedriver!GetHandleVerifier [0x7ff7ceef5511+5dab11]
+	chromedriver!GetHandleVerifier [0x7ff7ceeef8fb+5d4efb]
+	chromedriver!GetHandleVerifier [0x7ff7cef13205+5f8805]
+	chromedriver!GetHandleVerifier [0x7ff7ce94cc6e+3226e]
+	chromedriver!GetHandleVerifier [0x7ff7ce95562c+3ac2c]
+	chromedriver!GetHandleVerifier [0x7ff7ce939984+1ef84]
+	chromedriver!GetHandleVerifier [0x7ff7ce939b14+1f114]
+	chromedriver!GetHandleVerifier [0x7ff7ce91ca77+2077]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+"
+Cerveza Rubia 1890 473 Cc Pack x 6,13470.37,9429.26,0,,Ninguno,2026-06-13,Delimart,https://www.delimart.com.ar/cerveza_rubia_1890_473_cc_pack_x_6,4123,,
+Whisky Jack Daniels 750 ml,42385.71,42385.71,0,,Ninguno,2026-06-13,Delimart,https://www.delimart.com.ar/whisky_jack_daniels_750_ml,4173,,
+Arroz Pulido Largo Fino 00000 Gallo 1kg,2868.75,2868.75,0,,Ninguno,2026-06-13,Delimart,https://www.delimart.com.ar/arroz_pulido_largo_fino_00000_gallo_1kg,3866,,

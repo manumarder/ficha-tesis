@@ -1,3 +1,5 @@
+#data_pipeline\pipeline.py
+
 """
 MAIN - Orquestador ETL para CanastaBasica
 Responsabilidad: Coordinar Extract (DB) → Transform → Validate → Load (DB)
@@ -22,32 +24,37 @@ from utils.optimization import cleanup_environment
 
 
 def main():
-    setup_logger("canasta_basica_scraper")
+    # --- NUEVA LÓGICA DE PARÁMETROS POR CONSOLA (FASE 20) ---
+    # Capturamos el filtro primero para aislar los logs y archivos
+    supermercado_filtro = sys.argv[1] if len(sys.argv) > 1 else None
+
+    # Cada proceso tiene su propio archivo de log (ej: canasta_basica_carrefour.log)
+    log_name = f"canasta_basica_{supermercado_filtro.lower()}" if supermercado_filtro else "canasta_basica_global"
+    setup_logger(log_name)
     logger = logging.getLogger(__name__)
 
-    # Limpieza inicial de procesos huérfanos
-    cleanup_environment(force=True)
-
+    # La limpieza se delegó al run_multiprocessing.py para evitar matarse entre procesos.
     load_dotenv()
     inicio = datetime.now()
-    logger.info("=" * 80)
-    logger.info("=== INICIO ETL CANASTA BÁSICA - %s ===", inicio.strftime("%Y-%m-%d %H:%M:%S"))
-    logger.info("=" * 80)
 
-
+    logger.info("=" * 80)
+    logger.info("=== INICIO ETL FICHÁ [%s] - %s ===", 
+                supermercado_filtro.upper() if supermercado_filtro else "GLOBAL", 
+                inicio.strftime("%Y-%m-%d %H:%M:%S"))
+    logger.info("=" * 80)
 
     extractor = None
     loader    = None
 
     try:
-
         # EXTRACT
         logger.info("1. [EXTRACT] Inicializando extractor...")
-        extractor = ExtractCanastaBasica(enable_parallel=True, max_workers=2)  # 2 workers para no saturar RAM del servidor
-        links_list = extractor.read_links_from_db()
+        # Por proceso asilado, desactivamos multithreading interno
+        extractor = ExtractCanastaBasica(enable_parallel=False, max_workers=1)
+        links_list = extractor.read_links_from_db(supermercado_filtro=supermercado_filtro)
 
         if not links_list:
-            logger.error("[ERROR] No se encontraron links activos en la base de datos.")
+            logger.error(f"[ERROR] No se encontraron links activos para: {supermercado_filtro}")
             return
 
         # Modo configurable: por defecto usa 50 links para pruebas, pero puedes forzar todos con EXTRACTION_SAMPLE_SIZE=0
@@ -87,10 +94,11 @@ def main():
         except Exception as e:
             logger.error(f"Error generando reporte de links fallidos: {e}")
 
-        # Backup en subcarpeta específica
+        # Backup en subcarpeta específica AÑADIENDO EL NOMBRE DEL SUPER PARA EVITAR COLISIONES
+        prefijo_super = supermercado_filtro.upper() if supermercado_filtro else "GLOBAL"
         backup_file = os.path.join(
             backup_raw_dir,
-            f'BACKUP_RAW_{datetime.now().strftime("%Y%m%d_%H%M")}.csv'
+            f'BACKUP_RAW_{prefijo_super}_{datetime.now().strftime("%Y%m%d_%H%M")}.csv'
         )
         try:
             df_raw.to_csv(backup_file, index=False)
