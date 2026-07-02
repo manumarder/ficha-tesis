@@ -24,5 +24,20 @@ jobs:
 
       - name: Ejecutar ping a la Base de Datos
         env:
-          DATABASE_URL: ${{ secrets.SUPABASE_DB_URL }}
-        run: python supabase_ping.py
+          DATABASE_URL: ${{ secrets.SUPABASE_DB_URL || secrets.DATABASE_URL }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL || '' }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY || '' }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY || '' }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY || '' }}
+          DB_USER: ${{ secrets.DB_USER || '' }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD || '' }}
+          DB_HOST: ${{ secrets.DB_HOST || '' }}
+          DB_PORT: ${{ secrets.DB_PORT || '' }}
+          DB_NAME: ${{ secrets.DB_NAME || '' }}
+          DB_SSLMODE: ${{ secrets.DB_SSLMODE || 'require' }}
+        run: |
+          if [ -z "$DATABASE_URL" ] && [ -z "$DB_HOST" ] && [ -z "$SUPABASE_URL" ]; then
+            echo "Error: No se encontró DATABASE_URL, DB_* ni SUPABASE_URL en los secrets."
+            exit 1
+          fi
+          python -u supabase_ping.py
