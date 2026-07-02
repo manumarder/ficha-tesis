@@ -137,3 +137,19 @@ python data_pipeline/cargar_desde_backup.py --csv data_pipeline/files/BACKUP_RAW
 
 ## 7. Dependencias
 Se agregó `requirements.txt` para facilitar la instalación.
+
+
+
+
+## Levantar el proyecto
+
+- Activar entorno
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+.\.venv\Scripts\Activate.ps1
+
+- Levantar el servidor de la api
+.\.venv\Scripts\python.exe -m uvicorn backend.main:app --reload
+
+- Otra terminal levantar el front
+cd frontend
+npm run dev

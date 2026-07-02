@@ -7,13 +7,14 @@ export interface ProductoAuditado {
   supermercado: string;
   created_at: string;
   precio_normal: number;
-  precio_descuento: number;
-  promedio_normal_21d: number;
-  dias_con_datos: number;
-  clasificacion: string;
-  semaforo: string;
-  ahorro_real_pct: number;
-  ahorro_nominal_pct: number;
+  precio_descuento?: number;
+  precio_final?: number;
+  promedio_normal_21d?: number;
+  dias_con_datos?: number;
+  clasificacion?: string;
+  semaforo?: string;
+  ahorro_real_pct?: number;
+  ahorro_nominal_pct?: number;
 }
 
 export async function getOfertasReales(): Promise<ProductoAuditado[]> {
@@ -27,7 +28,20 @@ export async function getOfertasReales(): Promise<ProductoAuditado[]> {
     return [];
   }
 }
-
+export async function searchProductos(query: string): Promise<ProductoAuditado[]> {
+  try {
+    const res = await fetch(`${BASE_URL}/api/buscar?q=${encodeURIComponent(query)}`, { cache: 'no-store' });
+    if (!res.ok) {
+      const json = await res.json();
+      throw new Error(json.detail || 'Error al buscar productos');
+    }
+    const json = await res.json();
+    return json.data || [];
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
 export async function getAlertasTrampa(): Promise<ProductoAuditado[]> {
   try {
     const res = await fetch(`${BASE_URL}/api/alertas-trampa`, { cache: 'no-store' });
