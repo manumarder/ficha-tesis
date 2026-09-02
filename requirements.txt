@@ -10,3 +10,4 @@ fastapi
 uvicorn
 streamlit
 requests
+webdriver_manager
