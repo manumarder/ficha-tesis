@@ -1,0 +1,29 @@
+url,supermercado,nombre,error_type,precio_normal
+https://diaonline.supermercadosdia.com.ar/desodorante-antitranspirante-roll-on-rexona-men-v8-50-ml-80928/p,Dia,Desodorante Antitranspirante Roll On Rexona Men V8 50 Ml 80928,,0.0
+,,,"EXCEPTION: Message: invalid argument
+  (Session info: chrome=155.0.8059.39)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+	(No symbol) [0x7ff741f601c5]
+	(No symbol) [0x7ff741e77990]
+	(No symbol) [0x7ff741c84286]
+	(No symbol) [0x7ff741c70f2d]
+	(No symbol) [0x7ff741c6f4b8]
+	(No symbol) [0x7ff741c6fa02]
+	(No symbol) [0x7ff741c88787]
+	(No symbol) [0x7ff741d36364]
+	(No symbol) [0x7ff741d08eea]
+	(No symbol) [0x7ff741d355a4]
+	(No symbol) [0x7ff741cd1892]
+	(No symbol) [0x7ff741cd26a3]
+	(No symbol) [0x7ff74236ab51]
+	(No symbol) [0x7ff742393aeb]
+	(No symbol) [0x7ff742387fbe]
+	(No symbol) [0x7ff74206260e]
+	(No symbol) [0x7ff741e85085]
+	(No symbol) [0x7ff741e803f4]
+	(No symbol) [0x7ff741e80584]
+	(No symbol) [0x7ff741e6ab1c]
+	(No symbol) [0x7ffb4e21cd87]
+	(No symbol) [0x7ffb4f7ecaec]
+",

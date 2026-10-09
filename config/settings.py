@@ -24,6 +24,13 @@ class GCPSettings:
 class AppSettings:
     environment: str = os.getenv("ENVIRONMENT", "development")
     log_level: str = os.getenv("LOG_LEVEL", "INFO")
+    cors_origins: list[str] = field(
+        default_factory=lambda: [
+            origin.strip()
+            for origin in os.getenv("CORS_ORIGINS", "http://localhost:3000,http://127.0.0.1:3000").split(",")
+            if origin.strip()
+        ]
+    )
     
     db: DatabaseSettings = field(default_factory=DatabaseSettings)
     gcp: GCPSettings = field(default_factory=GCPSettings)

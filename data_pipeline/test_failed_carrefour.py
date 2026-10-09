@@ -3,6 +3,7 @@ import glob
 import random
 import argparse
 from datetime import datetime
+from urllib.parse import urlsplit
 import pandas as pd
 import logging
 
@@ -21,10 +22,14 @@ def get_latest_failed_file(directory: str) -> str:
 
 def load_failed_links(csv_path: str, supermarket: str = 'Carrefour') -> pd.DataFrame:
     df = pd.read_csv(csv_path)
-    if 'supermercado' not in df.columns or 'url' not in df.columns:
-        raise ValueError('El CSV no tiene las columnas esperadas: supermercado, url')
+    if 'url' not in df.columns:
+        raise ValueError('El CSV no contiene la columna requerida: url')
 
-    df = df[df['supermercado'].astype(str).str.contains(supermarket, case=False, na=False)]
+    domain = 'carrefour.com.ar' if supermarket.casefold() == 'carrefour' else supermarket.casefold()
+    hosts = df['url'].fillna('').astype(str).map(
+        lambda url: (urlsplit(url).hostname or '').casefold()
+    )
+    df = df[hosts.map(lambda host: host == domain or host.endswith(f'.{domain}'))]
     return df.dropna(subset=['url'])
 
 
@@ -77,6 +82,8 @@ def main():
                         help='CSV de links fallidos a usar')
     parser.add_argument('--sample-size', type=int, default=50, 
                         help='Cantidad de links a muestrear (solo si no se usan --urls)')
+    parser.add_argument('--error-type', type=str, default='no_session',
+                        help="Tipo de error a probar; usa 'all' para incluir todos los errores")
     parser.add_argument('--output-dir', type=str, 
                         default=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'files', 'diagnostics'), 
                         help='Carpeta de salida para resultados')
@@ -101,8 +108,17 @@ def main():
         raise FileNotFoundError('No se encontró un CSV válido de links fallidos en ' + FAILED_DIR)
 
     df_failed = load_failed_links(source_file)
+    if args.error_type.casefold() != 'all' and 'error_type' in df_failed.columns:
+        df_failed = df_failed[
+            df_failed['error_type'].fillna('').astype(str).str.casefold()
+            == args.error_type.casefold()
+        ]
+
     if df_failed.empty:
-        raise ValueError('No se encontraron links de Carrefour en el CSV de links fallidos.')
+        raise ValueError(
+            f"No se encontraron links de Carrefour con error '{args.error_type}' "
+            f"en el reporte: {source_file}"
+        )
 
     urls = sample_urls(df_failed, args.sample_size)
     logger.info(f'Se van a evaluar {len(urls)} links de Carrefour extraídos de: {source_file}')

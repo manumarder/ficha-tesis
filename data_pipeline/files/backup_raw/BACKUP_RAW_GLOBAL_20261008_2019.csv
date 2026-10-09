@@ -1,0 +1,6 @@
+error_type,url,titulo,id_link_producto,supermercado,producto_nombre,nombre,precio_descuento,precio_normal,precio_por_unidad,unidad,descuentos,fecha_extraccion,fecha
+no_price,https://depotexpress.com.ar/productos/limpieza/detc-magistral-platinum-limon-500x/,Depot,3730,,,,,,,,,,
+,https://diaonline.supermercadosdia.com.ar/vino-malbec-el-cazador-750-ml-310080/p,,2418,Dia,Vino Malbec El Cazador 750 Ml.,Vino Malbec El Cazador 750 Ml.,3850.0,6416.0,,,,2026-10-08 20:18:36,
+no_disponible,https://www.carrefour.com.ar/mayonesa-canuelas-500-cc-730347/p,Mayonesa Cañuelas 500 cc - Carrefour,2987,,,Mayonesa Cañuelas 500 cc.,,,,,,,
+,https://diaonline.supermercadosdia.com.ar/alimento-humedo-salmon-raza-mini-dog-chow-100-gr-136883/p,,2657,Dia,Alimento Humedo Salmon Raza Mini Dog Chow 100 Gr.,Alimento Humedo Salmon Raza Mini Dog Chow 100 Gr.,1700.0,1700.0,,,,2026-10-08 20:19:03,
+,https://www.delimart.com.ar/queso_rallado_ilolay_40_g,,3930,Delimart,,Queso Rallado Ilolay 40 G,1568.73,1568.73,0,,Ninguno,,2026-10-08

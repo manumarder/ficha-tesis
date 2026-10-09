@@ -5,8 +5,13 @@ pymysql
 psycopg2-binary
 selenium
 selenium-stealth
+webdriver-manager
 openpyxl
 fastapi
 uvicorn
 streamlit
 requests
+mcp
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib

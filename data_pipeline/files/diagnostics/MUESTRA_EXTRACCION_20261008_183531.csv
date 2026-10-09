@@ -1,0 +1,13 @@
+﻿supermercado,id_link_producto,url,nombre,precio_normal,precio_descuento,precio_por_unidad,unidad,error_type,duracion_segundos
+Carrefour,3225,https://www.carrefour.com.ar/yerba-mate-taragui-con-palo-origen-controlado-1-kg/p,No se pudo establecer sesión,,,,,no_session,64.31
+Carrefour,3399,https://www.carrefour.com.ar/limpiador-liquido-multisuperficies-glade-lavanda-fragancia-duradera-para-pisos-y-superficies-1760-ml-750593/p,No se pudo establecer sesión,,,,,no_session,64.2
+Carrefour,3286,https://www.carrefour.com.ar/choclo-en-granos-arcor-amarillo-lata-300-g-699528-699528/p,No se pudo establecer sesión,,,,,no_session,61.56
+Día,2439,https://diaonline.supermercadosdia.com.ar/vino-malbec-puska-750-ml-299600/p,Vino Malbec Puska 750 Ml.,6169.0,6169.0,,,,5.21
+Día,2560,https://diaonline.supermercadosdia.com.ar/cebolla-morada-x-1-kg-263485/p,Cebolla Morada x 1 Kg.,4990.0,4990.0,,,,3.31
+Día,2648,https://diaonline.supermercadosdia.com.ar/alimento-para-cachorros-dogui-8-kg-307987/p,Alimento Para Cachorros Dogui 8 Kg.,0.0,0.0,,,,29.15
+Delimart,4179,https://www.delimart.com.ar/cafe_la_virginia_clasico_frasco_x50_gr,Cafe La Virginia Clasico Frasco x50 Gr,3375.39,3375.39,0,,,9.59
+Delimart,4310,https://www.delimart.com.ar/shampoo_sedal_acido_hialuronico_y_vitamina_a_190_ml,Shampoo Sedal Acido Hialuronico Y Vitamina A 190 Ml,4327.83,4327.83,0,,,7.05
+Delimart,4125,https://www.delimart.com.ar/cerveza_rubia_stella_artois_473_cc_pack_x_6_-,Cerveza Rubia Stella Artois 473 Cc Pack x 6 -,16999.99,11899.99,0,,,6.75
+Depot,3559,https://depotexpress.com.ar/productos/comestibles/cop-maniking-frit-sal-1000x/,Depot,,,,,no_price,34.43
+Depot,3711,https://depotexpress.com.ar/productos/tocador-y-cosmtica/desa-rexona-women-invis-150x/,Depot,,,,,no_price,32.83
+Depot,3692,https://depotexpress.com.ar/productos/tocador-y-cosmtica/jabe-veritas-glic-fresc-tot-3x120x/,Depot,,,,,no_price,32.89

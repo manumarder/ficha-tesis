@@ -65,10 +65,11 @@ def lanzar_pipeline_consolidado():
     logger.info("🧹 Limpiando procesos huérfanos residuales antes de iniciar...")
     cleanup_environment(force=True)
     
-    # 1. LEER TODOS LOS LINKS DESDE EL ORQUESTADOR MÁSTER
-    logger.info("📥 Obteniendo universo total de links activos...")
+    # 1. LEER LINKS DESDE EL ORQUESTADOR MÁSTER
+    supermercado_filtro = os.getenv("EXTRACTION_SUPERMERCADO") or None
+    logger.info(f"📥 Obteniendo enlaces activos{f' de {supermercado_filtro}' if supermercado_filtro else ''}...")
     extractor_master = ExtractCanastaBasica(enable_parallel=False, max_workers=1)
-    todos_los_links = extractor_master.read_links_from_db(supermercado_filtro=None)
+    todos_los_links = extractor_master.read_links_from_db(supermercado_filtro=supermercado_filtro)
     
     if hasattr(extractor_master, 'db') and extractor_master.db:
         extractor_master.db.close_connections()
@@ -109,7 +110,7 @@ def lanzar_pipeline_consolidado():
             logger.error("🚨 No quedaron links para procesar después de filtrar. Abortando.")
             return
     
-    sample_size = os.getenv("EXTRACTION_SAMPLE_SIZE", "50")
+    sample_size = os.getenv("EXTRACTION_SAMPLE_SIZE", "0")
     try:
         sample_size = int(sample_size)
     except ValueError:
@@ -165,6 +166,14 @@ def lanzar_pipeline_consolidado():
     # Unificar todos los dataframes en uno solo masivo
     df_raw_consolidado = pd.concat(dataframes_crudos, ignore_index=True)
     logger.info(f"\n📊 [CONSOLIDACIÓN] Se unificaron {len(df_raw_consolidado)} registros crudos en total.")
+
+    diagnostic_only = os.getenv("DIAGNOSTIC_ONLY", "false").lower() == "true"
+    if diagnostic_only:
+        columns = [column for column in ("url", "supermercado", "nombre", "error_type", "precio_normal", "precio_descuento", "precio_por_unidad", "unidad") if column in df_raw_consolidado.columns]
+        logger.info("🧪 MODO DIAGNÓSTICO: extracción completada; se omiten transformación, validación y carga.")
+        print(f"\n🧪 RESULTADOS DE EXTRACCIÓN: {len(df_raw_consolidado)} filas")
+        print(df_raw_consolidado[columns].to_string(index=False))
+        return
     
     # ---------------------------------------------------------
     # FASE 2: REDUCE (Reportes, Transformación, Validación y Carga)

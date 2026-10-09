@@ -116,6 +116,57 @@ python data_pipeline/pipeline.py
 python data_pipeline/cargar_desde_backup.py --csv data_pipeline/files/BACKUP_RAW_YYYYMMDD_HHMM.csv
 ```
 
+### 4.8 Revisar y corregir links fallidos
+
+El flujo utiliza los scripts `data_pipeline/generate_reparador.py` y `data_pipeline/update_links_db.py`. Ejecutá los comandos desde la raíz del proyecto, en PowerShell, con el entorno virtual y las dependencias instaladas.
+
+#### Paso 1: generar un reporte actualizado de links fallidos
+
+Lo habitual es ejecutar primero el ETL. Al finalizar, revisá que se haya generado un archivo `LINKS_FALLIDOS_*.csv` en `data_pipeline/files/links_fallidos/`. Si ya existe un reporte reciente, podés continuar sin repetir el ETL.
+
+```powershell
+Set-Location C:\Users\manue\Desktop\ficha-tesis
+.\.venv\Scripts\python.exe run_multiprocessing.py
+```
+
+#### Paso 2: generar el asistente HTML de reparación
+
+El script selecciona automáticamente el reporte `LINKS_FALLIDOS_*.csv` más reciente, excluye los errores `no_disponible` y genera la lista de links críticos para revisar.
+
+```powershell
+.\.venv\Scripts\python.exe data_pipeline\generate_reparador.py
+```
+
+El resultado se guarda en `data_pipeline/files/reparador_links.html`. Abrilo en el navegador:
+
+```powershell
+Start-Process .\data_pipeline\files\reparador_links.html
+```
+
+#### Paso 3: revisar y exportar las correcciones
+
+En el HTML, para cada link:
+
+1. Abrí el buscador de la tienda y localizá el producto correcto.
+2. Pegá la URL vigente del producto en la columna **Nueva URL**.
+3. Escribí `NO` únicamente si confirmaste que el producto dejó de existir y debe darse de baja.
+4. Al terminar, pulsá **Exportar Correcciones**. El navegador descarga `links_corregidos.csv`.
+5. Copiá ese CSV a `data_pipeline/files/`. Si el navegador le agregó un sufijo, por ejemplo `links_corregidos (1).csv`, el script también lo reconoce.
+
+#### Paso 4: aplicar los cambios en Supabase
+
+Antes de ejecutar, confirmá que el archivo descargado contiene las filas correctas y que el `.env` de la raíz tiene configurada `DATABASE_URL` para la base esperada. El script toma automáticamente el CSV `links_corregidos*.csv` más reciente de `data_pipeline/files/`.
+
+```powershell
+.\.venv\Scripts\python.exe data_pipeline\update_links_db.py
+```
+
+El script actualiza la URL y mantiene activo el link cuando se ingresa una URL nueva. Si se ingresa `NO`, cambia la URL a un identificador `BAJA_<id>` y establece `activo = false`. La operación modifica la base de Supabase: revisá cuidadosamente el CSV antes de ejecutarla y conservá una copia del archivo exportado.
+
+#### Paso 5: comprobar el resultado
+
+Revisá el resumen final del script y luego ejecutá nuevamente el ETL para probar las URLs actualizadas. La extracción genera un nuevo reporte de fallos con el estado actual de los links.
+
 ---
 
 ## 5. Qué hay que revisar con prioridad

@@ -1,0 +1,73 @@
+nombre,precio_normal,precio_descuento,precio_por_unidad,unidad,descuentos,fecha,supermercado,url,id_link_producto,producto_nombre,fecha_extraccion,error_type,titulo
+Leche En Polvo Entera la Serenisima 200 Gr,3837.09,3837.09,0,,Ninguno,2026-10-06,Delimart,https://www.delimart.com.ar/leche_en_polvo_entera_la_serenisima_200_gr,3898,,,,
+Dulce de Leche Clásico Ilolay 400 Gr.,4030.0,4030.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/dulce-de-leche-clasico-ilolay-400-gr-299471/p,2280,Dulce de Leche Clásico Ilolay 400 Gr.,2026-10-06 17:53:29,,
+Cafe Instantaneo Clasico La Planta x 170 gr,14135.59,14135.59,0,,Ninguno,2026-10-06,Delimart,https://www.delimart.com.ar/cafe_instantaneo_clasico_la_planta_x_170_gr,4190,,,,
+Harina De Trigo 000 Chacabuco 1 Kg.,1039.0,1039.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/harina-de-trigo-000-chacabuco-1-kg-308189/p,2219,Harina De Trigo 000 Chacabuco 1 Kg.,2026-10-06 17:53:42,,
+Shampoo Dove Óleo Nutrición 400 Ml.,11080.0,7200.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/shampoo-dove-oleo-nutricion-400-ml-293966/p,2578,Shampoo Dove Óleo Nutrición 400 Ml.,2026-10-06 17:53:45,,
+Fideos Tallarines Terrabusi 500gr,1228.49,1228.49,0,,Ninguno,2026-10-06,Delimart,https://www.delimart.com.ar/fideos_tallarines_terrabusi_500gr2,3871,,,,
+,,,,,,,,https://www.carrefour.com.ar/alimento-seco-para-gato-cat-chow-adulto-carne-y-pollo-3-kg-693218/p,3424,,,no_session,No se pudo establecer sesión
+Carne Molida Especial - Envasado al vacío 500 Gr Aprox,12940.53,12940.53,0,,Ninguno,2026-10-06,Delimart,https://www.delimart.com.ar/carne_molida_especial_-_envasado_al_vacio_500_gr_aprox,4263,,,,
+Cerveza Imperial Stout lata 473 Ml.,3295.0,3295.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/cerveza-imperial-stout-lata-473-ml-266947/p,2411,Cerveza Imperial Stout lata 473 Ml.,2026-10-06 17:55:09,,
+,,,,,,,,https://www.carrefour.com.ar/mortadela-con-queso-paladini-300-g/p,3262,,,no_session,No se pudo establecer sesión
+,,,,,,,,https://www.delimart.com.ar/limpiador_de_pisos_plastificados_y_flotantes_blem_almendras_dp_400_cc,4375,,,exception,"Message: tab crashed
+  (Session info: chrome=154.0.8037.98)
+"
+,,,,,,,,https://www.carrefour.com.ar/mani-salado-con-piel-king-100-g-723559/p,3138,,,exception,"Message: tab crashed
+  (Session info: chrome=154.0.8037.98)
+"
+,,,,,,,,https://www.delimart.com.ar/dulce_de_leche_clasico_tregar_400_gr,3955,,,exception,"Message: tab crashed
+  (Session info: chrome=154.0.8037.98)
+"
+,,,,,,,,https://www.delimart.com.ar/galletitas_cofler_cookies_120_gr,3809,,,exception,"Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=154.0.8037.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff732f29d55+5a55]
+	chromedriver!(No symbol) [0x7ff732e4f540]
+	chromedriver!(No symbol) [0x7ff732c745fd]
+	chromedriver!(No symbol) [0x7ff732c5ff82]
+	chromedriver!(No symbol) [0x7ff732c85c8c]
+	chromedriver!(No symbol) [0x7ff732d00a50]
+	chromedriver!(No symbol) [0x7ff732d1f5bd]
+	chromedriver!(No symbol) [0x7ff732cc1a12]
+	chromedriver!(No symbol) [0x7ff732cc2823]
+	chromedriver!GetHandleVerifier [0x7ff7333404b1+41c1b1]
+	chromedriver!GetHandleVerifier [0x7ff73336e26b+449f6b]
+	chromedriver!GetHandleVerifier [0x7ff73336274e+43e44e]
+	chromedriver!GetHandleVerifier [0x7ff7330232fe+feffe]
+	chromedriver!(No symbol) [0x7ff732e5cb55]
+	chromedriver!(No symbol) [0x7ff732e57f64]
+	chromedriver!(No symbol) [0x7ff732e580f4]
+	chromedriver!(No symbol) [0x7ff732e42e4c]
+	KERNEL32!BaseThreadInitThunk [0x7ffb4e21cd87+17]
+	ntdll!RtlUserThreadStart [0x7ffb4f7ecaec+2c]
+"
+,,,,,,,,,2589,,,"EXCEPTION: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=154.0.8037.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff732f29d55+5a55]
+	chromedriver!(No symbol) [0x7ff732e4f540]
+	chromedriver!(No symbol) [0x7ff732c745fd]
+	chromedriver!(No symbol) [0x7ff732c5ff82]
+	chromedriver!(No symbol) [0x7ff732c85c8c]
+	chromedriver!(No symbol) [0x7ff732d00a50]
+	chromedriver!(No symbol) [0x7ff732d1f5bd]
+	chromedriver!(No symbol) [0x7ff732cc1a12]
+	chromedriver!(No symbol) [0x7ff732cc2823]
+	chromedriver!GetHandleVerifier [0x7ff7333404b1+41c1b1]
+	chromedriver!GetHandleVerifier [0x7ff73336e26b+449f6b]
+	chromedriver!GetHandleVerifier [0x7ff73336274e+43e44e]
+	chromedriver!GetHandleVerifier [0x7ff7330232fe+feffe]
+	chromedriver!(No symbol) [0x7ff732e5cb55]
+	chromedriver!(No symbol) [0x7ff732e57f64]
+	chromedriver!(No symbol) [0x7ff732e580f4]
+	chromedriver!(No symbol) [0x7ff732e42e4c]
+	KERNEL32!BaseThreadInitThunk [0x7ffb4e21cd87+17]
+	ntdll!RtlUserThreadStart [0x7ffb4f7ecaec+2c]
+",
+,,,,,,,,https://www.carrefour.com.ar/jugo-de-manzana-carrefour-classic-tetra-1-lt-737126/p,3096,,,exception,"('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))"
+,,,,,,,,https://www.carrefour.com.ar/lavandina-original-odex-4-l/p,3371,,,exception,"HTTPConnectionPool(host='localhost', port=62069): Max retries exceeded with url: /session/a0be4ef40de60c5096e478093eac9304/url (Caused by NewConnectionError(""HTTPConnection(host='localhost', port=62069): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it""))"
+,,,,,,,,,2543,,,"EXCEPTION: HTTPConnectionPool(host='localhost', port=61842): Max retries exceeded with url: /session/25350b78563bc8c693726b6cf66cd7e8/url (Caused by NewConnectionError(""HTTPConnection(host='localhost', port=61842): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it""))",
+,,,,,,,,https://www.carrefour.com.ar/galletitas-polvorones-dulce-de-leche-150-g/p,2755,,,exception,"HTTPConnectionPool(host='localhost', port=62069): Max retries exceeded with url: /session/a0be4ef40de60c5096e478093eac9304/url (Caused by NewConnectionError(""HTTPConnection(host='localhost', port=62069): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it""))"
+,,,,,,,,https://www.carrefour.com.ar/yerba-mate-suave-union-4flex-1-kg/p,3226,,,exception,"HTTPConnectionPool(host='localhost', port=62069): Max retries exceeded with url: /session/a0be4ef40de60c5096e478093eac9304/url (Caused by NewConnectionError(""HTTPConnection(host='localhost', port=62069): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it""))"

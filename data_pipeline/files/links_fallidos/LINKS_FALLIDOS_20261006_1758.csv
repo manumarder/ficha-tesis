@@ -1,0 +1,36 @@
+url,supermercado,nombre,error_type,precio_normal
+https://www.carrefour.com.ar/alimento-seco-para-gato-cat-chow-adulto-carne-y-pollo-3-kg-693218/p,,,no_session,
+https://www.carrefour.com.ar/mortadela-con-queso-paladini-300-g/p,,,no_session,
+https://www.delimart.com.ar/limpiador_de_pisos_plastificados_y_flotantes_blem_almendras_dp_400_cc,,,exception,
+https://www.carrefour.com.ar/mani-salado-con-piel-king-100-g-723559/p,,,exception,
+https://www.delimart.com.ar/dulce_de_leche_clasico_tregar_400_gr,,,exception,
+https://www.delimart.com.ar/galletitas_cofler_cookies_120_gr,,,exception,
+,,,"EXCEPTION: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: not connected to DevTools
+  (Session info: chrome=154.0.8037.98); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#invalidsessionidexception
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff732f29d55+5a55]
+	chromedriver!(No symbol) [0x7ff732e4f540]
+	chromedriver!(No symbol) [0x7ff732c745fd]
+	chromedriver!(No symbol) [0x7ff732c5ff82]
+	chromedriver!(No symbol) [0x7ff732c85c8c]
+	chromedriver!(No symbol) [0x7ff732d00a50]
+	chromedriver!(No symbol) [0x7ff732d1f5bd]
+	chromedriver!(No symbol) [0x7ff732cc1a12]
+	chromedriver!(No symbol) [0x7ff732cc2823]
+	chromedriver!GetHandleVerifier [0x7ff7333404b1+41c1b1]
+	chromedriver!GetHandleVerifier [0x7ff73336e26b+449f6b]
+	chromedriver!GetHandleVerifier [0x7ff73336274e+43e44e]
+	chromedriver!GetHandleVerifier [0x7ff7330232fe+feffe]
+	chromedriver!(No symbol) [0x7ff732e5cb55]
+	chromedriver!(No symbol) [0x7ff732e57f64]
+	chromedriver!(No symbol) [0x7ff732e580f4]
+	chromedriver!(No symbol) [0x7ff732e42e4c]
+	KERNEL32!BaseThreadInitThunk [0x7ffb4e21cd87+17]
+	ntdll!RtlUserThreadStart [0x7ffb4f7ecaec+2c]
+",
+https://www.carrefour.com.ar/jugo-de-manzana-carrefour-classic-tetra-1-lt-737126/p,,,exception,
+https://www.carrefour.com.ar/lavandina-original-odex-4-l/p,,,exception,
+,,,"EXCEPTION: HTTPConnectionPool(host='localhost', port=61842): Max retries exceeded with url: /session/25350b78563bc8c693726b6cf66cd7e8/url (Caused by NewConnectionError(""HTTPConnection(host='localhost', port=61842): Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it""))",
+https://www.carrefour.com.ar/galletitas-polvorones-dulce-de-leche-150-g/p,,,exception,
+https://www.carrefour.com.ar/yerba-mate-suave-union-4flex-1-kg/p,,,exception,

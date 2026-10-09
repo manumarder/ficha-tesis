@@ -1,4 +1,4 @@
-const BASE_URL = 'http://127.0.0.1:8000';
+const BASE_URL = (process.env.NEXT_PUBLIC_API_URL ?? 'http://127.0.0.1:8000').replace(/\/$/, '');
 
 export interface ProductoAuditado {
   id_link: string;
@@ -18,15 +18,10 @@ export interface ProductoAuditado {
 }
 
 export async function getOfertasReales(): Promise<ProductoAuditado[]> {
-  try {
-    const res = await fetch(`${BASE_URL}/api/ofertas-reales`, { cache: 'no-store' });
-    if (!res.ok) throw new Error('Error al traer ofertas reales');
-    const json = await res.json();
-    return json.data || [];
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+  const res = await fetch(`${BASE_URL}/api/ofertas-reales`, { cache: 'no-store' });
+  if (!res.ok) throw new Error('Error al traer ofertas reales');
+  const json = await res.json();
+  return json.data || [];
 }
 export async function searchProductos(query: string): Promise<ProductoAuditado[]> {
   try {
@@ -43,13 +38,8 @@ export async function searchProductos(query: string): Promise<ProductoAuditado[]
   }
 }
 export async function getAlertasTrampa(): Promise<ProductoAuditado[]> {
-  try {
-    const res = await fetch(`${BASE_URL}/api/alertas-trampa`, { cache: 'no-store' });
-    if (!res.ok) throw new Error('Error al traer alertas trampa');
-    const json = await res.json();
-    return json.data || [];
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+  const res = await fetch(`${BASE_URL}/api/alertas-trampa`, { cache: 'no-store' });
+  if (!res.ok) throw new Error('Error al traer alertas trampa');
+  const json = await res.json();
+  return json.data || [];
 }

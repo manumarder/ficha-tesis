@@ -46,8 +46,9 @@ class CarrefourExtractor:
         self.cookie_manager = CookieManager(base_dir)
         self.cookies_file = str(self.cookie_manager.get_cookie_path('carrefour'))
         
-        self.email = os.getenv('CARREFOUR_EMAIL', 'manumarder@gmail.com')
-        self.password = os.getenv('CARREFOUR_PASSWORD', 'Ipecd2025')
+        # Credenciales para login con Mi Carrefour (DNI sin puntos/guiones + contraseña)
+        self.dni = os.getenv('CARREFOUR_DNI', '')
+        self.password = os.getenv('CARREFOUR_PASSWORD', '')
         
         # Lista de User-Agents reales para rotación
         self.user_agents = [
@@ -104,6 +105,7 @@ class CarrefourExtractor:
             # 1. Cartel de Cookies (Varios idiomas y textos)
             selectores_cookies = [
                 "//button[contains(text(), 'Aceptar todo')]",
+                "//button[contains(text(), 'Rechazar todo')]",
                 "//button[contains(text(), 'Aceptar')]",
                 "//button[contains(text(), 'Entendido')]",
                 "//button[contains(text(), 'Accept all')]",
@@ -558,390 +560,182 @@ class CarrefourExtractor:
         return default
 
     def login_con_email_password(self):
-        """Login completo con DEBUGGING DETALLADO"""
+        """Inicia sesión siguiendo el flujo de Mi Carrefour y popup OAuth."""
         try:
-            logger.info("=== DEBUG LOGIN ===")
-            
-            # Paso 1: Ir a página de login
-            logger.info(" Navegando a login...")
-            self.driver.get("https://www.carrefour.com.ar/login")
-            SmartWait.wait_minimal(1)  # OPTIMIZADO: Reducido de 3s a 1s
-            
+            logger.info("=== LOGIN MI CARREFOUR ===")
+            self.driver.get("https://www.carrefour.com.ar/")
+            SmartWait.wait_minimal(2)
             self._cerrar_popups_molestos()
-            
-            # Paso 2: Buscar botón de email
-            logger.info(" Buscando botón email...")
+
+            # 1. Abrir menú de usuario (personita) y clickear "Ingresar con Mi Carrefour"
             if not self.hacer_clic_ingresar_con_mail():
                 return False
-            
-            # Paso 3: Ingresar credenciales con más verificación
-            logger.info(" Ingresando credenciales...")
+
+            # 2. Completar DNI y contraseña en la ventana/pestaña OAuth
             if not self.ingresar_credenciales_con_debug():
                 return False
-            
-            # Paso 4: Verificar login con más detalle
-            logger.info("[SEARCH] Verificando login...")
+
+            # 3. Volver al foco de la ventana principal de Carrefour
+            origin_handle = getattr(self, "_login_origin_handle", None)
+            if origin_handle and origin_handle in self.driver.window_handles:
+                self.driver.switch_to.window(origin_handle)
+            else:
+                self.driver.switch_to.window(self.driver.window_handles[0])
+
+            # Esperar a que impacte la sesión y verificar
+            SmartWait.wait_minimal(4)
             if self.verificar_sesion_con_debug():
                 self.sesion_iniciada = True
                 self.guardar_sesion()
-                logger.info(" LOGIN EXITOSO")
+                logger.info("[OK] LOGIN MI CARREFOUR EXITOSO")
                 return True
-            else:
-                logger.error(" LOGIN FALLIDO ")
-                return False
-                
+
+            logger.error("Login enviado, pero no se pudo confirmar la sesión activa")
+            return False
+
         except Exception as e:
-            logger.error(f" Error en login: {e}")
+            logger.error(f"Error en login: {e}")
             return False
         
     def hacer_clic_ingresar_con_mail(self):
-        """Hacer clic específicamente en el botón 'ingresar con mail y contraseña'"""
+        """Abre el modal de cuenta y hace clic en 'Ingresar con Mi Carrefour'."""
         try:
-            logger.info("[SEARCH] Buscando botón 'ingresar con mail y contraseña'...")
-            
-            # Asegurar que los popups no tapen el botón
             self._cerrar_popups_molestos()
-            
-            # ESTRATEGIA 0: WebDriverWait robusto (NUEVA)
-            try:
-                xpath_login = "//button[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'mail y contraseña')]"
-                boton = self.wait.until(EC.element_to_be_clickable((By.XPATH, xpath_login)))
-                logger.info(" Botón encontrado por WebDriverWait")
-                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", boton)
-                time.sleep(1)
-                self.driver.execute_script("arguments[0].click();", boton)
-                return True
-            except:
-                logger.debug("WebDriverWait falló para el botón de login, intentando alternativas...")
-            
-            # ESTRATEGIA 1: Búsqueda exacta por texto completo
-            try:
-                boton_exacto = self.driver.find_element(
-                    By.XPATH, 
-                    "//button[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'ingresar con mail y contraseña')]"
-                )
-                if boton_exacto.is_displayed() and boton_exacto.is_enabled():
-                    logger.info(" Botón EXACTO encontrado: 'ingresar con mail y contraseña'")
-                    
-                    # Scroll para asegurar visibilidad
-                    self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", boton_exacto)
-                    SmartWait.wait_minimal(0.3)  # OPTIMIZADO: Reducido de 1s a 0.3s
-                    
-                    # Intentar clic normal
-                    try:
-                        boton_exacto.click()
-                        logger.info(" Clic exitoso en botón exacto")
-                        SmartWait.wait_minimal(2)  # OPTIMIZADO: Reducido de 5s a 2s
-                        return True
-                    except Exception as click_error:
-                        logger.warning(f" Clic normal falló: {click_error}")
-                        
-                        # Intentar clic JavaScript
-                        try:
-                            self.driver.execute_script("arguments[0].click();", boton_exacto)
-                            logger.info(" Clic JS exitoso en botón exacto")
-                            time.sleep(5)
-                            return True
-                        except Exception as js_error:
-                            logger.error(f" Clic JS también falló: {js_error}")
-                            
-            except Exception as e:
-                logger.debug(f"Búsqueda exacta falló: {e}")
-            
-            # ESTRATEGIA 2: Búsqueda por partes del texto (más flexible)
-            textos_parciales = [
-                "ingresar con mail y contraseña",
-                "ingresar con mail",
-                "mail y contraseña",
-                "ingresar con email y contraseña",
-                "ingresar con email"
+
+            # 1. Buscar y cliquear el icono de la personita
+            logger.info("Buscando icono de personita / mi cuenta...")
+            selectores_persona = [
+                "div[class*='myAccountWrapper'] div[role='button']",
+                "div[class*='myAccountWrapperLink']",
+                "[data-testid='user-menu']",
+                "//div[contains(@class, 'myAccountWrapper')]//div[@role='button']"
             ]
-            
-            for texto in textos_parciales:
+
+            btn_persona = None
+            for sel in selectores_persona:
                 try:
-                    boton = self.driver.find_element(
-                        By.XPATH, 
-                        f"//button[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), '{texto.lower()}')]"
-                    )
-                    if boton.is_displayed() and boton.is_enabled():
-                        logger.info(f" Botón encontrado (parcial): '{texto}'")
-                        
-                        # Scroll para asegurar visibilidad
-                        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", boton)
-                        SmartWait.wait_minimal(0.3)  # OPTIMIZADO: Reducido de 1s a 0.3s
-                        
-                        # Intentar clic normal
-                        try:
-                            boton.click()
-                            logger.info(f" Clic exitoso en: '{texto}'")
-                            SmartWait.wait_minimal(2)  # OPTIMIZADO: Reducido de 5s a 2s
-                            return True
-                        except Exception as click_error:
-                            logger.warning(f" Clic normal falló en '{texto}': {click_error}")
-                            
-                            # Intentar clic JavaScript
-                            try:
-                                self.driver.execute_script("arguments[0].click();", boton)
-                                logger.info(f" Clic JS exitoso en: '{texto}'")
-                                SmartWait.wait_minimal(2)  # OPTIMIZADO: Reducido de 5s a 2s
-                                return True
-                            except Exception as js_error:
-                                logger.error(f" Clic JS falló en '{texto}': {js_error}")
-                                
-                except Exception as e:
-                    logger.debug(f"Texto parcial '{texto}' no encontrado: {e}")
-            
-            # ESTRATEGIA 3: Buscar en modales específicos
-            try:
-                modal = self.driver.find_element(By.XPATH, "//div[contains(@class, 'vtex-login')]")
-                botones = modal.find_elements(By.TAG_NAME, "button")
-                
-                logger.info(f" Buscando en modal - Botones encontrados: {len(botones)}")
-                
-                for i, boton in enumerate(botones):
-                    texto = boton.text.strip().lower()
-                    is_enabled = boton.is_enabled()
-                    is_displayed = boton.is_displayed()
-                    
-                    logger.info(f"Botón {i}: '{texto}' | Habilitado: {is_enabled} | Visible: {is_displayed}")
-                    
-                    # Buscar específicamente el texto completo o parcial
-                    if ('ingresar con mail y contraseña' in texto or 
-                        'mail y contraseña' in texto or
-                        'ingresar con mail' in texto):
-                        
-                        if is_enabled and is_displayed:
-                            logger.info(f" Botón modal encontrado: '{texto}'")
-                            
-                            # Scroll para asegurar visibilidad
-                            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", boton)
-                            SmartWait.wait_minimal(0.3)  # OPTIMIZADO: Reducido de 1s a 0.3s
-                            
-                            # Intentar clic normal
-                            try:
-                                boton.click()
-                                logger.info(f" Clic exitoso en botón modal: '{texto}'")
-                                SmartWait.wait_minimal(2)  # OPTIMIZADO: Reducido de 5s a 2s
-                                return True
-                            except Exception as click_error:
-                                logger.warning(f" Clic modal falló: {click_error}")
-                                
-                                # Intentar clic JavaScript
-                                try:
-                                    self.driver.execute_script("arguments[0].click();", boton)
-                                    logger.info(f" Clic JS exitoso en botón modal: '{texto}'")
-                                    time.sleep(5)
-                                    return True
-                                except Exception as js_error:
-                                    logger.error(f" Clic JS modal falló: {js_error}")
-                        else:
-                            logger.warning(f" Botón modal encontrado pero no usable: '{texto}'")
-                        
-            except Exception as e:
-                logger.debug(f"Búsqueda en modal falló: {e}")
-            
-            # ESTRATEGIA 4: Búsqueda por atributos específicos
-            try:
-                selectores_especiales = [
-                    "button[data-testid*='email']",
-                    "button[data-testid*='mail']",
-                    "button[aria-label*='mail']",
-                    "button[aria-label*='email']",
-                    "button[class*='email']",
-                    "button[class*='mail']"
-                ]
-                
-                for selector in selectores_especiales:
-                    try:
-                        boton = self.driver.find_element(By.CSS_SELECTOR, selector)
-                        if boton.is_displayed() and boton.is_enabled():
-                            logger.info(f" Botón por selector especial: {selector}")
-                            
-                            # Verificar que el texto contenga lo que buscamos
-                            texto_boton = boton.text.strip().lower()
-                            if any(palabra in texto_boton for palabra in ['mail', 'email', 'ingresar']):
-                                
-                                # Scroll para asegurar visibilidad
-                                self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", boton)
-                                SmartWait.wait_minimal(0.3)  # OPTIMIZADO: Reducido de 1s a 0.3s
-                                
-                                # Intentar clic JavaScript directamente (más confiable)
-                                self.driver.execute_script("arguments[0].click();", boton)
-                                logger.info(f" Clic JS en botón especial: {selector} - Texto: '{texto_boton}'")
-                                SmartWait.wait_minimal(2)  # OPTIMIZADO: Reducido de 5s a 2s
-                                return True
-                                
-                    except Exception as e:
-                        logger.debug(f"Selector especial {selector} falló: {e}")
-                        
-            except Exception as e:
-                logger.debug(f"Búsqueda por atributos falló: {e}")
-            
-            # ESTRATEGIA 5: Debugging - Mostrar TODOS los botones de la página
-            logger.info(" HACIENDO INVENTARIO DE TODOS LOS BOTONES...")
-            try:
-                todos_los_botones = self.driver.find_elements(By.TAG_NAME, "button")
-                logger.info(f" TOTAL de botones en página: {len(todos_los_botones)}")
-                
-                for i, boton in enumerate(todos_los_botones):
-                    try:
-                        texto = boton.text.strip()
-                        if texto:  # Solo mostrar botones con texto
-                            estado = "HABILITADO" if boton.is_enabled() else "DESHABILITADO"
-                            visible = "VISIBLE" if boton.is_displayed() else "OCULTO"
-                            logger.info(f"Botón {i}: '{texto}' | {estado} | {visible}")
-                    except:
-                        pass
-                        
-            except Exception as e:
-                logger.error(f"Error en inventario de botones: {e}")
-            
-            logger.error(" No se pudo encontrar el botón 'ingresar con mail y contraseña'")
-            return False
-            
-        except Exception as e:
-            logger.error(f" Error general en búsqueda de botón: {e}")
-            return False
-        
-    def ingresar_credenciales_con_debug(self):
-        """Ingresar credenciales con debugging detallado"""
-        try:
-            logger.info("Ingresando credenciales...")
-            SmartWait.wait_minimal(1)  # OPTIMIZADO: Reducido de 3s a 1s
-            
-            # VERIFICAR SI HAY MENSAJES DE ERROR ANTES
-            try:
-                errores = self.driver.find_elements(By.CSS_SELECTOR, ".error, .alert, .message-error")
-                for error in errores:
-                    if error.is_displayed():
-                        logger.error(f" Error visible: {error.text}")
-            except:
-                pass
-            
-            # CAMPO EMAIL - Múltiples selectores y más tiempo
-            campo_email = None
-            selectores_email = [
-                "input[placeholder='Ej.: ejemplo@mail.com']",  # Por placeholder específico
-                "input[type='text'][placeholder*='mail']",  # Tipo text con placeholder de mail
-                "input[type='email']",
-                "input[name='email']",
-                "input[placeholder*='mail']",
-                "input[placeholder*='Email']",
-                "#email",
-                "[data-testid='email']"
-            ]
-            
-            for selector in selectores_email:
-                try:
-                    campo_email = self.wait.until(
-                        EC.presence_of_element_located((By.CSS_SELECTOR, selector))
-                    )
-                    logger.info(f" Campo email encontrado con selector: {selector}")
-                    break
-                except:
-                    continue
-            
-            if not campo_email:
-                logger.error(" No se pudo encontrar campo email con ningún selector")
-                return False
-            
-            # VERIFICAR SI EL CAMPO ESTÁ HABILITADO
-            if not campo_email.is_enabled():
-                logger.error(" Campo email NO está habilitado")
-                return False
-            
-            campo_email.clear()
-            campo_email.send_keys(self.email)
-            logger.info(" Email ingresado")
-            SmartWait.wait_minimal(0.3)  # OPTIMIZADO: Reducido de 1s a 0.3s
-            
-            # VERIFICAR SI EL EMAIL SE INGRESÓ CORRECTAMENTE
-            valor_email = campo_email.get_attribute('value')
-            if valor_email != self.email:
-                logger.error(f" Email no se ingresó correctamente. Esperado: {self.email}, Obtenido: {valor_email}")
-                return False
-            
-            # CAMPO CONTRASEÑA - MÚLTIPLES ESTRATEGIAS
-            campo_password = None
-            selectores = [
-                "input[type='password']",
-                "input[name='password']",
-                "#password",
-                "input[placeholder*='contraseña']",
-                "input[data-testid='password']"
-            ]
-            
-            for selector in selectores:
-                try:
-                    campo_password = self.driver.find_element(By.CSS_SELECTOR, selector)
-                    if campo_password.is_displayed() and campo_password.is_enabled():
-                        logger.info(f" Campo password encontrado: {selector}")
+                    if sel.startswith("//"):
+                        elems = self.driver.find_elements(By.XPATH, sel)
+                    else:
+                        elems = self.driver.find_elements(By.CSS_SELECTOR, sel)
+                    if elems and elems[0].is_displayed():
+                        btn_persona = elems[0]
                         break
                 except:
                     continue
-            
-            if not campo_password:
-                logger.error(" No se pudo encontrar campo contraseña")
-                # Listar todos los inputs para debugging
+
+            if not btn_persona:
+                # Si no está visible directo, forzamos navegación a /login
+                logger.info("Icono no visible directo, navegando a /login...")
+                self.driver.get("https://www.carrefour.com.ar/login")
+                SmartWait.wait_minimal(2)
+                self._cerrar_popups_molestos()
+            else:
+                self.driver.execute_script("arguments[0].click();", btn_persona)
+                SmartWait.wait_minimal(1.5)
+
+            # 2. Guardar ventana base antes de que se abra la ventana OAuth
+            self._login_origin_handle = self.driver.current_window_handle
+            handles_previos = set(self.driver.window_handles)
+
+            # 3. Buscar el botón "Ingresar con Mi Carrefour" en el modal
+            logger.info("[SEARCH] Buscando botón 'Ingresar con Mi Carrefour' en modal...")
+            selectores_btn_carrefour = [
+                ".vtex-login-2-x-customOAuthOptionBtn button",
+                "div.vtex-login-2-x-buttonSocial button",
+                "//button[contains(., 'Ingresar con Mi Carrefour')]",
+                "//button[contains(., 'Mi Carrefour')]",
+                "//div[contains(@class, 'vtex-button__label') and contains(., 'Mi Carrefour')]/parent::button"
+            ]
+
+            btn_oauth = None
+            for sel in selectores_btn_carrefour:
                 try:
-                    inputs = self.driver.find_elements(By.TAG_NAME, "input")
-                    logger.info(f"Inputs encontrados: {len(inputs)}")
-                    for i, inp in enumerate(inputs):
-                        if inp.is_displayed():
-                            tipo = inp.get_attribute('type')
-                            name = inp.get_attribute('name')
-                            placeholder = inp.get_attribute('placeholder')
-                            logger.info(f"Input {i}: type={tipo}, name={name}, placeholder={placeholder}")
+                    if sel.startswith("//"):
+                        elem = self.wait.until(EC.element_to_be_clickable((By.XPATH, sel)))
+                    else:
+                        elem = self.wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, sel)))
+                    if elem:
+                        btn_oauth = elem
+                        break
                 except:
-                    pass
+                    continue
+
+            if not btn_oauth:
+                logger.error("No se pudo encontrar el botón 'Ingresar con Mi Carrefour'")
                 return False
-            
-            campo_password.clear()
-            campo_password.send_keys(self.password)
-            logger.info(" Contraseña ingresada")
-            SmartWait.wait_minimal(0.3)  # OPTIMIZADO: Reducido de 1s a 0.3s
-            
-            # VERIFICAR SI LA CONTRASEÑA SE INGRESÓ
-            valor_password = campo_password.get_attribute('value')
-            if len(valor_password) != len(self.password):
-                logger.error(" Contraseña no se ingresó correctamente")
-                return False
-            
-            # BOTÓN LOGIN - CON JAVASCRIPT COMO ALTERNATIVA
-            try:
-                boton_login = self.wait.until(
-                    EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type='submit']"))
-                )
-                logger.info(" Botón login encontrado")
-                
-                # VERIFICAR SI EL BOTÓN ESTÁ HABILITADO
-                if not boton_login.is_enabled():
-                    logger.error(" Botón login NO está habilitado")
-                    return False
-                
-                # HACER CLIC - INTENTAR NORMAL PRIMERO, LUEGO JAVASCRIPT
-                try:
-                    boton_login.click()
-                    logger.info(" Clic normal en botón login")
-                except Exception as click_error:
-                    logger.warning(f" Clic normal falló: {click_error}")
-                    # Intentar JavaScript click como alternativa
-                    try:
-                        self.driver.execute_script("arguments[0].click();", boton_login)
-                        logger.info(" Clic JS en botón login")
-                    except Exception as js_error:
-                        logger.error(f" Clic JS también falló: {js_error}")
-                        return False
-                
-                SmartWait.wait_minimal(5)  # AJUSTE: Esperar 5s para que los tokens se asienten
-                return True
-                
-            except Exception as e:
-                logger.error(f" Error con botón login: {e}")
-                return False
-            
+
+            # Click en el botón OAuth
+            self.driver.execute_script("arguments[0].click();", btn_oauth)
+            logger.info("Clic realizado en 'Ingresar con Mi Carrefour'")
+
+            # 4. Esperar y cambiar de ventana/pestaña si se abrió una nueva (Keycloak)
+            WebDriverWait(self.driver, 10).until(lambda d: len(d.window_handles) > len(handles_previos) or "id.carrefour.com.ar" in d.current_url)
+
+            nuevos_handles = [h for h in self.driver.window_handles if h not in handles_previos]
+            if nuevos_handles:
+                self.driver.switch_to.window(nuevos_handles[-1])
+                logger.info("Cambiado a la pestaña de Mi Carrefour ID (Keycloak)")
+
+            # Esperar a que cargue el campo DNI
+            WebDriverWait(self.driver, 15).until(EC.presence_of_element_located((By.ID, "username")))
+            return True
+
         except Exception as e:
-            logger.error(f" Error en credenciales: {e}")
+            logger.error(f"Fallo al abrir ventana de Mi Carrefour: {e}")
+            return False
+        
+    def ingresar_credenciales_con_debug(self):
+        """Ingresa DNI y contraseña en el formulario id.carrefour.com.ar."""
+        try:
+            logger.info("Completando credenciales en Mi Carrefour...")
+
+            if not self.dni or not self.password:
+                logger.error("Faltan CARREFOUR_DNI o CARREFOUR_PASSWORD en el entorno")
+                return False
+
+            # 1. Campo DNI
+            campo_dni = self.wait.until(EC.element_to_be_clickable((By.ID, "username")))
+            campo_dni.clear()
+            campo_dni.send_keys(self.dni)
+            SmartWait.wait_minimal(0.3)
+
+            # 2. Campo Contraseña
+            campo_pwd = self.wait.until(EC.element_to_be_clickable((By.ID, "password")))
+            campo_pwd.clear()
+            campo_pwd.send_keys(self.password)
+            SmartWait.wait_minimal(0.3)
+
+            # 3. Botón Enviar / Iniciar Sesión
+            selectores_submit = [
+                "#kc-login",
+                "//button[contains(translate(., 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'iniciar sesión')]",
+                "//button[@type='submit']",
+                "//input[@type='submit']"
+            ]
+
+            btn_submit = None
+            for sel in selectores_submit:
+                try:
+                    if sel.startswith("//"):
+                        btn_submit = self.driver.find_element(By.XPATH, sel)
+                    else:
+                        btn_submit = self.driver.find_element(By.CSS_SELECTOR, sel)
+                    if btn_submit.is_displayed():
+                        break
+                except:
+                    continue
+
+            if not btn_submit:
+                campo_pwd.send_keys(Keys.RETURN)
+            else:
+                self.driver.execute_script("arguments[0].click();", btn_submit)
+
+            logger.info("Credenciales enviadas correctamente")
+            return True
+
+        except Exception as e:
+            logger.error(f"Error cargando credenciales: {e}")
             return False
 
     def verificar_sesion_con_debug(self):

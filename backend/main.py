@@ -1,10 +1,10 @@
 import os
 import sys
 import logging
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 import pandas as pd
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List
 
 # Añadimos la raíz del proyecto al path para que Python encuentre los módulos hermanos
@@ -14,8 +14,28 @@ from config.settings import settings
 from data_pipeline.utils.utils_db import ConexionBaseDatos
 
 # Configuración de Logging del Backend
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=settings.log_level)
 logger = logging.getLogger(__name__)
+
+LATEST_AUDIT_QUERY = """
+    WITH precios_recientes AS (
+        SELECT DISTINCT ON (id_link) *
+        FROM public.vista_auditoria_consumo
+        ORDER BY id_link, created_at DESC
+    )
+"""
+
+
+def leer_dataframe(db: ConexionBaseDatos, query: str, params=None) -> list[dict]:
+    """Ejecuta una consulta analítica y devuelve registros serializables."""
+    dataframe = pd.read_sql(query, db.engine, params=params)
+    return dataframe.where(pd.notna(dataframe), None).to_dict(orient="records")
+
+
+def error_de_datos(logger_message: str, error: Exception) -> HTTPException:
+    """Registra el detalle técnico sin exponerlo en la respuesta pública."""
+    logger.exception("%s: %s", logger_message, error)
+    return HTTPException(status_code=500, detail="No se pudo completar la consulta de datos.")
 
 # Inicialización de la Aplicación FastAPI
 app = FastAPI(
@@ -24,13 +44,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configuración de CORS (Permite que Streamlit se comunique con la API sin bloqueos de seguridad)
+# Configuración de CORS controlada por CORS_ORIGINS.
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # En producción se restringe a dominios específicos
+    allow_origins=settings.cors_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["Content-Type"],
 )
 
 # ==========================================
@@ -71,7 +91,7 @@ def read_root():
     """Ruta base para verificar estado de salud del servicio (Health Check)"""
     return {
         "status": "online",
-        "proyecto": "Fichá - Asistente Inteligente",
+        "proyecto": "Fichá - Auditoría de precios",
         "entorno": settings.environment
     }
 
@@ -81,26 +101,18 @@ def obtener_ofertas_reales(db: ConexionBaseDatos = Depends(get_db)):
     Trae los productos de la Canasta Básica cuyo semáforo es VERDE 🟢
     calculado dinámicamente contra su promedio móvil de 21 días.
     """
-    query = """
-        WITH precios_recientes AS (
-            SELECT DISTINCT ON (id_link) *
-            FROM public.vista_auditoria_consumo
-            ORDER BY id_link, created_at DESC
-        )
+    query = LATEST_AUDIT_QUERY + """
         SELECT * FROM precios_recientes WHERE semaforo = '🟢' ORDER BY ahorro_real_pct DESC;
     """
     try:
-        # Usamos Pandas para leer directo la query y transformarla a JSON nativo
-        df = pd.read_sql(query, db.engine)
-        resultado = df.to_dict(orient="records")
+        resultado = leer_dataframe(db, query)
         return {
             "status": "success",
             "count": len(resultado),
             "data": resultado
         }
     except Exception as e:
-        logger.error(f"Error consultando ofertas reales: {e}")
-        raise HTTPException(status_code=500, detail=f"Error analítico de base de datos: {str(e)}")
+        raise error_de_datos("Error consultando ofertas reales", e)
 
 @app.get("/api/alertas-trampa")
 def obtener_alertas_trampa(db: ConexionBaseDatos = Depends(get_db)):
@@ -108,32 +120,25 @@ def obtener_alertas_trampa(db: ConexionBaseDatos = Depends(get_db)):
     Trae los productos de la Canasta Básica cuyo semáforo es ROJO 🔴
     (Productos con inflado artificial previo en el precio normal).
     """
-    query = """
-        WITH precios_recientes AS (
-            SELECT DISTINCT ON (id_link) *
-            FROM public.vista_auditoria_consumo
-            ORDER BY id_link, created_at DESC
-        )
+    query = LATEST_AUDIT_QUERY + """
         SELECT * FROM precios_recientes WHERE semaforo = '🔴' ORDER BY ahorro_real_pct ASC;
     """
     try:
-        df = pd.read_sql(query, db.engine)
-        resultado = df.to_dict(orient="records")
+        resultado = leer_dataframe(db, query)
         return {
             "status": "success",
             "count": len(resultado),
             "data": resultado
         }
     except Exception as e:
-        logger.error(f"Error consultando alertas trampa: {e}")
-        raise HTTPException(status_code=500, detail=f"Error analítico de base de datos: {str(e)}")
+        raise error_de_datos("Error consultando alertas trampa", e)
     
 
 # ==========================================
 # ESTRUCTURAS DE DATOS (PAYLOADS MODEL)
 # ==========================================
 class CanastaRequest(BaseModel):
-    productos: List[str]
+    productos: List[str] = Field(min_length=1, max_length=50)
 
 # ==========================================
 # ENDPOINTS AVANZADOS DE BÚSQUEDA Y NEGOCIO
@@ -145,7 +150,7 @@ def listar_productos_maestros(db: ConexionBaseDatos = Depends(get_db)):
     Retorna la lista única de nombres genéricos de productos maestros.
     Útil para alimentar el componente multiselect en el Frontend.
     """
-    query = "SELECT DISTINCT nombre_generico FROM public.productos_maestros ORDER BY nombre_generico ASC;"
+    query = "SELECT DISTINCT nombre_generico FROM public.productos_maestros WHERE nombre_generico IS NOT NULL ORDER BY nombre_generico ASC;"
     try:
         cursor = db.connection.cursor()
         cursor.execute(query)
@@ -157,45 +162,41 @@ def listar_productos_maestros(db: ConexionBaseDatos = Depends(get_db)):
             "data": productos
         }
     except Exception as e:
-        logger.error(f"Error listando productos maestros: {e}")
-        raise HTTPException(status_code=500, detail=f"Error en capa de datos: {str(e)}")
+        raise error_de_datos("Error listando productos maestros", e)
 
 
 @app.get("/api/buscar")
-def buscar_productos(q: str, db: ConexionBaseDatos = Depends(get_db)):
+def buscar_productos(
+    q: str = Query(..., min_length=2, max_length=100),
+    db: ConexionBaseDatos = Depends(get_db),
+):
     """
     Busca coincidencias de texto en el catálogo analítico.
     Filtra por nombre genérico o retail y ordena de menor a mayor por precio final.
     """
-    if not q or len(q.strip()) < 2:
+    termino = " ".join(q.split())
+    if len(termino) < 2:
         raise HTTPException(status_code=400, detail="La query de búsqueda debe tener al menos 2 caracteres.")
     
     # Búsqueda insensible a mayúsculas/minúsculas (ILIKE) para una UX robusta
-    query = """
-        WITH precios_recientes AS (
-            SELECT DISTINCT ON (id_link) *
-            FROM public.vista_auditoria_consumo
-            ORDER BY id_link, created_at DESC
-        )
+    query = LATEST_AUDIT_QUERY + """
         SELECT *, COALESCE(precio_descuento, precio_normal) AS precio_final
         FROM precios_recientes 
         WHERE nombre_generico ILIKE %s OR url_producto ILIKE %s
         ORDER BY precio_final ASC;
     """
-    param_busqueda = f"%{q.strip()}%"
+    param_busqueda = f"%{termino}%"
     
     try:
-        df = pd.read_sql(query, db.engine, params=(param_busqueda, param_busqueda))
-        resultado = df.to_dict(orient="records")
+        resultado = leer_dataframe(db, query, params=(param_busqueda, param_busqueda))
         return {
             "status": "success",
-            "term": q,
+            "term": termino,
             "count": len(resultado),
             "data": resultado
         }
     except Exception as e:
-        logger.error(f"Error en buscador: {e}")
-        raise HTTPException(status_code=500, detail=f"Error en el motor de búsqueda: {str(e)}")
+        raise error_de_datos("Error en buscador", e)
 
 
 @app.post("/api/comparar-canasta")
@@ -205,7 +206,8 @@ def comparar_canasta(payload: CanastaRequest, db: ConexionBaseDatos = Depends(ge
     Recibe una lista de nombres genéricos, busca el precio actual más reciente de cada uno
     en cada supermercado y computa los totales consolidados para determinar el más económico.
     """
-    if not payload.productos:
+    productos = list(dict.fromkeys(" ".join(producto.split()) for producto in payload.productos if producto.strip()))
+    if not productos:
         raise HTTPException(status_code=400, detail="La canasta de productos no puede estar vacía.")
     
     # Query que extrae las últimas lecturas vigentes para los productos seleccionados
@@ -221,7 +223,7 @@ def comparar_canasta(payload: CanastaRequest, db: ConexionBaseDatos = Depends(ge
     
     try:
         # Convertimos la lista de Python a una estructura compatible con el operador ANY de Postgres
-        df = pd.read_sql(query, db.engine, params=(payload.productos,))
+        df = pd.read_sql(query, db.engine, params=(productos,))
         
         if df.empty:
             return {"status": "success", "mensaje": "No se encontraron precios vigentes para los productos seleccionados.", "totales": {}, "desglose": {}}
@@ -239,11 +241,10 @@ def comparar_canasta(payload: CanastaRequest, db: ConexionBaseDatos = Depends(ge
             
         return {
             "status": "success",
-            "productos_solicitados": payload.productos,
+            "productos_solicitados": productos,
             "totales": totales_dict,
             "desglose": desglose_dict,
             "items": df.to_dict(orient="records")
         }
     except Exception as e:
-        logger.error(f"Error optimizando presupuesto de canasta: {e}")
-        raise HTTPException(status_code=500, detail=f"Error algorítmico en el Backend: {str(e)}")
+        raise error_de_datos("Error optimizando presupuesto de canasta", e)

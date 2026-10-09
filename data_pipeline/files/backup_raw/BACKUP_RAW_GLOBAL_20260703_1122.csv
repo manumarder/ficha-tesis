@@ -1,0 +1,107 @@
+nombre,precio_normal,precio_descuento,precio_por_unidad,unidad,descuentos,fecha,supermercado,url,id_link_producto,error_type,titulo,producto_nombre,fecha_extraccion
+Cacao en polvo Chocolino bolsa 360 g.,4549,4549,12636.11,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/cacao-en-polvo-chocolino-bolsa-360-g/p,3218,,,,
+Cereal Azucarados Zucaritas 240 Gr,3248.60,3248.60,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/cereal_azucarados_zucaritas_240_gr,3951,,,,
+Whisky anejo Old smuggler 750 cc,9599,7199.25,9599,1 L.,25% off max 8 unidades,2026-07-03,Carrefour,https://www.carrefour.com.ar/whisky-anejo-old-smuggler-750-cc-458724/p,3199,,,,
+Galletitas pepas Carrefour Classic 500 grs,,,,,,,,https://www.carrefour.com.ar/galletitas-pepas-carrefour-classic-500-grs-491240/p,2674,no_disponible,Carrefour,,
+Cacao En Polvo Chocolino Plus sin tacc 360 Gr.,4568.0,4568.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/cacao-en-polvo-chocolino-plus-sin-tacc-360-gr-278087/p,2481,,,Cacao En Polvo Chocolino Plus sin tacc 360 Gr.,2026-07-03 11:12:36
+Gin Gordon´s London Dry 700cc,16969.35,16969.35,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/gin_gordons_london_dry_700cc,4161,,,,
+,,,,,,,,https://depotexpress.com.ar/productos/limpieza/jarp-ala-ecolav-mat-3x/,3736,exception,"Message: timeout: Timed out receiving message from renderer: 6.291
+  (Session info: chrome=149.0.7827.201)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70dc73fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff70dc74000+14980]
+	chromedriver!(No symbol) [0x7ff70d7b793d]
+	chromedriver!(No symbol) [0x7ff70d7a4449]
+	chromedriver!(No symbol) [0x7ff70d7a4131]
+	chromedriver!(No symbol) [0x7ff70d7a1e01]
+	chromedriver!(No symbol) [0x7ff70d7a273f]
+	chromedriver!(No symbol) [0x7ff70d7b1e1a]
+	chromedriver!(No symbol) [0x7ff70d7c8a77]
+	chromedriver!(No symbol) [0x7ff70d7d093a]
+	chromedriver!(No symbol) [0x7ff70d7a2f01]
+	chromedriver!(No symbol) [0x7ff70d7c87a5]
+	chromedriver!(No symbol) [0x7ff70d85f71a]
+	chromedriver!(No symbol) [0x7ff70d80401c]
+	chromedriver!(No symbol) [0x7ff70d804f43]
+	chromedriver!GetHandleVerifier [0x7ff70e257591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff70e251902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff70e277115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff70dc91dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff70dc9a82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff70dc7d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff70dc7d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff70dc61447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",,
+,,,,,,,,https://depotexpress.com.ar/productos/bebidas-c-alcohol/vinos-y-espumantes/vino-alma-mora-malbec-x-750-c-c/,3609,exception,"Message: timeout: Timed out receiving message from renderer: 6.744
+  (Session info: chrome=149.0.7827.201)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff70dc73fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff70dc74000+14980]
+	chromedriver!(No symbol) [0x7ff70d7b793d]
+	chromedriver!(No symbol) [0x7ff70d7a4449]
+	chromedriver!(No symbol) [0x7ff70d7a4131]
+	chromedriver!(No symbol) [0x7ff70d7a1e01]
+	chromedriver!(No symbol) [0x7ff70d7a273f]
+	chromedriver!(No symbol) [0x7ff70d7b1e1a]
+	chromedriver!(No symbol) [0x7ff70d7c8a77]
+	chromedriver!(No symbol) [0x7ff70d7d093a]
+	chromedriver!(No symbol) [0x7ff70d7a2f01]
+	chromedriver!(No symbol) [0x7ff70d7c87a5]
+	chromedriver!(No symbol) [0x7ff70d85f71a]
+	chromedriver!(No symbol) [0x7ff70d80401c]
+	chromedriver!(No symbol) [0x7ff70d804f43]
+	chromedriver!GetHandleVerifier [0x7ff70e257591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff70e251902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff70e277115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff70dc91dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff70dc9a82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff70dc7d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff70dc7d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff70dc61447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ffd6194e957+17]
+	ntdll!RtlUserThreadStart [0x7ffd62787c1c+2c]
+",,
+Nachos Sabor A Queso Doritos X 129 Gr.,5400.0,5400.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/nachos-sabor-a-queso-doritos-x-129-gr-107734/p,2384,,,Nachos Sabor A Queso Doritos X 129 Gr.,2026-07-03 11:13:11
+Galletitas original Criollitas 100 g. x 3 uni,1909,1909,6363.33,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/galletitas-original-criollitas-100-g-x-3-uni/p,2817,,,,
+Crema Dental Colgate Luminous White Brilliant 90 Gr,7321.86,7321.86,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/crema_dental_colgate_luminous_white_brilliant_90_gr,4339,,,,
+Vino Tinto Trapiche Alaris Malbec 750 ml.,5769.0,5769.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/vino-tinto-trapiche-alaris-malbec-750-ml-57773/p,2445,,,Vino Tinto Trapiche Alaris Malbec 750 ml.,2026-07-03 11:13:34
+Papas fritas corte americano Krachitos 275 grs,7249,7249,26360,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/papas-fritas-corte-americano-krachitos-275-grs-750922/p,3112,,,,
+Galletitas crackers La Providencia 101 g.,,,,,,,,https://www.carrefour.com.ar/galletitas-crackers-la-providencia-101-g/p,2827,no_disponible,Carrefour,,
+Dulce De Leche Clasico Milkaut 400 Gr,2704.80,2704.80,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/dulce_de_leche_clasico_milkaut_400_gr,3956,,,,
+MERM ARCOR DAMASCO 454X,2740.37,2740.37,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/desayuno/merm-arcor-damasco-454x/,3522,,,,
+"Queso Cremoso Silvia Aprox 1,100 G",13120.31,13120.31,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/queso_cremoso_silvia_aprox_1100_g2,3921,,,,
+DOS ANCLAS SAL.MARR 500X,2176.72,2176.72,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/comestibles/salf-dos-anclas-sal-marr-500x/,3487,,,,
+Fideos Tallarines Santa Isabel 500 Gr,704.70,704.70,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/fideos_tallarines_santa_isabel_500_gr,3868,,,,
+Papel higiénico hoja simple Carrefour Essential 4 x 30 mts,2090,1901.90,158.49,1 M2.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/papel-higienico-hoja-simple-carrefour-essential-4-x-30-mts-629865/p,3343,,,,
+Fideos tallarines N7 Terrabusi 500 g.,1155,1155,2310,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/fideos-tallarines-n7-terrabusi-500-g-729392/p,2867,,,,
+Mortadela mini El Bierzo 300 g.,,,,,,,,https://www.carrefour.com.ar/mortadela-mini-el-bierzo-300-g-730209/p,3266,no_disponible,Carrefour,,
+Harina de maíz amarilla Albor 800 grs,2350,2350,2937.50,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/harina-de-maiz-amarilla-albor-800-grs-211677/p,2831,,,,
+AQUARIUS POMELO ROSADO 2.25X,2200.00,2200.00,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/bebidas-s-alcohol/aguas/agus-aquarius-pom-rdo-2-25x/,3545,,,,
+Vino tinto Malbec Tierra de Fuego 750 ml,,,,,,,,https://www.carrefour.com.ar/vino-tinto-malbec-tierra-del-fuego-750-cc/p,3169,no_disponible,Vino tinto Malbec Tierra de Fuego 750 ml - Carrefour,,
+DESA VERITAS ANT CONTRL 94X,2921.07,2921.07,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/otros/producto-48/,3713,,,,
+Edulcorante Clasico Forte Hileret 250 ML,2814.41,2814.41,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/edulcorante_clasico_forte_hileret_250_ml,3973,,,,
+Limpiador De Piso Esencial Lavanda Natural 900 ML,1637.13,1637.13,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/limpiador_de_piso_esencial_lavanda_natural_900_ml,4382,,,,
+Limpiador líquido desinfectante Procenex pisos original 5 l.,13719,13719,2743.80,1 L.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/limpiador-liquido-desinfectante-procenex-pisos-original-5-l-584289/p,3392,,,,
+Limpiador Aromatizante Desinfectante Poett Flores De Primavera x 900 Ml,2075.99,2075.99,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/limpiador_aromatizante_desinfectante_poett_flores_de_primavera_x_900_ml,4379,,,,
+Puré de tomate Arcor brik 520 g.,1123.08,730,2159.77,1 K.,2do al 80% carrefour crdito | 2do al 80% cuenta digital | 2do al 70% max 8 unidades combinable arcor,2026-07-03,Carrefour,https://www.carrefour.com.ar/pure-de-tomate-arcor-brik-520-g-739689/p,3018,,,,
+Galletitas Mana Rellena De Vainilla x 152 Gr,1747.23,1747.23,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/galletitas_mana_rellena_de_vainilla_x_152_gr,3804,,,,
+AGUS AQUARIUS POMELO 2.25X,2200.00,2200.00,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/bebidas-s-alcohol/aguas/agus-aquarius-pomelo-2-25x/,3544,,,,
+Aritos de cereal frutado Granix bolsa 130 g.,1549,1549,11915.38,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/aritos-de-cereal-frutado-granix-bolsa-130-g-683267/p,2938,,,,
+Tapa de Asado Envasado al Vacío x Kg.,20900.0,20900.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/tapa-de-asado-envasado-al-vacio-x-kg-279530/p,2513,,,Tapa de Asado Envasado al Vacío x Kg.,2026-07-03 11:18:48
+PURE TOMATE DONA PUPA 520X,808.63,808.63,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/comestibles/pure-tomate-dona-pupa-520x/,3514,,,,
+Arroz Largo Fino 00000 Extra Real 1 Kg,1677.06,1677.06,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/arroz_largo_fino_00000_extra_real_1_kg,3863,,,,
+Galletitas vainilla rellenas chocolate Tortitas 125 g.,1479,1479,11832,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/galletitas-vainilla-rellenas-chocolate-tortitas-125-g/p,2739,,,,
+Cerveza Rubia Bohemian Patagonia 473 Cc,4405.34,4405.34,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/cerveza_rubia_bohemian_patagonia_473_cc,4121,,,,
+Choclo con chala x unidad,1349,1349,1349,1 U.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/choclo-con-chala-x-unidad-760120/p,3284,,,,
+Te Clasico Rosamonte 50 Saquitos 2g c/u,1729.95,1729.95,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/te_clasico_rosamonte_50_saquitos_2g_cu,4251,,,,
+Jabon En Polvo Ala Eco Lavado 800 Gr,4870.38,4870.38,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/jabon_en_polvo_ala_eco_lavado_800_gr,4366,,,,
+LAVANDINA AYUDIN CLASICA 2X,2561.25,2561.25,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/ofertas/lava-ayudin-clasica-2x/,3733,,,,
+Fideos cinta tallarin Carrefour classic 500 g.,1290,1173.90,2347.80,1 K.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/fideos-cinta-tallarin-carrefour-classic-500-g-690043/p,2857,,,,
+Mayonesa Natura 237 g.,1549,1549,6196,1 L.,Ninguno,2026-07-03,Carrefour,https://www.carrefour.com.ar/mayonesa-natura-237-g/p,2981,,,,
+"Gaseosa Crush Lima-Limón 2,25 lts",,,,,,,,https://www.carrefour.com.ar/gaseosa-crush-lima-limon-2-25-lts-168638/p,3073,no_disponible,Carrefour,,
+SUAV VIVERE PLANCH FACIL 810X,1651.64,1651.64,0,,Ninguno,2026-07-03,Depot,https://depotexpress.com.ar/productos/limpieza/suavizante-vivere-plancha-facil-doy-pack-x-810ml/,3740,,,,
+Leche En Polvo Entera Purisima 800 Gr,8166.14,8166.14,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/leche_en_polvo_entera_purisima_800_gr,3905,,,,
+Pasta Dental Colgate Triple Acción 180 grs,7009,4205.40,38938.89,1 K.,2do al 80% max 8 unidades combinable colgate,2026-07-03,Carrefour,https://www.carrefour.com.ar/pasta-dental-colgate-triple-accion-180-grs-718629/p,3338,,,,
+* Yogur Bebible Clasico De Frutilla La Serenisima x 900 Gr,1912.32,1625.47,0,,Ninguno,2026-07-03,Delimart,https://www.delimart.com.ar/_yogur_bebible_clasico_de_frutilla_la_serenisima_x_900_gr23456789101112131415161718,3944,,,,

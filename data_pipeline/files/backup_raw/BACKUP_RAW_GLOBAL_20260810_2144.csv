@@ -1,0 +1,107 @@
+nombre,precio_normal,precio_descuento,precio_por_unidad,unidad,descuentos,fecha,supermercado,url,id_link_producto,producto_nombre,fecha_extraccion,error_type,titulo
+Lavandina Querubín clásica 2 lt.,3129,3129,1564.50,1 L.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/lavandina-querubin-clasica-2-lt/p,3373,,,,
+Té en saquitos Green Hills 25 Ud.,1616.0,1616.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/te-en-saquitos-green-hills-25-ud-181243/p,2502,Té en saquitos Green Hills 25 Ud.,2026-08-10 21:34:57,,
+Yerba Mate Suave Nobleza Gaucha 1 Kg,4788.19,4788.19,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/yerba_mate_suave_nobleza_gaucha_1_kg2,4217,,,,
+,,,,,,,,https://depotexpress.com.ar/productos/alimentos-para-mascotas/alpe-pedig-dentatix-raz-peq-47-1x/,3765,,,exception,"Message: timeout: Timed out receiving message from renderer: 5.220
+  (Session info: chrome=151.0.7922.76)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff774898935+14ce5]
+	chromedriver!GetHandleVerifier [0x7ff774898990+14d40]
+	chromedriver!(No symbol) [0x7ff7743c5afd]
+	chromedriver!(No symbol) [0x7ff7743b2a39]
+	chromedriver!(No symbol) [0x7ff7743b2721]
+	chromedriver!(No symbol) [0x7ff7743b03d7]
+	chromedriver!(No symbol) [0x7ff7743b0d2f]
+	chromedriver!(No symbol) [0x7ff7743c031a]
+	chromedriver!(No symbol) [0x7ff7743d6c17]
+	chromedriver!(No symbol) [0x7ff7743deb7a]
+	chromedriver!(No symbol) [0x7ff7743b14f1]
+	chromedriver!(No symbol) [0x7ff7743d6945]
+	chromedriver!(No symbol) [0x7ff77446e816]
+	chromedriver!(No symbol) [0x7ff77441308c]
+	chromedriver!(No symbol) [0x7ff774413fb3]
+	chromedriver!GetHandleVerifier [0x7ff774ece5fb+64a9ab]
+	chromedriver!GetHandleVerifier [0x7ff774ec8b02+644eb2]
+	chromedriver!GetHandleVerifier [0x7ff774eee39e+66a74e]
+	chromedriver!GetHandleVerifier [0x7ff7748b5d6e+3211e]
+	chromedriver!GetHandleVerifier [0x7ff7748be51c+3a8cc]
+	chromedriver!GetHandleVerifier [0x7ff7748a2844+1ebf4]
+	chromedriver!GetHandleVerifier [0x7ff7748a29d4+1ed84]
+	chromedriver!GetHandleVerifier [0x7ff774885d07+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ffc6ae4e957+17]
+	ntdll!RtlUserThreadStart [0x7ffc6be2ad6c+2c]
+"
+Galletitas Gold Mundo anillos chocolate y vainilla 250 g.,,,,,,,,https://www.carrefour.com.ar/galletitas-gold-mundo-anillos-chocolate-y-vainilla-250-g-621326/p,2801,,,no_disponible,Galletitas Gold Mundo anillos chocolate y vainilla 250 g. - Carrefour
+Mortadela Paladini mini 300 g.,5030,3900.00,13000,1 K.,22%,2026-08-10,Carrefour,https://www.carrefour.com.ar/mortadela-paladini-mini-300-g/p,3256,,,,
+Aperitivo Campari Bitter 750 ml.,14990.0,11300.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/aperitivo-campari-bitter-750-ml-142748/p,2464,Aperitivo Campari Bitter 750 ml.,2026-08-10 21:36:00,,
+Galletitas crackers Granix 200 g.,1789,1789,8945,1 K.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/galletitas-crackers-granix-200-g/p,2822,,,,
+Gaseosa Secco Pomelo Blanco 2.25 Lt,2062.48,1753.11,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/gaseosa_secco_pomelo_blanco_225_lt,4047,,,,
+Gaseosa Coca Cola Sabor Original - 1.5 Lt,4166.67,4166.67,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/gaseosa_coca_cola_sabor_original_-_15_lt,4072,,,,
+Fernet Vittone 750 cc,6750,6750,9000,1 L.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/fernet-vittone-750-cc/p,3172,,,,
+Galletitas dulces pepas Bulnez en bolsa 250 grs,1350,1350,5400,1 K.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/galletitas-dulces-pepas-bulnez-en-bolsa-250-grs-753111/p,2746,,,,
+Bola De Lomo Trozado Don Juan - Envasado al vacío - El kilo a,27114.13,27114.13,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/bola_de_lomo_trozado_don_juan_-_envasado_al_vacio_-_el_kilo_a,4266,,,,
+Queso Rallado La Paulina 150 Gr.,6282.0,5390.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/queso-rallado-la-paulina-150-gr-59263/p,2266,Queso Rallado La Paulina 150 Gr.,2026-08-10 21:37:14,,
+Banana selección x kg.,,,,,,,,https://www.carrefour.com.ar/banana-seleccion-x-kg-746567/p,3277,,,no_disponible,Carrefour
+Aceite de Girasol Costa Del Sol 900 Ml,3002.80,3002.80,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/aceite_de_girasol_costa_del_sol_900_ml,3885,,,,
+Mini Mortadela DIA Bocha 300 Gr.,3990.0,3990.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/mini-mortadela-dia-bocha-300-gr-271384/p,2538,Mini Mortadela DIA Bocha 300 Gr.,2026-08-10 21:37:43,,
+"Aceite de Girasol Natura 1,5 Lt.",7460.0,6975.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/aceite-de-girasol-natura-15-lt-78856/p,2240,"Aceite de Girasol Natura 1,5 Lt.",2026-08-10 21:37:47,,
+,,,,,,,,https://depotexpress.com.ar/productos/tocador-y-cosmtica/sham-plusb-suavidad-bio-prot-1x/,3709,,,exception,"Message: timeout: Timed out receiving message from renderer: 2.650
+  (Session info: chrome=151.0.7922.76)
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff774898935+14ce5]
+	chromedriver!GetHandleVerifier [0x7ff774898990+14d40]
+	chromedriver!(No symbol) [0x7ff7743c5afd]
+	chromedriver!(No symbol) [0x7ff7743b2a39]
+	chromedriver!(No symbol) [0x7ff7743b2721]
+	chromedriver!(No symbol) [0x7ff7743b03d7]
+	chromedriver!(No symbol) [0x7ff7743b0d2f]
+	chromedriver!(No symbol) [0x7ff7743c031a]
+	chromedriver!(No symbol) [0x7ff7743d6c17]
+	chromedriver!(No symbol) [0x7ff7743deb7a]
+	chromedriver!(No symbol) [0x7ff7743b14f1]
+	chromedriver!(No symbol) [0x7ff7743d6945]
+	chromedriver!(No symbol) [0x7ff77446e816]
+	chromedriver!(No symbol) [0x7ff77441308c]
+	chromedriver!(No symbol) [0x7ff774413fb3]
+	chromedriver!GetHandleVerifier [0x7ff774ece5fb+64a9ab]
+	chromedriver!GetHandleVerifier [0x7ff774ec8b02+644eb2]
+	chromedriver!GetHandleVerifier [0x7ff774eee39e+66a74e]
+	chromedriver!GetHandleVerifier [0x7ff7748b5d6e+3211e]
+	chromedriver!GetHandleVerifier [0x7ff7748be51c+3a8cc]
+	chromedriver!GetHandleVerifier [0x7ff7748a2844+1ebf4]
+	chromedriver!GetHandleVerifier [0x7ff7748a29d4+1ed84]
+	chromedriver!GetHandleVerifier [0x7ff774885d07+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ffc6ae4e957+17]
+	ntdll!RtlUserThreadStart [0x7ffc6be2ad6c+2c]
+"
+Zapallo japones x kg.,1299,1299,1299,1 K.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/zapallo-japones-x-kg-735565/p,3295,,,,
+Tanqueray London Dry Gin Export Strength 700 Cc,36647.29,36647.29,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/tanqueray_london_dry_gin_export_strength_700_cc,4159,,,,
+Jugo de naranja natural Pura frutta salustiana 1 lt.,5359,5359,5359,1 L.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/jugo-de-naranja-natural-pura-frutta-salustiana-1-lt-723825/p,3095,,,,
+Puré de Tomate La Campagnola 520 Gr.,1405.0,1405.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/pure-de-tomate-la-campagnola-520-gr-14900/p,2314,Puré de Tomate La Campagnola 520 Gr.,2026-08-10 21:38:36,,
+Aceite de girasol Cocinero 1.5 l.,6929,6929,4619.33,1 L.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/aceite-de-girasol-cocinero-15-l-41078/p,2872,,,,
+Harina 000 Cañuelas Ultra Refinada 1 Kg.,995.0,995.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/harina-000-canuelas-ultra-refinada-1-kg-273445/p,2217,Harina 000 Cañuelas Ultra Refinada 1 Kg.,2026-08-10 21:38:53,,
+FERN BRANCA 1X,16533.00,16533.00,0,,Ninguno,2026-08-10,Depot,https://depotexpress.com.ar/productos/bebidas-c-alcohol/aperitivos/fern-branca-1x/,3634,,,,
+MANI KING FRIT SALADO S/PIEL 100X,745.66,745.66,0,,Ninguno,2026-08-10,Depot,https://depotexpress.com.ar/productos/comestibles/cop-maniking-frit-salado-s-piel-100x/,3558,,,,
+Galletitas de avena y chocolate Cereal Mix 207 grs,2639,2639,12748.79,1 K.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/galletitas-de-avena-y-chocolate-cereal-mix-207-grs-751408/p,2699,,,,
+Rollos de cocina Vual grofado 120 paños,2085.90,1773.02,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/rollos_de_cocina_vual_grofado_120_panos,4389,,,,
+Snacks Papas Fritas sabor Queso Crema y Ciboulette Quento 82 gr,2585.23,2197.45,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/snacks_papas_fritas_sabor_queso_crema_y_ciboulette_quento_82_gr,4102,,,,
+Vinagre De Alcohol Dos Anclas 1 Lt,1945.66,1945.66,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/vinagre_de_alcohol_dos_anclas_1_lt,3992,,,,
+VODK SMIRNOFF RASPBERRY 700X,8780.21,8780.21,0,,Ninguno,2026-08-10,Depot,https://depotexpress.com.ar/productos/bebidas-c-alcohol/blancas-y-licores/vodk-smirnoff-raspberry-700x/,3637,,,,
+ARR LA CORRENTINA 5/0 1X,2325.00,2325.00,0,,Ninguno,2026-08-10,Depot,https://depotexpress.com.ar/productos/ofertas/arroz-la-correntina-00000-x-1kg/,3460,,,,
+CERV SALTA RUBIA LATA 473X,1494.31,1494.31,0,,Ninguno,2026-08-10,Depot,https://depotexpress.com.ar/productos/bebidas-c-alcohol/cerveza/cerv-salta-rubia-lata-473x/,3577,,,,
+Fiambre de Cerdo 66 150 Gr.,2690.0,2690.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/fiambre-de-cerdo-66-150-gr-80908/p,2540,Fiambre de Cerdo 66 150 Gr.,2026-08-10 21:41:47,,
+Tubitos De Harina De Maíz Sabor Queso 3D Mega Queso X 143 Gr.,5400.0,5400.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/tubitos-de-harina-de-maiz-sabor-queso-3d-mega-queso-x-143-gr-273071/p,2385,Tubitos De Harina De Maíz Sabor Queso 3D Mega Queso X 143 Gr.,2026-08-10 21:41:52,,
+Yerba Mate Playadito 500 Gr,2231.03,2231.03,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/yerba_mate_playadito_500_gr,4213,,,,
+Arvejas secas remojadas Carrefour classic en lata 300 g.,719,639.91,2133.03,1 K.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/arvejas-secas-remojadas-carrefour-classic-en-lata-300-g-731395/p,3024,,,,
+Huevo blanco Avicola Santa Ana carton 6 uni,2500,2500,416.67,1 U.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/huevo-blanco-avicola-santa-ana-carton-6-uni-432936/p,2962,,,,
+Jabon Liquido Para Ropa Ariel Platinum Doypack 800 Ml.,4515.0,4515.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/jabon-liquido-para-ropa-ariel-platinum-doypack-800-ml-309642/p,2625,Jabon Liquido Para Ropa Ariel Platinum Doypack 800 Ml.,2026-08-10 21:42:31,,
+Cerveza Session Ipa Antares 473 Ml.,4700.0,4700.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/cerveza-session-ipa-antares-473-ml-295256/p,2414,Cerveza Session Ipa Antares 473 Ml.,2026-08-10 21:42:35,,
+Galletitas Cofler Rellenas Choco Creamy 85 Gr,1336.11,1336.11,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/galletitas_cofler_rellenas_choco_creamy_85_gr,3780,,,,
+Manzana Verde x Kg.,5990.0,5990.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/manzana-verde-x-kg-90112/p,2550,Manzana Verde x Kg.,2026-08-10 21:42:47,,
+Huevo Color Grande 6 Ud.,2790.0,2790.0,,,,,Dia,https://diaonline.supermercadosdia.com.ar/huevo-color-grande-6-ud-31921/p,2285,Huevo Color Grande 6 Ud.,2026-08-10 21:42:51,,
+Galletitas original Criollitas 100 g. x 3 uni,1979,1979,6596.67,1 K.,Ninguno,2026-08-10,Carrefour,https://www.carrefour.com.ar/galletitas-original-criollitas-100-g-x-3-uni/p,2817,,,,
+Vino Finjamos Demencia x750cc Malbec,4882.82,4150.40,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/vino_finjamos_demencia_x750cc_malbec,4140,,,,
+Shampoo Pantene Keratina Repara y Protege 200 ml,5962.87,5962.87,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/shampoo_pantene_keratina_repara_y_protege_200_ml,4316,,,,
+LEGU LA EGIP.LENTEJAS 400X,1681.90,1681.90,0,,Ninguno,2026-08-10,Depot,https://depotexpress.com.ar/productos/comestibles/legu-la-egip-lentejas-400x/,3519,,,,
+Galletitas Rellena Amor 110 Gr,1644.44,1644.44,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/galletitas_rellena_amor_110_gr,3788,,,,
+Gaseosa Coca Cola Sabor Original - 3 Lt,5520.83,5520.83,0,,Ninguno,2026-08-10,Delimart,https://www.delimart.com.ar/gaseosa_coca_cola_sabor_original_-_3_lt,4075,,,,

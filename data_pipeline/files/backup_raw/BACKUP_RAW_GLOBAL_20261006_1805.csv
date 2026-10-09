@@ -1,0 +1,21 @@
+error_type,url,titulo,id_link_producto,nombre,precio_normal,precio_descuento,precio_por_unidad,unidad,descuentos,fecha,supermercado,producto_nombre,fecha_extraccion
+no_session,https://www.carrefour.com.ar/mayonesa-clasica-hellmann-s-sin-tacc-doypack-950-g-694756/p,No se pudo establecer sesión,2984,,,,,,,,,,
+,https://www.delimart.com.ar/atun_desmenuzado_al_natural_bahia_170_g,,4271,Atun Desmenuzado Al Natural Bahia 170 G,1940.94,1940.94,0,,Ninguno,2026-10-06,Delimart,,
+no_session,https://www.carrefour.com.ar/galleta-de-limon-banada-en-chocolate-carrefour-extra-32-grs-758860/p,No se pudo establecer sesión,2738,,,,,,,,,,
+,https://www.delimart.com.ar/harina_de_maiz_amarilla_indelma_900_g,,3851,Harina de Maiz Amarilla Indelma 900 G,2175.44,2175.44,0,,Ninguno,2026-10-06,Delimart,,
+,https://www.delimart.com.ar/gaseosa_coca_cola_sabor_original_-_3_lt,,4075,Gaseosa Coca Cola Sabor Original - 3 Lt,5520.83,5520.83,0,,Ninguno,2026-10-06,Delimart,,
+,https://diaonline.supermercadosdia.com.ar/dulce-de-leche-milkaut-400-gr-297589/p,,2279,Dulce De Leche Milkaut 400 Gr 297589,0.0,0.0,,,,,Dia,Dulce De Leche Milkaut 400 Gr 297589,2026-10-06 17:59:05
+,https://diaonline.supermercadosdia.com.ar/fiambre-de-cerdo-66-150-gr-80908/p,,2540,Fiambre de Cerdo 66 150 Gr.,2690.0,2690.0,,,,,Dia,Fiambre de Cerdo 66 150 Gr.,2026-10-06 17:59:09
+,https://www.delimart.com.ar/atun_en_aceite_y_agua__desmenuzado_noel_x_170_gr,,4274,Atun en Aceite y Agua Desmenuzado Noel x 170 gr,2169.72,2169.72,0,,Ninguno,2026-10-06,Delimart,,
+,https://www.delimart.com.ar/mermelada_ciruela_dulcor_500_gr,,4039,Mermelada Ciruela Dulcor 500 Gr,1956.66,1956.66,0,,Ninguno,2026-10-06,Delimart,,
+no_session,https://www.carrefour.com.ar/plusbelle-litro-shampoo-proteccion-1-lt-776882/p,No se pudo establecer sesión,3315,,,,,,,,,,
+no_session,https://www.carrefour.com.ar/galletitas-trimak-polvorones-limon-170-g/p,No se pudo establecer sesión,2742,,,,,,,,,,
+no_price,https://depotexpress.com.ar/productos/otros/producto-98/,Depot,3473,,,,,,,,,,
+no_session,https://www.carrefour.com.ar/zapallo-anco-x-kg-735563/p,No se pudo establecer sesión,3293,,,,,,,,,,
+,https://www.delimart.com.ar/polenta_instantanea_presto_pronta_arcor_730_gr,,3858,Polenta Instantanea Presto Pronta Arcor 730 Gr,2980.03,2980.03,0,,Ninguno,2026-10-06,Delimart,,
+no_session,https://www.carrefour.com.ar/jabon-liquido-para-ropa-woolite-bebe-en-maquina-repuesto-900-ml-619920/p,No se pudo establecer sesión,3383,,,,,,,,,,
+,https://diaonline.supermercadosdia.com.ar/te-en-saquitos-green-hills-25-ud-181243/p,,2502,Té en saquitos Green Hills 25 Ud.,1616.0,1616.0,,,,,Dia,Té en saquitos Green Hills 25 Ud.,2026-10-06 18:04:25
+,https://diaonline.supermercadosdia.com.ar/vodka-sernova-700-ml-292426/p,,2460,Vodka Sernova 700 Ml.,13000.0,8290.0,,,,,Dia,Vodka Sernova 700 Ml.,2026-10-06 18:04:28
+,https://www.delimart.com.ar/mayonesa_con_jugo_de_limon_natura_237_g,,3980,Mayonesa Con Jugo De Limon Natura 237 g,2006.85,2006.85,0,,Ninguno,2026-10-06,Delimart,,
+,https://diaonline.supermercadosdia.com.ar/pasta-dental-kolynos-frescura-123-90-gr-119554/p,,2591,Pasta Dental Kolynos Frescura 123 90 Gr.,2315.0,1620.0,,,,,Dia,Pasta Dental Kolynos Frescura 123 90 Gr.,2026-10-06 18:04:39
+no_session,https://www.carrefour.com.ar/leche-en-polvo-entera-la-serenisima-bolsa-200-g/p,No se pudo establecer sesión,2901,,,,,,,,,,
