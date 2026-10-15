@@ -95,17 +95,62 @@ def read_root():
         "entorno": settings.environment
     }
 
+@app.get("/api/filtros")
+def obtener_opciones_filtro(db: ConexionBaseDatos = Depends(get_db)):
+    """Devuelve cadenas y categorías presentes en el catálogo activo."""
+    query = """
+        SELECT DISTINCT s.nombre AS supermercado, c.nombre AS categoria
+        FROM public.link_productos l
+        JOIN public.supermercados s ON s.id = l.id_supermercado
+        LEFT JOIN public.productos_maestros pm ON pm.id = l.id_maestro
+        LEFT JOIN public.categorias c ON c.id = pm.id_categoria
+        WHERE l.activo = TRUE AND s.activo = TRUE
+        ORDER BY s.nombre, c.nombre;
+    """
+    try:
+        rows = leer_dataframe(db, query)
+        return {
+            "status": "success",
+            "supermercados": sorted({row["supermercado"] for row in rows if row.get("supermercado")}),
+            "categorias": sorted({row["categoria"] for row in rows if row.get("categoria")}),
+        }
+    except Exception as e:
+        raise error_de_datos("Error consultando opciones de filtros", e)
+
+
+def _consulta_auditoria_filtrada(semaforo: str, orden: str, supermercado: str | None, categoria: str | None, db: ConexionBaseDatos):
+    query = LATEST_AUDIT_QUERY + f"""
+        SELECT pr.*, l.id AS id_link,
+               COALESCE(pr.precio_descuento, pr.precio_normal) AS precio_final,
+               c.nombre AS categoria
+        FROM precios_recientes pr
+        LEFT JOIN public.link_productos l ON l.id = pr.id_link
+        LEFT JOIN public.productos_maestros pm ON pm.id = l.id_maestro
+        LEFT JOIN public.categorias c ON c.id = pm.id_categoria
+        WHERE pr.semaforo = %s
+          AND (%s::text IS NULL OR pr.supermercado = %s)
+          AND (%s::text IS NULL OR c.nombre = %s)
+        ORDER BY pr.{orden};
+    """
+    return leer_dataframe(
+        db,
+        query,
+        params=(semaforo, supermercado, supermercado, categoria, categoria),
+    )
+
+
 @app.get("/api/ofertas-reales")
-def obtener_ofertas_reales(db: ConexionBaseDatos = Depends(get_db)):
+def obtener_ofertas_reales(
+    supermercado: str | None = Query(default=None, max_length=100),
+    categoria: str | None = Query(default=None, max_length=100),
+    db: ConexionBaseDatos = Depends(get_db),
+):
     """
     Trae los productos de la Canasta Básica cuyo semáforo es VERDE 🟢
     calculado dinámicamente contra su promedio móvil de 21 días.
     """
-    query = LATEST_AUDIT_QUERY + """
-        SELECT * FROM precios_recientes WHERE semaforo = '🟢' ORDER BY ahorro_real_pct DESC;
-    """
     try:
-        resultado = leer_dataframe(db, query)
+        resultado = _consulta_auditoria_filtrada("🟢", "ahorro_real_pct DESC", supermercado, categoria, db)
         return {
             "status": "success",
             "count": len(resultado),
@@ -115,16 +160,17 @@ def obtener_ofertas_reales(db: ConexionBaseDatos = Depends(get_db)):
         raise error_de_datos("Error consultando ofertas reales", e)
 
 @app.get("/api/alertas-trampa")
-def obtener_alertas_trampa(db: ConexionBaseDatos = Depends(get_db)):
+def obtener_alertas_trampa(
+    supermercado: str | None = Query(default=None, max_length=100),
+    categoria: str | None = Query(default=None, max_length=100),
+    db: ConexionBaseDatos = Depends(get_db),
+):
     """
     Trae los productos de la Canasta Básica cuyo semáforo es ROJO 🔴
     (Productos con inflado artificial previo en el precio normal).
     """
-    query = LATEST_AUDIT_QUERY + """
-        SELECT * FROM precios_recientes WHERE semaforo = '🔴' ORDER BY ahorro_real_pct ASC;
-    """
     try:
-        resultado = leer_dataframe(db, query)
+        resultado = _consulta_auditoria_filtrada("🔴", "ahorro_real_pct ASC", supermercado, categoria, db)
         return {
             "status": "success",
             "count": len(resultado),
@@ -132,6 +178,31 @@ def obtener_alertas_trampa(db: ConexionBaseDatos = Depends(get_db)):
         }
     except Exception as e:
         raise error_de_datos("Error consultando alertas trampa", e)
+
+
+@app.get("/api/productos/{id_link}/historial")
+def obtener_historial_producto(
+    id_link: int,
+    dias: int = Query(default=21, ge=1, le=21),
+    db: ConexionBaseDatos = Depends(get_db),
+):
+    """Retorna la última observación diaria de precio del producto dentro de la ventana."""
+    query = """
+        SELECT DISTINCT ON (DATE(p.created_at))
+            p.created_at::date AS fecha,
+            p.precio_normal,
+            p.precio_descuento,
+            p.precio_final
+        FROM public.precios_productos p
+        WHERE p.id_link = %s
+          AND p.created_at >= CURRENT_DATE - (%s::integer - 1)
+        ORDER BY DATE(p.created_at), p.created_at DESC;
+    """
+    try:
+        rows = leer_dataframe(db, query, params=(id_link, dias))
+        return {"status": "success", "id_link": id_link, "dias": dias, "count": len(rows), "data": rows}
+    except Exception as e:
+        raise error_de_datos("Error consultando historial de precios", e)
     
 
 # ==========================================
@@ -180,7 +251,7 @@ def buscar_productos(
     
     # Búsqueda insensible a mayúsculas/minúsculas (ILIKE) para una UX robusta
     query = LATEST_AUDIT_QUERY + """
-        SELECT *, COALESCE(precio_descuento, precio_normal) AS precio_final
+        SELECT *, id AS id_link, COALESCE(precio_descuento, precio_normal) AS precio_final
         FROM precios_recientes 
         WHERE nombre_generico ILIKE %s OR url_producto ILIKE %s
         ORDER BY precio_final ASC;

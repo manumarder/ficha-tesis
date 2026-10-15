@@ -1,7 +1,16 @@
 ﻿"use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { getAlertasTrampa, getOfertasReales, ProductoAuditado, searchProductos } from "./services/api";
+import {
+  getAlertasTrampa,
+  getHistorialProducto,
+  getOfertasReales,
+  getOpcionesFiltros,
+  OpcionesFiltros,
+  ProductoAuditado,
+  PuntoHistorial,
+  searchProductos,
+} from "./services/api";
 
 function precioFinal(producto: ProductoAuditado): number {
   return producto.precio_final ?? producto.precio_descuento ?? producto.precio_normal;
@@ -50,6 +59,60 @@ function BadgeSemaforo({ semaforo, dias }: { semaforo?: string; dias?: number })
   }
 }
 
+function GraficoHistorial({ puntos }: { puntos: PuntoHistorial[] }) {
+  if (puntos.length === 0) {
+    return <p className="mt-3 text-xs text-slate-500">No hay observaciones de precio para los últimos 21 días.</p>;
+  }
+
+  const width = 640;
+  const height = 190;
+  const padding = { top: 14, right: 18, bottom: 34, left: 64 };
+  const values = puntos.map((punto) => punto.precio_final);
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || Math.max(max * 0.05, 1);
+  const x = (index: number) => padding.left + (index / Math.max(puntos.length - 1, 1)) * (width - padding.left - padding.right);
+  const y = (value: number) => max === min
+    ? padding.top + (height - padding.top - padding.bottom) / 2
+    : padding.top + ((max + range * 0.08 - value) / (range * 1.16)) * (height - padding.top - padding.bottom);
+  const polyline = puntos.map((punto, index) => `${x(index)},${y(punto.precio_final)}`).join(" ");
+  const formatDate = (fecha: string) => new Date(`${fecha}T00:00:00`).toLocaleDateString("es-AR", { day: "2-digit", month: "2-digit" });
+
+  return (
+    <div className="mt-3 overflow-hidden rounded-2xl border border-slate-200 bg-white p-3">
+      <div className="flex items-center justify-between px-1 pb-2">
+        <p className="text-xs font-semibold text-slate-700">Precio efectivo · últimos 21 días</p>
+        <p className="text-[0.65rem] text-slate-400">{puntos.length} observaciones</p>
+      </div>
+      <div className="overflow-x-auto">
+        <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label="Gráfico de evolución del precio efectivo en los últimos 21 días" className="h-48 min-w-[480px] w-full">
+          {[0, 1, 2].map((tick) => {
+            const value = min + (max - min) * (tick / 2);
+            const yPosition = y(value);
+            return (
+              <g key={tick}>
+                <line x1={padding.left} y1={yPosition} x2={width - padding.right} y2={yPosition} stroke="#e2e8f0" strokeDasharray="4 4" />
+                <text x={padding.left - 8} y={yPosition + 4} textAnchor="end" fontSize="10" fill="#64748b">{formatoPrecio(value)}</text>
+              </g>
+            );
+          })}
+          <polyline points={polyline} fill="none" stroke="#0284c7" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          {puntos.map((punto, index) => (
+            <g key={`${punto.fecha}-${index}`}>
+              <circle cx={x(index)} cy={y(punto.precio_final)} r="4" fill="#0284c7" stroke="white" strokeWidth="2">
+                <title>{`${formatDate(punto.fecha)} · ${formatoPrecio(punto.precio_final)}`}</title>
+              </circle>
+            </g>
+          ))}
+          <text x={padding.left} y={height - 8} textAnchor="start" fontSize="10" fill="#64748b">{formatDate(puntos[0].fecha)}</text>
+          <text x={width - padding.right} y={height - 8} textAnchor="end" fontSize="10" fill="#64748b">{formatDate(puntos[puntos.length - 1].fecha)}</text>
+        </svg>
+      </div>
+      <p className="px-1 pt-1 text-[0.65rem] text-slate-400">Se muestra la última captura disponible de cada día; los días sin captura no se interpolan.</p>
+    </div>
+  );
+}
+
 export default function Home() {
   const [ofertasReales, setOfertasReales] = useState<ProductoAuditado[]>([]);
   const [alertasTrampa, setAlertasTrampa] = useState<ProductoAuditado[]>([]);
@@ -61,24 +124,43 @@ export default function Home() {
   const [searchError, setSearchError] = useState<string | null>(null);
   const [filtroOrden, setFiltroOrden] = useState<"mayor" | "menor">("mayor");
   const [isOffline, setIsOffline] = useState(false);
+  const [opcionesFiltros, setOpcionesFiltros] = useState<OpcionesFiltros>({ supermercados: [], categorias: [] });
+  const [filtroSupermercado, setFiltroSupermercado] = useState("");
+  const [filtroCategoria, setFiltroCategoria] = useState("");
+  const [historialAbierto, setHistorialAbierto] = useState<string | null>(null);
+  const [historiales, setHistoriales] = useState<Record<string, PuntoHistorial[]>>({ });
+  const [historialCargando, setHistorialCargando] = useState<string | null>(null);
+  const [historialError, setHistorialError] = useState<string | null>(null);
 
   useEffect(() => {
+    getOpcionesFiltros()
+      .then(setOpcionesFiltros)
+      .catch(() => setOpcionesFiltros({ supermercados: [], categorias: [] }));
+  }, []);
+
+  useEffect(() => {
+    let active = true;
     async function loadInitialData() {
       try {
-        const [reales, trampas] = await Promise.all([getOfertasReales(), getAlertasTrampa()]);
+        const filtros = { supermercado: filtroSupermercado, categoria: filtroCategoria };
+        const [reales, trampas] = await Promise.all([getOfertasReales(filtros), getAlertasTrampa(filtros)]);
+        if (!active) return;
         setOfertasReales(reales);
         setAlertasTrampa(trampas);
-        setIsOffline(reales.length === 0 && trampas.length === 0);
+        setIsOffline(false);
+        setInitialError(null);
       } catch {
+        if (!active) return;
         setIsOffline(true);
         setInitialError("No se pudo cargar la auditoría. Verificá que la API esté activa e intentá recargar.");
       } finally {
-        setInitialLoading(false);
+        if (active) setInitialLoading(false);
       }
     }
 
     loadInitialData();
-  }, []);
+    return () => { active = false; };
+  }, [filtroSupermercado, filtroCategoria]);
 
   const ofertasOrdenadas = useMemo(() => {
     return [...ofertasReales].sort((a, b) => {
@@ -87,6 +169,26 @@ export default function Home() {
       return filtroOrden === "mayor" ? ahorroB - ahorroA : ahorroA - ahorroB;
     });
   }, [ofertasReales, filtroOrden]);
+
+  async function handleToggleHistorial(idLink: string) {
+    if (historialAbierto === idLink) {
+      setHistorialAbierto(null);
+      return;
+    }
+    setHistorialAbierto(idLink);
+    setHistorialError(null);
+    if (historiales[idLink]) return;
+
+    setHistorialCargando(idLink);
+    try {
+      const puntos = await getHistorialProducto(idLink);
+      setHistoriales((actuales) => ({ ...actuales, [idLink]: puntos }));
+    } catch {
+      setHistorialError("No se pudo cargar la serie temporal de este producto.");
+    } finally {
+      setHistorialCargando(null);
+    }
+  }
 
   async function handleSearch(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -259,6 +361,30 @@ export default function Home() {
                       <div className="text-[0.65rem] text-slate-400 font-mono">
                         Base: {producto.dias_con_datos ?? 0} días muestreados | Clasificación: {producto.clasificacion ?? "NEUTRAL"}
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => handleToggleHistorial(producto.id_link)}
+                        aria-expanded={historialAbierto === producto.id_link}
+                        className="text-xs font-semibold text-sky-700 hover:text-sky-900"
+                      >
+                        {historialAbierto === producto.id_link ? "Ocultar evolución de precios" : "Ver evolución de precios (21 días)"}
+                      </button>
+                      {historialAbierto === producto.id_link && (
+                        historialCargando === producto.id_link
+                          ? <p className="mt-3 text-xs text-slate-500">Cargando historial...</p>
+                          : historialError
+                            ? <p className="mt-3 text-xs text-rose-600">{historialError}</p>
+                            : (
+                              <>
+                                <GraficoHistorial puntos={historiales[producto.id_link] ?? []} />
+                                {historiales[producto.id_link]?.length > 0 && (
+                                  <button type="button" onClick={() => descargarHistorialCsv(producto, historiales[producto.id_link])} className="mt-2 text-xs font-semibold text-sky-700 hover:text-sky-900 print:hidden">
+                                    Exportar esta serie a CSV
+                                  </button>
+                                )}
+                              </>
+                            )
+                      )}
                     </div>
                   ))}
                 </div>
@@ -269,17 +395,40 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Filtros compartidos por ofertas reales y alertas trampa */}
+        <div className="mt-20 mb-6 grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 sm:grid-cols-2">
+          <label className="text-xs font-semibold text-slate-600">
+            Supermercado
+            <select value={filtroSupermercado} onChange={(event) => setFiltroSupermercado(event.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900">
+              <option value="">Todos los supermercados</option>
+              {opcionesFiltros.supermercados.map((supermercado) => <option key={supermercado} value={supermercado}>{supermercado}</option>)}
+            </select>
+          </label>
+          <label className="text-xs font-semibold text-slate-600">
+            Categoría
+            <select value={filtroCategoria} onChange={(event) => setFiltroCategoria(event.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900">
+              <option value="">Todas las categorías</option>
+              {opcionesFiltros.categorias.map((categoria) => <option key={categoria} value={categoria}>{categoria}</option>)}
+            </select>
+          </label>
+        </div>
+
         {/* Sección: Ofertas Reales */}
         <section id="ofertas-reales" className="mt-20">
           <div className="mb-8">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-700">Capa Oro: Semáforo Verde</p>
             <h2 className="mt-2 text-2xl font-semibold text-slate-950">Descuentos Reales Verificados</h2>
             <p className="mt-1 text-sm text-slate-600">Artículos cuyo precio final es estrictamente inferior al promedio histórico de 21 días (Ahorro Real &gt; 3%).</p>
+            <div className="mt-4 flex flex-wrap gap-2 print:hidden">
+              <button type="button" onClick={() => descargarCsv(ofertasReales, "ofertas-reales")} disabled={!ofertasReales.length} className="rounded-xl bg-slate-950 px-4 py-2 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40">Descargar CSV ({ofertasReales.length})</button>
+              <button type="button" onClick={() => imprimirReporte("Ofertas reales verificadas", ofertasReales, { supermercado: filtroSupermercado, categoria: filtroCategoria })} disabled={!ofertasReales.length} className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40">Imprimir / Guardar PDF</button>
+            </div>
           </div>
-
           {/* Grilla de Destacados */}
           <div className="grid gap-6 xl:grid-cols-3">
-            {ofertasReales.slice(0, 6).map((producto) => (
+            {ofertasReales.length === 0 ? (
+              <p className="xl:col-span-3 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-500">No hay ofertas reales para los filtros seleccionados.</p>
+            ) : ofertasReales.slice(0, 6).map((producto) => (
               <div key={producto.id_link} className="rounded-[2rem] border border-emerald-200 bg-white p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between">
@@ -394,10 +543,16 @@ export default function Home() {
             <p className="mt-1 text-sm text-slate-600">
               Artículos cuyo precio de lista fue inflado más de un 5% respecto a su promedio histórico, simulando un descuento engañoso.
             </p>
+            <div className="mt-4 flex flex-wrap gap-2 print:hidden">
+              <button type="button" onClick={() => descargarCsv(alertasTrampa, "alertas-trampa")} disabled={!alertasTrampa.length} className="rounded-xl bg-slate-950 px-4 py-2 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40">Descargar CSV ({alertasTrampa.length})</button>
+              <button type="button" onClick={() => imprimirReporte("Alertas de precios", alertasTrampa, { supermercado: filtroSupermercado, categoria: filtroCategoria })} disabled={!alertasTrampa.length} className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40">Imprimir / Guardar PDF</button>
+            </div>
           </div>
 
           <div className="grid gap-6 xl:grid-cols-3">
-            {alertasTrampa.slice(0, 6).map((producto) => (
+            {alertasTrampa.length === 0 ? (
+              <p className="xl:col-span-3 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-500">No hay alertas trampa para los filtros seleccionados.</p>
+            ) : alertasTrampa.slice(0, 6).map((producto) => (
               <div key={producto.id_link} className="rounded-[2rem] border border-rose-200 bg-white p-6 shadow-sm flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between">
@@ -463,4 +618,104 @@ export default function Home() {
       </div>
     </div>
   );
+}
+
+function escaparCsv(value: string | number | null | undefined): string {
+  const text = value == null ? "" : String(value);
+  return `"${text.replaceAll('"', '""')}"`;
+}
+
+function escaparHtml(value: string | number | null | undefined): string {
+  return String(value ?? "").replace(/[&<>"']/g, (character) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[character] ?? character);
+}
+
+function descargarCsv(productos: ProductoAuditado[], tipo: string) {
+  const encabezados = ["Fecha de emisión", "Supermercado", "Categoría", "Producto", "Precio lista", "Precio descuento", "Precio efectivo", "Promedio histórico 21 días", "Ahorro real (%)", "Ahorro nominal (%)", "Semáforo", "Fecha de captura", "URL"];
+  const emitido = new Date().toLocaleString("es-AR");
+  const filas = productos.map((producto) => [
+    emitido,
+    producto.supermercado,
+    producto.categoria,
+    producto.nombre_generico,
+    producto.precio_normal,
+    producto.precio_descuento,
+    precioFinal(producto),
+    producto.promedio_normal_21d,
+    producto.ahorro_real_pct,
+    producto.ahorro_nominal_pct,
+    producto.semaforo,
+    producto.created_at,
+    producto.url_producto,
+  ]);
+  const csv = [encabezados, ...filas].map((fila) => fila.map(escaparCsv).join(";")).join("\r\n");
+  const blob = new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" });
+  const link = document.createElement("a");
+  const objectUrl = URL.createObjectURL(blob);
+  link.href = objectUrl;
+  link.download = `ficha-${tipo}-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+}
+
+function descargarHistorialCsv(producto: ProductoAuditado, puntos: PuntoHistorial[]) {
+  const encabezados = ["Producto", "Supermercado", "Fecha", "Precio lista", "Precio descuento", "Precio efectivo"];
+  const filas = puntos.map((punto) => [
+    producto.nombre_generico,
+    producto.supermercado,
+    punto.fecha,
+    punto.precio_normal,
+    punto.precio_descuento,
+    punto.precio_final,
+  ]);
+  const csv = [encabezados, ...filas].map((fila) => fila.map(escaparCsv).join(";")).join("\r\n");
+  const blob = new Blob(["\uFEFF", csv], { type: "text/csv;charset=utf-8" });
+  const link = document.createElement("a");
+  const objectUrl = URL.createObjectURL(blob);
+  link.href = objectUrl;
+  link.download = `ficha-historial-${producto.id_link}-${new Date().toISOString().slice(0, 10)}.csv`;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  window.setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+}
+
+function imprimirReporte(
+  tipo: string,
+  productos: ProductoAuditado[],
+  filtros: { supermercado: string; categoria: string },
+) {
+  const ventana = window.open("", "_blank", "width=1000,height=750");
+  if (!ventana) return;
+  const filas = productos.map((producto) => `
+    <tr>
+      <td>${escaparHtml(producto.supermercado)}</td>
+      <td>${escaparHtml(producto.categoria)}</td>
+      <td>${escaparHtml(producto.nombre_generico)}</td>
+      <td>${escaparHtml(formatoPrecio(precioFinal(producto)))}</td>
+      <td>${escaparHtml(producto.promedio_normal_21d == null ? "-" : formatoPrecio(producto.promedio_normal_21d))}</td>
+      <td>${escaparHtml(producto.ahorro_real_pct == null ? "-" : `${producto.ahorro_real_pct.toFixed(1)}%`)}</td>
+      <td>${escaparHtml(producto.semaforo)}</td>
+      <td>${escaparHtml(producto.created_at)}</td>
+    </tr>`).join("");
+  const tituloSeguro = escaparHtml(tipo);
+  const supermercadoSeguro = escaparHtml(filtros.supermercado || "Todos");
+  const categoriaSegura = escaparHtml(filtros.categoria || "Todas");
+  ventana.document.write(`<!doctype html><html lang="es"><head><meta charset="utf-8"><title>Reporte FICHÁ - ${tituloSeguro}</title>
+    <style>
+      body{font-family:Arial,sans-serif;color:#0f172a;margin:32px}header{border-bottom:2px solid #0284c7;padding-bottom:14px;margin-bottom:24px}h1{margin:0 0 8px;font-size:24px}p{color:#475569;font-size:12px}.summary{display:flex;gap:24px;margin:20px 0}.summary div{padding:12px;background:#f1f5f9;border-radius:8px}table{width:100%;border-collapse:collapse;font-size:10px}th,td{text-align:left;padding:8px;border-bottom:1px solid #cbd5e1}th{background:#e2e8f0}footer{margin-top:24px;font-size:10px;color:#64748b}@media print{body{margin:12mm}button{display:none}}
+    </style></head><body>
+    <header><strong>FICHÁ · Auditoría de precios</strong><h1>${tituloSeguro}</h1><p>Emitido: ${escaparHtml(new Date().toLocaleString("es-AR"))} · Registros: ${productos.length}</p><p>Reporte generado con los filtros activos en la plataforma. Los porcentajes corresponden a los campos calculados por el sistema.</p></header>
+    <div class="summary"><div><strong>Productos:</strong> ${productos.length}</div><div><strong>Supermercado:</strong> ${supermercadoSeguro}</div><div><strong>Categoría:</strong> ${categoriaSegura}</div></div>
+    <table><thead><tr><th>Cadena</th><th>Categoría</th><th>Producto</th><th>Precio efectivo</th><th>Promedio histórico</th><th>Ahorro real</th><th>Estado</th><th>Captura</th></tr></thead><tbody>${filas}</tbody></table>
+    <footer>FICHÁ · Fuente: registros recolectados desde fuentes comerciales públicas. El reporte refleja la información disponible al momento de emisión.</footer>
+    <script>window.onload=()=>window.print()</script></body></html>`);
+  ventana.document.close();
 }
