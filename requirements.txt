@@ -11,6 +11,7 @@ fastapi
 uvicorn
 streamlit
 requests
+webdriver_manager
 mcp
 google-api-python-client
 google-auth-httplib2
