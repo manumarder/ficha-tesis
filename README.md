@@ -129,6 +129,14 @@ Set-Location C:\Users\manue\Desktop\ficha-tesis
 .\.venv\Scripts\python.exe run_multiprocessing.py
 ```
 
+
+$env:EXTRACTION_SAMPLE_SIZE = "0"
+$env:EXTRACTION_SUPERMERCADO = ""
+$env:RETRY_FAILED = "false"
+$env:DIAGNOSTIC_ONLY = "false"
+.\.venv\Scripts\python.exe run_multiprocessing.py
+
+
 #### Paso 2: generar el asistente HTML de reparación
 
 El script selecciona automáticamente el reporte `LINKS_FALLIDOS_*.csv` más reciente, excluye los errores `no_disponible` y genera la lista de links críticos para revisar.
