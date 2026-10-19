@@ -2,6 +2,7 @@ python-dotenv
 pandas
 sqlalchemy
 pymysql
+psycopg[binary]
 psycopg2-binary
 selenium
 selenium-stealth

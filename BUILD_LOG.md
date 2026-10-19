@@ -6,6 +6,71 @@
 
 ---
 
+## 📥 Fase 28: Adaptación del Inicio de Sesión de Carrefour
+
+### 28.1 Diagnóstico del cambio de autenticación
+
+Durante las pruebas del extractor se detectó que el flujo de inicio de sesión de Carrefour ya no coincidía con el formulario anterior de correo y contraseña. La inspección del sitio mostró que:
+
+- El acceso comienza desde el icono de cuenta del encabezado, renderizado por VTEX como un contenedor interactivo (`div` con `role="button"`) dentro de `myAccountWrapperLink`.
+- El modal de acceso ofrece métodos de autenticación externos y el texto visible puede variar; en una de las pruebas apareció como **“Entrar con MI CARREFOUR”**.
+- La autenticación continúa en el dominio de identidad `id.carrefour.com.ar` y puede abrirse en una pestaña nueva.
+- El campo de DNI del formulario de identidad se identifica como `#username`; la contraseña se ingresa en el campo correspondiente y se envía con **INICIAR SESIÓN**.
+
+### 28.2 Adaptación del extractor
+
+Se actualizó `data_pipeline/extractors/carrefour_extractor.py` para seguir el flujo observado: localizar y pulsar el acceso de cuenta, esperar el modal, reconocer el método Mi Carrefour pese a variaciones en el texto renderizado, cambiar a la pestaña OAuth cuando corresponda y completar DNI y contraseña desde `CARREFOUR_DNI` y `CARREFOUR_PASSWORD`.
+
+Las cookies continúan gestionándose mediante `CookieManager` para permitir reutilizar una sesión si Carrefour la conserva. La verificación funcional debe distinguir entre abrir el modal y confirmar que la tienda reconoce una sesión activa: son pasos diferentes y ambos deben quedar registrados en las pruebas.
+
+### 28.3 Validación y alcance del resultado
+
+Se confirmó mediante ejecuciones diagnósticas que Selenium puede encontrar el icono de cuenta y abrir el modal. Los registros de esas pruebas también permitieron identificar la diferencia entre el texto esperado y el texto realmente expuesto por el componente VTEX.
+
+La compilación sintáctica del extractor fue correcta. **El inicio de sesión completo y la extracción posterior con sesión autenticada quedan pendientes de validación end-to-end**; por lo tanto, no se registra esta fase como resuelta hasta verificar una sesión activa y una extracción exitosa de producto.
+
+Las credenciales se mantienen fuera del código y de esta bitácora. Deben almacenarse únicamente en el archivo local `.env`, que no se debe publicar ni versionar.
+
+---
+
+## 📥 Fase 29: Filtros Analíticos y Evolución Histórica de Precios
+
+### 29.1 Filtros por supermercado y categoría
+
+Se incorporaron selectores compartidos para filtrar las secciones de **Descuentos Reales Verificados** y **Ofertas Trampa Detectadas** por supermercado y categoría. Las opciones se consultan desde el catálogo activo de la base de datos, vinculando los productos maestros con sus categorías y cadenas.
+
+La API expone las opciones mediante `GET /api/filtros` y acepta los parámetros opcionales `supermercado` y `categoria` en los endpoints de ofertas reales y alertas. Los filtros se aplican en la consulta SQL parametrizada.
+
+### 29.2 Consulta y gráfico de serie temporal
+
+Se agregó `GET /api/productos/{id_link}/historial`, que devuelve hasta 21 días de observaciones de precio, tomando como máximo una captura por fecha. En el buscador se puede desplegar un gráfico SVG del precio efectivo y exportar las observaciones de esa serie a CSV.
+
+El gráfico representa únicamente capturas existentes: no interpola ni inventa precios para días sin datos. El historial se carga bajo demanda al abrirlo.
+
+---
+
+## 📥 Fase 30: Módulo Inicial de Reportes y Exportación
+
+### 30.1 Exportación de resultados analíticos
+
+En las secciones de ofertas reales y alertas trampa se añadieron acciones para descargar los resultados actuales en CSV o abrir un informe imprimible desde el navegador, que puede guardarse como PDF. Ambos formatos reflejan los filtros seleccionados e incluyen fecha de emisión y cantidad de registros.
+
+Los CSV incluyen producto, cadena, categoría, precios, ahorro, estado analítico, fecha de captura y URL. La exportación de series temporales incluye producto, supermercado, fecha y valores de precio.
+
+### 30.2 Límites del módulo
+
+Esta primera versión informa los registros devueltos por las consultas analíticas; no genera un boletín estadístico de cobertura ni porcentajes agregados del semáforo. Tampoco se incorporó un reporte del armador de canasta. Estos informes requieren definir y validar criterios de cobertura, disponibilidad y comparabilidad antes de presentar conclusiones agregadas.
+
+### 30.3 Verificaciones ejecutadas
+
+- `npm run lint` en el proyecto frontend: correcto.
+- `npm run build` en Next.js: correcto.
+- Compilación de los módulos Python del backend: correcta.
+
+**Estado:** filtros, consulta de historial y exportaciones implementados y compilados. La validación de su comportamiento con los datos reales de Supabase debe efectuarse con la API en ejecución.
+
+---
+
 ## 📋 Fase 1: Setup Inicial del Proyecto
 
 ### 1.1 Crear Repo en GitHub
