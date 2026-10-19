@@ -251,7 +251,7 @@ def buscar_productos(
     
     # Búsqueda insensible a mayúsculas/minúsculas (ILIKE) para una UX robusta
     query = LATEST_AUDIT_QUERY + """
-        SELECT *, id AS id_link, COALESCE(precio_descuento, precio_normal) AS precio_final
+        SELECT *, COALESCE(precio_descuento, precio_normal) AS precio_final
         FROM precios_recientes 
         WHERE nombre_generico ILIKE %s OR url_producto ILIKE %s
         ORDER BY precio_final ASC;
