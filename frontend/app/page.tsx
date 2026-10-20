@@ -128,7 +128,7 @@ export default function Home() {
   const [filtroSupermercado, setFiltroSupermercado] = useState("");
   const [filtroCategoria, setFiltroCategoria] = useState("");
   const [historialAbierto, setHistorialAbierto] = useState<string | null>(null);
-  const [historiales, setHistoriales] = useState<Record<string, PuntoHistorial[]>>({ });
+  const [historiales, setHistoriales] = useState<Record<string, PuntoHistorial[]>>({});
   const [historialCargando, setHistorialCargando] = useState<string | null>(null);
   const [historialError, setHistorialError] = useState<string | null>(null);
 
@@ -223,72 +223,76 @@ export default function Home() {
         </div>
       )}
 
-      <div className="mx-auto max-w-7xl px-6 py-10 sm:px-8 lg:px-10">
-        {/* Header */}
-        <header className="flex flex-col gap-6 border-b border-slate-200 pb-6 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-8 sm:py-10 lg:px-10">
+        {/* Header con navegación interactiva */}
+        <header className="flex items-center justify-between border-b border-slate-200 pb-5">
           <div>
             <p className="text-xs font-semibold tracking-[0.35em] uppercase text-sky-700">FICHÁ</p>
-            <p className="text-sm font-medium text-slate-600">Auditor de precios inteligente para Corrientes</p>
+            <p className="text-xs sm:text-sm font-medium text-slate-600">Auditor de precios inteligente para Corrientes</p>
           </div>
-          <nav className="flex flex-wrap items-center gap-6 text-sm font-medium text-slate-600">
-            <a href="#inicio" className="transition hover:text-slate-900">Inicio</a>
-            <a href="#buscador" className="transition hover:text-slate-900">Buscador</a>
-            <a href="#ofertas-reales" className="transition hover:text-slate-900">Ofertas reales</a>
-            <a href="#alertas-trampa" className="transition hover:text-slate-900">Alertas trampa</a>
+
+          <nav className="hidden md:flex items-center gap-2 text-sm font-medium text-slate-600">
+            <a href="#inicio" className="rounded-xl px-3.5 py-2 transition-all duration-200 hover:text-sky-700 hover:bg-sky-50 active:bg-sky-100">Inicio</a>
+            <a href="#buscador" className="rounded-xl px-3.5 py-2 transition-all duration-200 hover:text-sky-700 hover:bg-sky-50 active:bg-sky-100">Buscador</a>
+            <a href="#ofertas-reales" className="rounded-xl px-3.5 py-2 transition-all duration-200 hover:text-emerald-700 hover:bg-emerald-50 active:bg-emerald-100">Ofertas reales</a>
+            <a href="#alertas-trampa" className="rounded-xl px-3.5 py-2 transition-all duration-200 hover:text-rose-700 hover:bg-rose-50 active:bg-rose-100">Alertas trampa</a>
           </nav>
         </header>
 
         {/* Sección Inicio */}
-        <section id="inicio" className="mt-14 grid gap-14 lg:grid-cols-[1.4fr_0.8fr] lg:items-start">
-          <div className="space-y-8">
-            <div className="max-w-2xl space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700 border border-sky-200">
+        <section id="inicio" className="mt-8 sm:mt-14 grid gap-8 lg:gap-14 lg:grid-cols-[1.4fr_0.8fr] lg:items-start">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="max-w-2xl space-y-4 sm:space-y-5">
+              <div className="inline-flex items-center gap-2 rounded-full bg-sky-50 px-3 py-1 text-[0.7rem] sm:text-xs font-semibold text-sky-700 border border-sky-200">
                 Auditoría Activa: 2.202 Enlaces Homologados
               </div>
-              <h1 className="text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl">
-                Auditoría algorítmica para mitigar la asimetría de información en el retail local.
+              
+              {/* Título equilibrado: ni muy chico ni gigante */}
+              <h1 className="text-2xl sm:text-[2.6rem] lg:text-[3.25rem] font-extrabold leading-[1.15] tracking-tight text-slate-950">
+                Ingeniería de datos y auditoría de precios para la transparencia del mercado local.
               </h1>
-              <p className="text-base leading-7 text-slate-600">
+              
+              <p className="text-sm sm:text-base leading-relaxed text-slate-600">
                 Extraemos registros diarios de Carrefour, Día, Depot y Delimart. Mediante una ventana móvil histórica de 21 días en PostgreSQL, clasificamos cada artículo en ofertas verificadas, aumentos inflacionarios o distorsiones comerciales.
               </p>
             </div>
 
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="rounded-3xl border border-slate-200 bg-white px-6 py-6 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Cadenas</p>
-                <p className="mt-3 text-3xl font-semibold text-slate-950">4</p>
-                <p className="mt-1 text-xs text-slate-500">Relevamiento regional continuo</p>
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-4">
+              <div className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-3.5 sm:px-6 sm:py-6 shadow-sm hover:border-sky-300 transition-colors">
+                <p className="text-[0.6rem] sm:text-xs uppercase tracking-wider sm:tracking-[0.25em] text-slate-500">Cadenas</p>
+                <p className="mt-1.5 sm:mt-3 text-xl sm:text-3xl font-bold text-slate-950">4</p>
+                <p className="mt-0.5 sm:mt-1 text-[0.65rem] sm:text-xs text-slate-500 line-clamp-1">Relevamiento regional</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white px-6 py-6 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Ventana Móvil</p>
-                <p className="mt-3 text-3xl font-semibold text-slate-950">21 Días</p>
-                <p className="mt-1 text-xs text-slate-500">Línea de base analítica SQL</p>
+              <div className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-3.5 sm:px-6 sm:py-6 shadow-sm hover:border-sky-300 transition-colors">
+                <p className="text-[0.6rem] sm:text-xs uppercase tracking-wider sm:tracking-[0.25em] text-slate-500">Ventana</p>
+                <p className="mt-1.5 sm:mt-3 text-xl sm:text-3xl font-bold text-slate-950">21 Días</p>
+                <p className="mt-0.5 sm:mt-1 text-[0.65rem] sm:text-xs text-slate-500 line-clamp-1">Base analítica SQL</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white px-6 py-6 shadow-sm">
-                <p className="text-xs uppercase tracking-[0.25em] text-slate-500">Semáforo</p>
-                <p className="mt-3 text-3xl font-semibold text-slate-950">3 Estados</p>
-                <p className="mt-1 text-xs text-slate-500">Real, Neutral y Trampa</p>
+              <div className="rounded-2xl sm:rounded-3xl border border-slate-200 bg-white p-3.5 sm:px-6 sm:py-6 shadow-sm hover:border-sky-300 transition-colors">
+                <p className="text-[0.6rem] sm:text-xs uppercase tracking-wider sm:tracking-[0.25em] text-slate-500">Semáforo</p>
+                <p className="mt-1.5 sm:mt-3 text-xl sm:text-3xl font-bold text-slate-950">3 Estados</p>
+                <p className="mt-0.5 sm:mt-1 text-[0.65rem] sm:text-xs text-slate-500 line-clamp-1">Real, Neutro, Trampa</p>
               </div>
             </div>
           </div>
 
-          <aside className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm">
+          <aside className="rounded-2xl sm:rounded-[2rem] border border-slate-200 bg-white p-5 sm:p-8 shadow-sm">
             <p className="text-xs uppercase tracking-[0.35em] text-slate-500">Rigor Metodológico</p>
-            <div className="mt-6 space-y-4">
-              <div className="rounded-2xl bg-slate-50 p-5 border border-slate-100">
+            <div className="mt-4 sm:mt-6 space-y-4">
+              <div className="rounded-xl sm:rounded-2xl bg-slate-50 p-4 sm:p-5 border border-slate-100">
                 <p className="text-xs uppercase tracking-wider font-semibold text-slate-700">Ahorro de Cartel vs. Ahorro Real</p>
-                <p className="mt-2 text-xs leading-5 text-slate-600">
+                <p className="mt-2 text-xs leading-relaxed text-slate-600">
                   Las promociones nominales suelen aplicarse sobre listas infladas. El motor matemático compara el precio efectivo contra la serie temporal histórica del producto para calcular el ahorro neto verificable.
                 </p>
               </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                <div className="rounded-2xl bg-white p-4 border border-slate-200">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-xl sm:rounded-2xl bg-white p-3.5 sm:p-4 border border-slate-200">
                   <p className="text-[0.65rem] uppercase tracking-wider text-slate-400">Tolerancia Inflado</p>
-                  <p className="mt-1 text-base font-bold text-rose-600">+5.0%</p>
+                  <p className="mt-1 text-sm sm:text-base font-bold text-rose-600">+5.0%</p>
                 </div>
-                <div className="rounded-2xl bg-white p-4 border border-slate-200">
+                <div className="rounded-xl sm:rounded-2xl bg-white p-3.5 sm:p-4 border border-slate-200">
                   <p className="text-[0.65rem] uppercase tracking-wider text-slate-400">Umbral Ahorro</p>
-                  <p className="mt-1 text-base font-bold text-emerald-600">&gt;3.0%</p>
+                  <p className="mt-1 text-sm sm:text-base font-bold text-emerald-600">&gt;3.0%</p>
                 </div>
               </div>
             </div>
@@ -312,7 +316,7 @@ export default function Home() {
             />
             <button
               type="submit"
-              className="rounded-2xl bg-slate-950 px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-slate-800"
+              className="rounded-2xl bg-slate-950 px-8 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-sky-700 active:scale-95 shadow-sm hover:shadow"
             >
               {searching ? "Consultando..." : "Consultar"}
             </button>
@@ -365,7 +369,7 @@ export default function Home() {
                         type="button"
                         onClick={() => handleToggleHistorial(producto.id_link)}
                         aria-expanded={historialAbierto === producto.id_link}
-                        className="text-xs font-semibold text-sky-700 hover:text-sky-900"
+                        className="text-xs font-semibold text-sky-700 hover:text-sky-900 transition-colors"
                       >
                         {historialAbierto === producto.id_link ? "Ocultar evolución de precios" : "Ver evolución de precios (21 días)"}
                       </button>
@@ -378,7 +382,7 @@ export default function Home() {
                               <>
                                 <GraficoHistorial puntos={historiales[producto.id_link] ?? []} />
                                 {historiales[producto.id_link]?.length > 0 && (
-                                  <button type="button" onClick={() => descargarHistorialCsv(producto, historiales[producto.id_link])} className="mt-2 text-xs font-semibold text-sky-700 hover:text-sky-900 print:hidden">
+                                  <button type="button" onClick={() => descargarHistorialCsv(producto, historiales[producto.id_link])} className="mt-2 text-xs font-semibold text-sky-700 hover:text-sky-900 print:hidden transition-colors">
                                     Exportar esta serie a CSV
                                   </button>
                                 )}
@@ -396,17 +400,17 @@ export default function Home() {
         </section>
 
         {/* Filtros compartidos por ofertas reales y alertas trampa */}
-        <div className="mt-20 mb-6 grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 sm:grid-cols-2">
+        <div className="mt-20 mb-6 grid gap-3 rounded-2xl border border-slate-200 bg-white p-4 sm:grid-cols-2 shadow-sm">
           <label className="text-xs font-semibold text-slate-600">
             Supermercado
-            <select value={filtroSupermercado} onChange={(event) => setFiltroSupermercado(event.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900">
+            <select value={filtroSupermercado} onChange={(event) => setFiltroSupermercado(event.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-500">
               <option value="">Todos los supermercados</option>
               {opcionesFiltros.supermercados.map((supermercado) => <option key={supermercado} value={supermercado}>{supermercado}</option>)}
             </select>
           </label>
           <label className="text-xs font-semibold text-slate-600">
             Categoría
-            <select value={filtroCategoria} onChange={(event) => setFiltroCategoria(event.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900">
+            <select value={filtroCategoria} onChange={(event) => setFiltroCategoria(event.target.value)} className="mt-1.5 w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition focus:border-sky-500">
               <option value="">Todas las categorías</option>
               {opcionesFiltros.categorias.map((categoria) => <option key={categoria} value={categoria}>{categoria}</option>)}
             </select>
@@ -418,18 +422,35 @@ export default function Home() {
           <div className="mb-8">
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-700">Capa Oro: Semáforo Verde</p>
             <h2 className="mt-2 text-2xl font-semibold text-slate-950">Descuentos Reales Verificados</h2>
-            <p className="mt-1 text-sm text-slate-600">Artículos cuyo precio final es estrictamente inferior al promedio histórico de 21 días (Ahorro Real &gt; 3%).</p>
-            <div className="mt-4 flex flex-wrap gap-2 print:hidden">
-              <button type="button" onClick={() => descargarCsv(ofertasReales, "ofertas-reales")} disabled={!ofertasReales.length} className="rounded-xl bg-slate-950 px-4 py-2 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40">Descargar CSV ({ofertasReales.length})</button>
-              <button type="button" onClick={() => imprimirReporte("Ofertas reales verificadas", ofertasReales, { supermercado: filtroSupermercado, categoria: filtroCategoria })} disabled={!ofertasReales.length} className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40">Imprimir / Guardar PDF</button>
+            <p className="mt-1 text-sm text-slate-600">Artículos cuyo precio final es estrictamente inferior al promedio histórico de 21 días (Ahorro Real &gt; 3.0%).</p>
+            
+            {/* Botones de acción con hover interactivo verde */}
+            <div className="mt-4 flex flex-wrap gap-2.5 print:hidden">
+              <button 
+                type="button" 
+                onClick={() => descargarCsv(ofertasReales, "ofertas-reales")} 
+                disabled={!ofertasReales.length} 
+                className="rounded-xl bg-slate-950 hover:bg-emerald-600 active:bg-emerald-700 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:shadow transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Descargar CSV ({ofertasReales.length})
+              </button>
+              <button 
+                type="button" 
+                onClick={() => imprimirReporte("Ofertas reales verificadas", ofertasReales, { supermercado: filtroSupermercado, categoria: filtroCategoria })} 
+                disabled={!ofertasReales.length} 
+                className="rounded-xl border border-slate-300 bg-white hover:border-emerald-500 hover:text-emerald-700 hover:bg-emerald-50/50 active:bg-emerald-100 px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Imprimir / Guardar PDF
+              </button>
             </div>
           </div>
+
           {/* Grilla de Destacados */}
           <div className="grid gap-6 xl:grid-cols-3">
             {ofertasReales.length === 0 ? (
               <p className="xl:col-span-3 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-500">No hay ofertas reales para los filtros seleccionados.</p>
             ) : ofertasReales.slice(0, 6).map((producto) => (
-              <div key={producto.id_link} className="rounded-[2rem] border border-emerald-200 bg-white p-6 shadow-sm flex flex-col justify-between">
+              <div key={producto.id_link} className="rounded-[2rem] border border-emerald-200 bg-white p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="text-[0.65rem] font-bold uppercase tracking-wider text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-100">
@@ -481,7 +502,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setFiltroOrden("mayor")}
-                  className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+                  className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all duration-150 ${
                     filtroOrden === "mayor" ? "bg-white text-slate-950 shadow-sm" : "text-slate-600 hover:text-slate-950"
                   }`}
                 >
@@ -490,7 +511,7 @@ export default function Home() {
                 <button
                   type="button"
                   onClick={() => setFiltroOrden("menor")}
-                  className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
+                  className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition-all duration-150 ${
                     filtroOrden === "menor" ? "bg-white text-slate-950 shadow-sm" : "text-slate-600 hover:text-slate-950"
                   }`}
                 >
@@ -519,7 +540,8 @@ export default function Home() {
 
                     <div className="flex items-center gap-6 sm:justify-end">
                       <div className="text-right">
-                        <p className="text-[0.65rem] text-slate-400 uppercase">Precio Pagable</p>
+                        {/* Renombrado claro: Precio Final Hoy */}
+                        <p className="text-[0.65rem] text-slate-400 uppercase">Precio Final Hoy</p>
                         <p className="text-sm font-bold text-slate-950">{formatoPrecio(precioFinal(prod))}</p>
                       </div>
                       <div className="text-right min-w-[80px]">
@@ -541,11 +563,27 @@ export default function Home() {
             <p className="text-xs font-semibold uppercase tracking-[0.35em] text-rose-600">Capa Oro: Semáforo Rojo</p>
             <h2 className="mt-2 text-2xl font-semibold text-slate-950">Ofertas Trampa Detectadas</h2>
             <p className="mt-1 text-sm text-slate-600">
-              Artículos cuyo precio de lista fue inflado más de un 5% respecto a su promedio histórico, simulando un descuento engañoso.
+              Artículos cuyo precio de lista base fue inflado más de un 5% respecto a su promedio histórico, simulando una rebaja artificial.
             </p>
-            <div className="mt-4 flex flex-wrap gap-2 print:hidden">
-              <button type="button" onClick={() => descargarCsv(alertasTrampa, "alertas-trampa")} disabled={!alertasTrampa.length} className="rounded-xl bg-slate-950 px-4 py-2 text-xs font-semibold text-white disabled:cursor-not-allowed disabled:opacity-40">Descargar CSV ({alertasTrampa.length})</button>
-              <button type="button" onClick={() => imprimirReporte("Alertas de precios", alertasTrampa, { supermercado: filtroSupermercado, categoria: filtroCategoria })} disabled={!alertasTrampa.length} className="rounded-xl border border-slate-300 bg-white px-4 py-2 text-xs font-semibold text-slate-700 disabled:cursor-not-allowed disabled:opacity-40">Imprimir / Guardar PDF</button>
+            
+            {/* Botones de acción con hover interactivo rojo */}
+            <div className="mt-4 flex flex-wrap gap-2.5 print:hidden">
+              <button 
+                type="button" 
+                onClick={() => descargarCsv(alertasTrampa, "alertas-trampa")} 
+                disabled={!alertasTrampa.length} 
+                className="rounded-xl bg-slate-950 hover:bg-rose-600 active:bg-rose-700 px-4 py-2 text-xs font-semibold text-white shadow-sm hover:shadow transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Descargar CSV ({alertasTrampa.length})
+              </button>
+              <button 
+                type="button" 
+                onClick={() => imprimirReporte("Alertas de precios", alertasTrampa, { supermercado: filtroSupermercado, categoria: filtroCategoria })} 
+                disabled={!alertasTrampa.length} 
+                className="rounded-xl border border-slate-300 bg-white hover:border-rose-500 hover:text-rose-700 hover:bg-rose-50/50 active:bg-rose-100 px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-40"
+              >
+                Imprimir / Guardar PDF
+              </button>
             </div>
           </div>
 
@@ -553,14 +591,14 @@ export default function Home() {
             {alertasTrampa.length === 0 ? (
               <p className="xl:col-span-3 rounded-2xl border border-slate-200 bg-white p-6 text-sm text-slate-500">No hay alertas trampa para los filtros seleccionados.</p>
             ) : alertasTrampa.slice(0, 6).map((producto) => (
-              <div key={producto.id_link} className="rounded-[2rem] border border-rose-200 bg-white p-6 shadow-sm flex flex-col justify-between">
+              <div key={producto.id_link} className="rounded-[2rem] border border-rose-200 bg-white p-6 shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div>
                   <div className="flex items-center justify-between">
                     <span className="text-[0.65rem] font-bold uppercase tracking-wider text-rose-700 bg-rose-50 px-2 py-0.5 rounded border border-rose-100">
                       {producto.supermercado}
                     </span>
                     <span className="inline-flex items-center rounded-full bg-rose-50 px-2.5 py-0.5 text-xs font-bold text-rose-700 border border-rose-200">
-                      🔴 Inflado Falso
+                      🔴 Inflado Artificial
                     </span>
                   </div>
                   <p className="mt-3 text-base font-semibold text-slate-950 line-clamp-2">{producto.nombre_generico}</p>
@@ -578,11 +616,22 @@ export default function Home() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl bg-rose-50/50 p-2.5 flex items-center justify-between text-xs border border-rose-100">
-                    <span className="text-[0.7rem] text-rose-600">Descuento Anunciado:</span>
-                    <span className="font-semibold text-rose-700">
-                      {producto.ahorro_nominal_pct != null ? `${producto.ahorro_nominal_pct.toFixed(1)}% OFF` : "Publicitado"}
-                    </span>
+                  {/* Bloque comparativo: Cartel vs. Realidad */}
+                  <div className="rounded-xl bg-rose-50/60 p-3 space-y-1.5 border border-rose-100 text-xs">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[0.7rem] text-slate-600">Descuento Anunciado:</span>
+                      <span className="font-bold text-rose-700 line-through decoration-rose-400">
+                        {producto.ahorro_nominal_pct != null ? `${producto.ahorro_nominal_pct.toFixed(1)}% OFF` : "Promocionado"}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between border-t border-rose-100/80 pt-1.5">
+                      <span className="text-[0.7rem] font-semibold text-slate-800">Ahorro Real Auditado:</span>
+                      <span className="font-extrabold text-slate-900 bg-white px-2 py-0.5 rounded border border-rose-200">
+                        {producto.ahorro_real_pct != null 
+                          ? `${producto.ahorro_real_pct > 0 ? "+" : ""}${producto.ahorro_real_pct.toFixed(1)}%` 
+                          : "0.0%"}
+                      </span>
+                    </div>
                   </div>
 
                   <p className="text-[0.65rem] text-slate-400 font-mono">
@@ -597,8 +646,6 @@ export default function Home() {
             <p className="mt-6 text-sm text-slate-500">No hay alertas trampa clasificadas en la última captura.</p>
           )}
         </section>
-
-
 
         {/* Footer */}
         <footer className="mt-24 border-t border-slate-200 py-10">
