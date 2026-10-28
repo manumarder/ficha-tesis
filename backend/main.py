@@ -242,6 +242,85 @@ class CanastaRequest(BaseModel):
   productos: List[str] = Field(min_length=1, max_length=50)
 
 
+# =====================================================================
+# ENDPOINTS DE MACRO-AUDITORÍA Y OBSERVATORIO DIARIO (NUEVOS)
+# =====================================================================
+
+@app.get("/api/auditoria/resumen")
+def obtener_resumen_auditoria_reciente(db: ConexionBaseDatos = Depends(get_db)):
+    """
+    Retorna la última foto macroeconómica registrada en la tabla de resúmenes.
+    Si por alguna razón la tabla está vacía, computa el snapshot en caliente.
+    """
+    query = """
+        SELECT *
+        FROM public.auditorias_diarias_resumen
+        ORDER BY fecha_censo DESC, created_at DESC
+        LIMIT 1;
+    """
+    try:
+        rows = leer_dataframe(db, query)
+        if rows:
+            return {
+                "status": "success",
+                "data": rows[0]
+            }
+        
+        # Fallback: si aún no se corrió el snapshot, se ejecuta la función
+        cursor = db.connection.cursor()
+        cursor.execute("SELECT public.registrar_resumen_diario_auditoria();")
+        db.connection.commit()
+        rows_fallback = leer_dataframe(db, query)
+        return {
+            "status": "success",
+            "data": rows_fallback[0] if rows_fallback else None
+        }
+    except Exception as e:
+        raise error_de_datos("Error consultando el resumen de auditoría diaria", e)
+
+
+@app.get("/api/auditoria/dictamen-global")
+def obtener_dictamen_global(db: ConexionBaseDatos = Depends(get_db)):
+    """
+    Genera el consolidado completo para el 3° Reporte (Dictamen Macroeconómico de Auditoría):
+    1. Resumen global (métricas del censo).
+    2. Desglose detallado por cadena de supermercado (trampas vs. reales por comercio).
+    """
+    query_resumen = """
+        SELECT *
+        FROM public.auditorias_diarias_resumen
+        ORDER BY fecha_censo DESC, created_at DESC
+        LIMIT 1;
+    """
+
+    query_por_supermercado = LATEST_AUDIT_QUERY + """
+        SELECT 
+            supermercado,
+            COUNT(*) AS total_auditados,
+            COUNT(*) FILTER (WHERE precio_descuento IS NOT NULL AND precio_descuento < precio_normal) AS total_en_promo,
+            ROUND(AVG(ahorro_nominal_pct) FILTER (WHERE precio_descuento IS NOT NULL AND precio_descuento < precio_normal)::numeric, 1) AS promo_cartel_promedio_pct,
+            COUNT(*) FILTER (WHERE semaforo = '🟢') AS cant_ofertas_reales,
+            COUNT(*) FILTER (WHERE semaforo = '🔴') AS cant_ofertas_trampa,
+            COUNT(*) FILTER (WHERE semaforo = '🟡') AS cant_neutrales,
+            COUNT(*) FILTER (WHERE semaforo = '⚪' OR dias_con_datos < 7) AS cant_sin_datos
+        FROM precios_recientes
+        GROUP BY supermercado
+        ORDER BY cant_ofertas_trampa DESC, cant_ofertas_reales DESC;
+    """
+
+    try:
+        resumen = leer_dataframe(db, query_resumen)
+        desglose_super = leer_dataframe(db, query_por_supermercado)
+
+        return {
+            "status": "success",
+            "fecha_emision": pd.Timestamp.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "resumen_global": resumen[0] if resumen else {},
+            "desglose_supermercados": desglose_super,
+        }
+    except Exception as e:
+        raise error_de_datos("Error generando el dictamen global de auditoría", e)
+
 # ==========================================
 # ENDPOINTS AVANZADOS DE BÚSQUEDA Y NEGOCIO
 # ==========================================

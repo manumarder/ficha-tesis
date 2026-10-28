@@ -33,12 +33,12 @@ def extraer_chunk_aislado(chunk_links, chunk_id):
     
     # Staggering aleatorio inicial
     delay = random.uniform(1, 5)
-    logger.info(f"⏳ Chunk {chunk_id} - Esperando {delay:.2f}s antes de iniciar...")
+    logger.info(f"⏳ Chunk {chunk_id}: Esperando {delay:.2f}s antes de iniciar...")
     time.sleep(delay)
     
     extractor = ExtractCanastaBasica(enable_parallel=False, max_workers=1)
     
-    logger.info(f"📦 Chunk {chunk_id} - Iniciando extracción de {len(chunk_links)} links mezclados...")
+    logger.info(f"📦 Chunk {chunk_id}: Iniciando extracción de {len(chunk_links)} links mezclados...")
     df_raw = extractor.extract(chunk_links)
     
     if hasattr(extractor, 'db') and extractor.db:
@@ -65,8 +65,8 @@ def lanzar_pipeline_consolidado():
     logger.info("🧹 Limpiando procesos huérfanos residuales antes de iniciar...")
     cleanup_environment(force=True)
     
-    # 1. LEER LINKS DESDE EL ORQUESTADOR MÁSTER
-    supermercado_filtro = os.getenv("EXTRACTION_SUPERMERCADO") or None
+    # 1. LEER LINKS DESDE EL ORQUESTADOR MÁSTER (Valores por defecto: sin filtro)
+    supermercado_filtro = os.getenv("EXTRACTION_SUPERMERCADO", "").strip() or None
     logger.info(f"📥 Obteniendo enlaces activos{f' de {supermercado_filtro}' if supermercado_filtro else ''}...")
     extractor_master = ExtractCanastaBasica(enable_parallel=False, max_workers=1)
     todos_los_links = extractor_master.read_links_from_db(supermercado_filtro=supermercado_filtro)
@@ -78,7 +78,7 @@ def lanzar_pipeline_consolidado():
         logger.error("🚨 No hay links en la base de datos. Abortando.")
         return
         
-    # --- NUEVA LÓGICA: MODO REINTENTO DE FALLIDOS ---
+    # --- MODO REINTENTO DE FALLIDOS (Por defecto: False) ---
     retry_failed = os.getenv("RETRY_FAILED", "false").lower() == "true"
     if retry_failed:
         logger.info("♻️ Modo RETRY_FAILED activado. Buscando el último reporte de fallos...")
@@ -86,7 +86,6 @@ def lanzar_pipeline_consolidado():
         links_fallidos_dir = os.path.join(files_dir, 'links_fallidos')
         
         if os.path.exists(links_fallidos_dir):
-            # Encontrar el archivo CSV más reciente
             archivos_csv = [os.path.join(links_fallidos_dir, f) for f in os.listdir(links_fallidos_dir) if f.startswith('LINKS_FALLIDOS_') and f.endswith('.csv')]
             if archivos_csv:
                 ultimo_csv = max(archivos_csv, key=os.path.getmtime)
@@ -95,8 +94,6 @@ def lanzar_pipeline_consolidado():
                     df_fallidos = pd.read_csv(ultimo_csv)
                     if 'url' in df_fallidos.columns:
                         urls_fallidas = set(df_fallidos['url'].dropna().tolist())
-                        
-                        # Filtrar `todos_los_links` guardando solo los que están en el CSV
                         todos_los_links = [item for item in todos_los_links if item['link'] in urls_fallidas]
                         logger.info(f"🎯 Links filtrados: {len(todos_los_links)} a reintentar de {len(urls_fallidas)} en el CSV.")
                     else:
@@ -110,6 +107,7 @@ def lanzar_pipeline_consolidado():
             logger.error("🚨 No quedaron links para procesar después de filtrar. Abortando.")
             return
     
+    # --- TAMAÑO DE MUESTRA (Por defecto: 0 -> Universo completo) ---
     sample_size = os.getenv("EXTRACTION_SAMPLE_SIZE", "0")
     try:
         sample_size = int(sample_size)
@@ -122,13 +120,11 @@ def lanzar_pipeline_consolidado():
     else:
         logger.info(f"📦 Procesando UNIVERSO COMPLETO: {len(todos_los_links)} links.")
         
-    # 2. SHUFFLE Y CHUNKING (LA MAGIA ANTI-BLOQUEO Y BALANCEO DE CARGA)
+    # 2. SHUFFLE Y CHUNKING (ANTI-BLOQUEO Y BALANCEO DE CARGA)
     random.shuffle(todos_los_links)
     
-    # Particionamos en lotes de 50 links.
     CHUNK_SIZE = 50
     chunks = [todos_los_links[i:i + CHUNK_SIZE] for i in range(0, len(todos_los_links), CHUNK_SIZE)]
-    
     logger.info(f"🧩 Universo dividido en {len(chunks)} Chunks de hasta {CHUNK_SIZE} links.")
     
     dataframes_crudos = []
@@ -140,7 +136,6 @@ def lanzar_pipeline_consolidado():
     logger.info("🛠️ FASE 1: EXTRACCIÓN (WORKERS)")
     logger.info("="*50)
     
-    # Lanzar a los 4 núcleos procesadores de forma balanceada
     with ProcessPoolExecutor(max_workers=4) as executor:
         futuros = {
             executor.submit(extraer_chunk_aislado, chunk, i): i 
@@ -150,7 +145,7 @@ def lanzar_pipeline_consolidado():
         for futuro in as_completed(futuros):
             chunk_id = futuros[futuro]
             try:
-                df_resultado, cid = futuro.result(timeout=3600) # Timeout 1 hora por chunk
+                df_resultado, cid = futuro.result(timeout=3600)
                 if not df_resultado.empty:
                     dataframes_crudos.append(df_resultado)
                     logger.info(f"✅ Chunk {cid} completado: {len(df_resultado)} registros.")
@@ -163,10 +158,11 @@ def lanzar_pipeline_consolidado():
         logger.error("🚨 No se extrajeron datos de ningún supermercado. Abortando ETL.")
         return
         
-    # Unificar todos los dataframes en uno solo masivo
+    # Unificar todos los dataframes
     df_raw_consolidado = pd.concat(dataframes_crudos, ignore_index=True)
     logger.info(f"\n📊 [CONSOLIDACIÓN] Se unificaron {len(df_raw_consolidado)} registros crudos en total.")
 
+    # --- MODO DIAGNÓSTICO (Por defecto: False) ---
     diagnostic_only = os.getenv("DIAGNOSTIC_ONLY", "false").lower() == "true"
     if diagnostic_only:
         columns = [column for column in ("url", "supermercado", "nombre", "error_type", "precio_normal", "precio_descuento", "precio_por_unidad", "unidad") if column in df_raw_consolidado.columns]
@@ -225,6 +221,18 @@ def lanzar_pipeline_consolidado():
         exito = loader.load(df_transformado)
         if exito:
             logger.info("🎉 === PROCESO ETL GLOBAL COMPLETADO EXITOSAMENTE ===")
+            
+            # --- NUEVO: DISPARAR SNAPSHOT DIARIO AUTOMÁTICO EN SUPABASE ---
+            try:
+                logger.info("📊 Actualizando tabla histórica de resúmenes (auditorias_diarias_resumen)...")
+                with loader.db.engine.connect() as conn:
+                    from sqlalchemy import text
+                    conn.execute(text("SELECT public.registrar_resumen_diario_auditoria();"))
+                    conn.commit()
+                logger.info("✅ Snapshot de auditoría diaria registrado con éxito.")
+            except Exception as e_snap:
+                logger.warning(f"⚠️ No se pudo registrar el resumen diario de auditoría: {e_snap}")
+                
         else:
             logger.error("💥 === EL PROCESO ETL FINALIZÓ CON ERRORES EN LA CARGA ===")
     finally:
